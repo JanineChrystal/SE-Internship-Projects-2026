@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type React from "react";
 // Imports your static data configurations and shared TypeScript interface
-import { LEFT_LINKS, type NavItem, RIGHT_LINKS } from "../constants/nav";
+import { LEFT_LINKS, type NavItem, RIGHT_LINKS } from "../../constants/nav";
 
 const Navbar = (): React.ReactElement => {
 	const pathname = usePathname();

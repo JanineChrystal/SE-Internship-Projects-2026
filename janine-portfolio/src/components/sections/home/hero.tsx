@@ -3,16 +3,19 @@ import Button from "../../buttons/button";
 
 const Hero = () => {
 	return (
-		<section className="relative w-full max-w-7xl mx-auto min-h-[80vh] flex flex-col justify-center px-8 pt-12">
+		<section
+			id="hero"
+			className="relative w-full max-w-7xl mx-auto min-h-[80vh] flex flex-col justify-center px-8 pt-25 overflow-hidden"
+		>
 			{/* Background cursive text layer pushed behind the main content */}
-			<div className="absolute top-35 left-2 w-full flex justify-between px-35 -z-10 pointer-events-none select-none">
+			<div className="absolute top-50 left-2 w-full flex justify-between px-35 -z-10 pointer-events-none select-none">
 				<span className="text-9xl font-serif text-black/90">Hello,</span>
 				<span className="text-9xl font-serif text-black/90">there</span>
 			</div>
 
 			<div className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr_1fr] gap-8 items-center w-full">
 				{/* Left Column */}
-				<div className="flex flex-col z-10 pt-30">
+				<div className="flex flex-col z-10 pt-35">
 					<h2 className="text-5xl font-black text-black uppercase mb-2">
 						I Am
 					</h2>

@@ -18,16 +18,6 @@ body {
 	background-color: var(--color-brand-yellow);
 }
 
-/*LAYOUT STYLES*/
-.layout-hero-grid {
-	grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 1fr);
-}
-
-/* Responsive height guard for the portrait image container */
-.layout-hero-portrait {
-	min-height: 500px;
-}
-
 /*BUTTON STYLES*/
 .btn-gradient-brand {
 	background: linear-gradient(
@@ -38,8 +28,51 @@ body {
 	);
 }
 
+/*HOME - HERO SECTION STYLES*/
+.layout-hero-grid {
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 1fr);
+}
+
+/* Responsive height guard for the portrait image container */
+.layout-hero-portrait {
+	min-height: 500px;
+}
+
+/*HOME - ABOUT ME SECTION STYLES*/
+.layout-portrait-wrapper {
+	aspect-ratio: 4 / 5;
+	min-height: 400px;
+}
+
+.bg-portrait-fade {
+	background: linear-gradient(to top, #fff458 0%, transparent 100%);
+}
+
+/*** IMAGE STYLES ***/
+.portrait-silhouette-glow {
+	filter: drop-shadow(0px 0px 25px var(--color-brand-yellow));
+}
+
+/*** TYPOGRAPHY STYLES **/
+
+.text-gradient-fade {
+	background: linear-gradient(
+		to right,
+		#000000 0%,
+		var(--color-brand-yellow) 100%
+	);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	color: transparent;
+}
+
+.text-brand-yellow {
+	color: var(--color-brand-yellow);
+}
+
 @media (min-width: 768px) {
 	.layout-hero-portrait {
-		min-height: 700px;
+		min-height: 600px;
 	}
 }

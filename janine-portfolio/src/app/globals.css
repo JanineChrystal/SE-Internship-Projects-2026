@@ -1,19 +1,12 @@
 @import "tailwindcss";
 
 :root {
-	--background: #ffffff;
-	--foreground: #000000;
-}
-
-@media (prefers-color-scheme: dark) {
-	:root {
-		--background: #0a0a0a;
-		--foreground: #ededed;
-	}
+	--color-brand-yellow: #fff458;
 }
 
 body {
-	background: var(--background);
-	color: var(--foreground);
+	background: linear-gradient(180deg, #ffffff 0%, #fff458 60%, #ffffff 100%);
+	background-attachment: fixed;
+	color: #000000;
 	font-family: Arial, Helvetica, sans-serif;
 }

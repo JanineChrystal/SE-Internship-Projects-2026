@@ -12,6 +12,8 @@ body {
 }
 
 /*** CUSTOM STYLES ***/
+
+/*LAYOUT STYLES*/
 .layout-hero-grid {
 	grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 1fr);
 }
@@ -19,6 +21,11 @@ body {
 /* Responsive height guard for the portrait image container */
 .layout-hero-portrait {
 	min-height: 500px;
+}
+
+/*NAVBAR STYLES*/
+.nav-glow-indicator {
+	background-color: var(--color-brand-yellow);
 }
 
 @media (min-width: 768px) {

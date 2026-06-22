@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type React from "react";
-// Imports your static data configurations and shared TypeScript interface
 import { LEFT_LINKS, type NavItem, RIGHT_LINKS } from "../../constants/nav";
 
 const Navbar = (): React.ReactElement => {
@@ -19,11 +18,11 @@ const Navbar = (): React.ReactElement => {
 				<div key={link.path} className="relative">
 					{/* Flexibly injects the background blur highlighting layer exclusively for active items */}
 					{isActive && (
-						<div className="absolute -inset-x-6 -inset-y-2 bg-[var(--color-brand-yellow)] blur-md rounded-full -z-10" />
+						<div className="absolute -inset-x-6 -inset-y-2 nav-glow-indicator blur-md rounded-full -z-10" />
 					)}
 					<Link
 						href={link.path}
-						className={`font-bold text-lg transition-colors ${isActive ? "text-black" : "text-black/50 hover:text-black"}`}
+						className={`font-bold text-lg transition-colors ${isActive ? "text-black" : "text-black/80 hover:text-black"}`}
 					>
 						{link.label}
 					</Link>

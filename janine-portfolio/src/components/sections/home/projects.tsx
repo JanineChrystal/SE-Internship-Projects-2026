@@ -4,7 +4,6 @@ import ProjectCard from "../../ui/project-card";
 
 const Projects = () => {
 	return (
-		// Main structural wrapper isolating the section
 		<section
 			id="projects"
 			className="w-full max-w-7xl mx-auto px-8 py-24 flex flex-col items-center"

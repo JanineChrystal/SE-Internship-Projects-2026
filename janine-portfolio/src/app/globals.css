@@ -13,6 +13,11 @@ body {
 
 /*** CUSTOM STYLES ***/
 
+/*NAVBAR STYLES*/
+.nav-glow-indicator {
+	background-color: var(--color-brand-yellow);
+}
+
 /*LAYOUT STYLES*/
 .layout-hero-grid {
 	grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 1fr);
@@ -23,9 +28,14 @@ body {
 	min-height: 500px;
 }
 
-/*NAVBAR STYLES*/
-.nav-glow-indicator {
-	background-color: var(--color-brand-yellow);
+/*BUTTON STYLES*/
+.btn-gradient-brand {
+	background: linear-gradient(
+		90deg,
+		var(--color-brand-yellow) 0%,
+		#ffffff 55%,
+		var(--color-brand-yellow) 100%
+	);
 }
 
 @media (min-width: 768px) {

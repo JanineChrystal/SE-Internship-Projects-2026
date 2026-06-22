@@ -10,3 +10,19 @@ body {
 	color: #000000;
 	font-family: Arial, Helvetica, sans-serif;
 }
+
+/*** CUSTOM STYLES ***/
+.layout-hero-grid {
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 1fr);
+}
+
+/* Responsive height guard for the portrait image container */
+.layout-hero-portrait {
+	min-height: 500px;
+}
+
+@media (min-width: 768px) {
+	.layout-hero-portrait {
+		min-height: 700px;
+	}
+}

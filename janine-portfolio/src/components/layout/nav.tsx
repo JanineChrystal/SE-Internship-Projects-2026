@@ -2,10 +2,9 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import type React from "react";
 import { LEFT_LINKS, type NavItem, RIGHT_LINKS } from "../../constants/nav";
 
-const Navbar = (): React.ReactElement => {
+const Navbar = () => {
 	const pathname = usePathname();
 
 	// Extracted layout pattern helper function to eliminate repetitive markup blocks
@@ -37,9 +36,9 @@ const Navbar = (): React.ReactElement => {
 			<div className="flex items-center gap-12">{renderLinks(LEFT_LINKS)}</div>
 
 			{/* Center signature layout branding token */}
-			<h2 className="text-3xl font-serif font-black tracking-wide text-black">
+			<span className="text-3xl font-serif font-black tracking-wide">
 				Chrystl.
-			</h2>
+			</span>
 
 			{/* Right side navigation block */}
 			<div className="flex items-center gap-12">{renderLinks(RIGHT_LINKS)}</div>

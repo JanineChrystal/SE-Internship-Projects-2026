@@ -21,12 +21,10 @@ const ProjectCard = ({
 					<Image src={imageSrc} alt={altText} fill className="object-contain" />
 				</div>
 
-				<h3 className="text-xl font-black uppercase leading-tight">{title}</h3>
+				<h3 className="text-xl uppercase leading-tight">{title}</h3>
 			</div>
 
-			<p className="text-sm text-black/90 leading-relaxed text-justify">
-				{description}
-			</p>
+			<p className="text-md leading-relaxed text-justify">{description}</p>
 		</Card>
 	);
 };

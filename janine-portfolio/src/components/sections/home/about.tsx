@@ -4,7 +4,6 @@ import TextLink from "../../ui/text-link";
 
 const About = () => {
 	return (
-		// Provides ample vertical padding to separate this section from the Hero
 		<section
 			id="about"
 			className="w-full max-w-7xl mx-auto px-8 py-24 flex justify-center"
@@ -13,9 +12,9 @@ const About = () => {
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
 					{/* Left Column: Typography and Biography */}
 					<div className="flex flex-col z-10">
-						<h2 className="text-5xl font-black uppercase mb-8">About Me</h2>
+						<h2 className="text-5xl mb-8">About Me</h2>
 
-						<p className="text-lg text-black/90 leading-relaxed mb-6">
+						<p className="text-lg leading-relaxed mb-6">
 							I am a Bachelor of Science Information Technology from Polytechnic
 							University of the Philippines, Sta. Mesa Manila, specializing in
 							web development and creative design. I enjoy building
@@ -37,7 +36,6 @@ const About = () => {
 								Know more <span className="text-gradient-fade">about me</span>
 								<span className="sr-only">Arrow Icon</span>
 								<svg
-									// Swapped standard Tailwind yellow for your exact brand yellow utility
 									className="w-5 h-5 text-brand-yellow"
 									fill="none"
 									stroke="currentColor"

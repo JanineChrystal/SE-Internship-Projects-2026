@@ -8,9 +8,7 @@ const Projects = () => {
 			id="projects"
 			className="w-full max-w-7xl mx-auto px-8 py-24 flex flex-col items-center"
 		>
-			<h2 className="text-5xl font-black uppercase mb-16 text-center">
-				Recent Projects
-			</h2>
+			<h2 className="text-5xl uppercase mb-16 text-center">Recent Projects</h2>
 
 			<div className="grid grid-cols-1 lg:grid-cols-2 gap-10 w-full mb-16">
 				{RECENT_PROJECTS.map((project) => (

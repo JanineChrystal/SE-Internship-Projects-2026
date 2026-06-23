@@ -16,8 +16,8 @@ const Hero = () => {
 			<div className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr_1fr] gap-8 items-center w-full">
 				{/* Left Column */}
 				<div className="flex flex-col z-10 pt-35">
-					<h2 className="text-5xl uppercase mb-2">I Am</h2>
-					<h1 className="text-7xl leading-none uppercase bg-clip-text ">
+					<h2 className="text-5xl mb-2">I Am</h2>
+					<h1 className="text-7xl leading-none bg-clip-text ">
 						Janine
 						<br />
 						Chrystal

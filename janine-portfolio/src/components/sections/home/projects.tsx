@@ -1,6 +1,6 @@
 import { RECENT_PROJECTS } from "@/src/constants/home/projects";
 import Button from "../../buttons/button";
-import ProjectCard from "../../ui/project-card";
+import ProjectCard from "../../ui/cards/project-card";
 
 const Projects = () => {
 	return (
@@ -15,6 +15,7 @@ const Projects = () => {
 					<ProjectCard
 						key={project.id}
 						title={project.title}
+						date={project.date}
 						description={project.description}
 						imageSrc={project.imageSrc}
 						altText={project.altText}

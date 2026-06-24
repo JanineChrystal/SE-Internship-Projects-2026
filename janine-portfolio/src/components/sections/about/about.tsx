@@ -6,13 +6,13 @@ const About = () => {
 	return (
 		<section
 			id="aboutMe"
-			className="w-full max-w-7xl mx-auto px-8 py-24 flex flex-col items-center"
+			className="w-full max-w-7xl mx-auto px-8 py-32 flex flex-col items-center"
 		>
 			<SectionTitle title="About Me" align="center" />
-			<Card className="w-full max-w-4xl p-4 md:p-6 lg:p-8">
-				<div className="flex flex-col md:flex-row gap-10 lg:gap-16 items-center md:items-start">
+			<Card className="w-full p-4 md:p-6 lg:p-6">
+				<div className="flex flex-col md:flex-row gap-2 lg:gap-3 items-center md:items-start">
 					{/* Left Column: Portrait Wrapper */}
-					<div className="relative w-full layout-portrait-wrapper">
+					<div className="relative w-full h-125 layout-portrait-wrapper">
 						<Image
 							src="/profile.png"
 							alt="Janine Chrystal Professional Portrait"

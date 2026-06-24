@@ -15,7 +15,7 @@ const ExperienceCard = ({
 	return (
 		<Card className="flex flex-col p-8 md:p-10 h-full">
 			<h3>
-				{company} - {title}
+				{company} {title}
 			</h3>
 			<p className="text-md leading-relaxed text-justify">{duration}</p>
 			<p className="text-md leading-relaxed text-justify">{description}</p>

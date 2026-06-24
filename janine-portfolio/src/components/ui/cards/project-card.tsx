@@ -53,6 +53,7 @@ const ProjectCard = ({
 							src={imageSrc}
 							alt={altText || `${title} Image`}
 							fill
+							sizes="(max-width: 768px) 100vw, 140px"
 							className="object-contain"
 						/>
 					</div>

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Card from "../../ui/cards/card";
+import SectionTitle from "../../ui/section-title";
 import TextLink from "../../ui/text-link";
 
 const About = () => {
@@ -12,7 +13,7 @@ const About = () => {
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
 					{/* Left Column: Typography and Biography */}
 					<div className="flex flex-col z-10">
-						<h2 className="text-5xl mb-8">About Me</h2>
+						<SectionTitle title="About Me" align="left" />
 
 						<p className="text-lg leading-relaxed mb-6">
 							I am a Bachelor of Science Information Technology from Polytechnic

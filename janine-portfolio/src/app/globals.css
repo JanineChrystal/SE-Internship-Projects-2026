@@ -130,34 +130,34 @@ p {
 
 /* Simple comment: Keyframes to move the track from 0 to half of its total width */
 @keyframes infinite-scroll-left {
-    from {
-        transform: translateX(0);
-    }
-    to {
-        transform: translateX(-50%);
-    }
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-50%);
+	}
 }
 
 /* Simple comment: Keyframes to move the track in the opposite direction */
 @keyframes infinite-scroll-right {
-    from {
-        transform: translateX(-50%);
-    }
-    to {
-        transform: translateX(0);
-    }
+	from {
+		transform: translateX(-50%);
+	}
+	to {
+		transform: translateX(0);
+	}
 }
 
 /* Simple comment: Utility classes to apply the animations infinitely over 30 seconds */
 .animate-scroll-left {
-    animation: infinite-scroll-left 30s linear infinite;
+	animation: infinite-scroll-left 30s linear infinite;
 }
 
 .animate-scroll-right {
-    animation: infinite-scroll-right 30s linear infinite;
+	animation: infinite-scroll-right 30s linear infinite;
 }
 
 /* Simple comment: Pauses the animation when a user hovers over the row so they can view a skill */
 .hover-pause:hover {
-    animation-play-state: paused;
+	animation-play-state: paused;
 }

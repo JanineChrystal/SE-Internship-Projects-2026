@@ -1,12 +1,10 @@
+import { techStack } from "@/src/constants/about/techStack";
 import InfiniteSlider from "../../ui/infinite-slider";
 import SectionTitle from "../../ui/section-title";
-import { techStack} from "@/src/constants/about/techStack";
-
 
 const TechStack = () => {
-
 	const rowOneSkills = techStack.slice(0, 11);
-    const rowTwoSkills = techStack.slice(11, 22);
+	const rowTwoSkills = techStack.slice(11, 22);
 
 	return (
 		<section
@@ -15,12 +13,10 @@ const TechStack = () => {
 		>
 			<SectionTitle title="Technical Skills" align="center" />
 
-            <div className="w-full flex flex-col gap-8 mt-8">
-                
-                <InfiniteSlider items={rowOneSkills} direction="left" />
-                <InfiniteSlider items={rowTwoSkills} direction="right" />
-                
-            </div>
+			<div className="w-full flex flex-col gap-8 mt-8">
+				<InfiniteSlider items={rowOneSkills} direction="left" />
+				<InfiniteSlider items={rowTwoSkills} direction="right" />
+			</div>
 		</section>
 	);
 };

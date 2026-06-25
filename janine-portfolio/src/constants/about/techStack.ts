@@ -4,118 +4,115 @@ export interface techData {
     altText: String;
 }
 
-export const techUp: techData[] = [
+export const techStack: techData[] = [
     {
         id: 1,
-        imageSrc: "/tech/Agile.jpg",
+        imageSrc: "/techStack/Agile.jpg",
         altText: "Agile"
     },
     {
         id: 2,
-        imageSrc: "/tech/ASPNetCore.png",
+        imageSrc: "/techStack/ASPNetCore.png",
         altText: "ASP .NET Core"
     },
     {
         id: 3,
-        imageSrc: "/tech/Azure.png",
+        imageSrc: "/techStack/Azure.png",
         altText: "Azure"
     },
     {
         id: 4,
-        imageSrc: "/tech/Bootstrap.png",
+        imageSrc: "/techStack/Bootstrap.png",
         altText: "ASP .NET Core"
     },
     {
         id: 5,
-        imageSrc: "/tech/CSharp.png",
+        imageSrc: "/techStack/CSharp.png",
         altText: "CSharp"
     },
     {
         id: 6,
-        imageSrc: "/tech/CSS.png",
+        imageSrc: "/techStack/CSS.png",
         altText: "CSS"
     },
     {
         id: 7,
-        imageSrc: "/tech/Figma.png",
+        imageSrc: "/techStack/Figma.png",
         altText: "Figma"
     },
     {
         id: 8,
-        imageSrc: "/tech/Git.png",
+        imageSrc: "/techStack/Git.png",
         altText: "Git"
     },
     {
         id: 9,
-        imageSrc: "/tech/Github.png",
+        imageSrc: "/techStack/Github.png",
         altText: "Github"
     },
     {
         id: 10,
-        imageSrc: "/tech/Html.png",
+        imageSrc: "/techStack/Html.png",
         altText: "HTML"
     },
     {
         id: 11,
-        imageSrc: "/tech/Javascript.png",
+        imageSrc: "/techStack/Javascript.png",
         altText: "Javascript"
-    }
-]
-
-export const techDown: techData[] = [
+    },
     {
-        id: 1,
-        imageSrc: "/tech/mlNet.png",
+        id: 12,
+        imageSrc: "/techStack/mlNet.png",
         altText: "Machine Learning .Net"
     },
     {
-        id: 2,
-        imageSrc: "/tech/MUI.jpg",
+        id: 13,
+        imageSrc: "/techStack/MUI.jpg",
         altText: "Material UI"
     },
     {
-        id: 3,
-        imageSrc: "/tech/MySQL.png",
+        id: 14,
+        imageSrc: "/techStack/MySQL.png",
         altText: "MySQL"
     },
     {
-        id: 4,
-        imageSrc: "/tech/NodeJs.png",
+        id: 15,
+        imageSrc: "/techStack/NodeJs.jpg",
         altText: "NodeJs"
     },
     {
-        id: 5,
-        imageSrc: "/tech/Python.png",
+        id: 16,
+        imageSrc: "/techStack/Python.png",
         altText: "Python"
     },
     {
-        id: 6,
-        imageSrc: "/tech/React.png",
+        id: 17,
+        imageSrc: "/techStack/React.jpg",
         altText: "React"
     },
     {
-        id: 7,
-        imageSrc: "/tech/Ssm21.png",
+        id: 18,
+        imageSrc: "/techStack/Ssm21.png",
         altText: "MS SQL Server 21"
     },
     {
-        id: 8,
-        imageSrc: "/tech/Swagger.png",
+        id: 19,
+        imageSrc: "/techStack/Swagger.png",
         altText: "Swagger"
     },
     {
-        id: 9,
-        imageSrc: "/tech/Typescript.png",
+        id: 20,
+        imageSrc: "/techStack/Typescript.png",
         altText: "Typescript"
     },
     {
-        id: 10,
-        imageSrc: "/tech/Vite.png",
+        id: 21,
+        imageSrc: "/techStack/Vite.jpg",
         altText: "Vite"
     },
     {
-        id: 11,
-        imageSrc: "/tech/Zod.png",
+        id: 22,
+        imageSrc: "/techStack/Zod.png",
         altText: "Zod"
     },
 ]

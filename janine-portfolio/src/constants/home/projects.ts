@@ -30,3 +30,32 @@ export const RECENT_PROJECTS: ProjectData[] = [
 		altText: "Polytechnic University of the Philippines Logo",
 	},
 ];
+
+export const PROJECTS: ProjectData[] = [
+	{
+		id: "allcard",
+		title: "Admin Console Web Application System",
+		date: "February 2026 - May 2026",
+		description: "Role: Frontend Developer",
+		imageSrc: "/allcard.jpg",
+		altText: "AllCard Logo",
+	},
+	{
+		id: "scramps",
+		title:
+			"PUP SCRAMPS: Smart Control Resource Acquisition, Monitoring, and Procurements System",
+		date: "June 2025 - January 2026",
+		description: "Role: Full Stack Developer",
+		imageSrc: "/pup.png",
+		altText: "Polytechnic University of the Philippines Logo",
+	},
+	{
+		id: "tikiting",
+		title:
+			"Tikiting Rail : Transforming Train Ticket Card Management Into A Database Application",
+		date: "June 2025 - January 2026",
+		description: "Role: Database Designer",
+		imageSrc: "/Tikiting.jng",
+		altText: "Tikiting Card UI",
+	},
+];

@@ -45,8 +45,8 @@ const ProjectCard = ({
 
 	// Renders exact requested layout for the Homepage by default
 	return (
-		<Card className="flex flex-col p-8 md:p-10 h-full">
-			<div className="flex items-center gap-6 mb-6">
+		<Card className="flex flex-col p-4 md:p-6 h-full">
+			<div className="flex items-center gap-6 mb-2">
 				{imageSrc && (
 					<div className="relative w-35 h-30 shrink-0 bg-white rounded-lg overflow-hidden flex items-center justify-center p-2">
 						<Image
@@ -65,13 +65,8 @@ const ProjectCard = ({
 
 			{/* Date */}
 			{date && (
-				<p className="text-md leading-relaxed text-justify mb-2">{date}</p>
-			)}
-
-			{/* Description */}
-			{description && (
-				<p className="text-md leading-relaxed text-justify mt-auto">
-					{description}
+				<p className="text-md leading-relaxed text-justify mb-2">
+					{date} | {description}
 				</p>
 			)}
 		</Card>

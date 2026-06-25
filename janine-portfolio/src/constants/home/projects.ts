@@ -21,7 +21,7 @@ export const RECENT_PROJECTS: ProjectData[] = [
 	{
 		id: "scramps",
 		title:
-			"PUP SCRAMPS: Smart Control Resource Acquisition, Monitoring, and Procurements System",
+			"PUP SCRAMPS: Smart Control Re	source Acquisition, Monitoring, and Procurements System",
 		date: "June 2025 - January 2026",
 		description: `The PUP Smart Resource Acquisition, Monitoring, and Procurement System (SCRAMPS) is a full-stack solution developed for the Ninoy Aquino Library. 
 			It integrates request and budget forecasting models using ML.NET, alongside analytics dashboards for vendors, budgets, and user engagement. 
@@ -55,7 +55,7 @@ export const PROJECTS: ProjectData[] = [
 			"Tikiting Rail : Transforming Train Ticket Card Management Into A Database Application",
 		date: "June 2025 - January 2026",
 		description: "Role: Database Designer",
-		imageSrc: "/Tikiting.jng",
+		imageSrc: "/projects/tikiting.png",
 		altText: "Tikiting Card UI",
 	},
 ];

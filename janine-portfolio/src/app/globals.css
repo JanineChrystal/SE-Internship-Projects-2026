@@ -1,10 +1,24 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
 
 :root {
+	/* Your original brand color tokens */
 	--color-brand-yellow: #fff458;
+
+	/* Kept only the bare minimum tokens that Shadcn's carousel buttons need */
+	--background: oklch(1 0 0);
+	--foreground: oklch(0.145 0 0);
+	--border: oklch(0.922 0 0);
+	--input: oklch(0.922 0 0);
+	--ring: oklch(0.708 0 0);
+	--radius: 0.625rem;
 }
 
 body {
+	/* Restored your beautiful original background gradient setup */
 	background: linear-gradient(180deg, #ffffff 0%, #fff458 60%, #ffffff 100%);
 	background-attachment: fixed;
 	color: #000000;
@@ -92,5 +106,24 @@ p {
 @media (min-width: 768px) {
 	.layout-hero-portrait {
 		min-height: 600px;
+	}
+}
+
+/* Maps the remaining essential Shadcn variables to Tailwind classes */
+@theme inline {
+	--color-ring: var(--ring);
+	--color-input: var(--input);
+	--color-border: var(--border);
+	--radius-sm: calc(var(--radius) * 0.6);
+	--radius-md: calc(var(--radius) * 0.8);
+	--radius-lg: var(--radius);
+	--radius-xl: calc(var(--radius) * 1.4);
+	--radius-2xl: calc(var(--radius) * 1.8);
+}
+
+/* Keeps focus states working cleanly across Shadcn components */
+@layer base {
+	* {
+		@apply border-border outline-ring/50;
 	}
 }

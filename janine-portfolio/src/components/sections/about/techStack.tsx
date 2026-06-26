@@ -1,6 +1,6 @@
 import { techStack } from "@/src/constants/about/techStack";
-import InfiniteSlider from "../../ui/infinite-slider";
-import SectionTitle from "../../ui/section-title";
+import InfiniteSlider from "../../ui/slider/infinite-slider";
+import SectionTitle from "../../ui/typography/section-title";
 
 const TechStack = () => {
 	const rowOneSkills = techStack.slice(0, 11);

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Card from "../../ui/cards/card";
-import SectionTitle from "../../ui/section-title";
-import TextLink from "../../ui/text-link";
+import SectionTitle from "../../ui/typography/section-title";
+import TextLink from "../../ui/typography/text-link";
 
 const About = () => {
 	return (

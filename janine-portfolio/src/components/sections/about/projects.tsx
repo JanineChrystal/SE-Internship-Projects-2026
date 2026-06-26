@@ -1,6 +1,6 @@
 import { PROJECTS } from "@/src/constants/home/projects";
 import ProjectCard from "../../ui/cards/project-card";
-import SectionTitle from "../../ui/section-title";
+import SectionTitle from "../../ui/typography/section-title";
 
 const Projects = () => {
 	return (

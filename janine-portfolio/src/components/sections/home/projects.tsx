@@ -1,7 +1,7 @@
 import { RECENT_PROJECTS } from "@/src/constants/home/projects";
-import Button from "../../buttons/button";
+import Button from "../../ui/buttons/button";
 import ProjectCard from "../../ui/cards/project-card";
-import SectionTitle from "../../ui/section-title";
+import SectionTitle from "../../ui/typography/section-title";
 
 const Projects = () => {
 	return (

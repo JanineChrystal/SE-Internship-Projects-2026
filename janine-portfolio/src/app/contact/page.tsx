@@ -1,7 +1,6 @@
-import Link from "next/link";
-import Button from "../../components/buttons/button";
 import Card from "../../components/ui/cards/card";
 import Contact_Details from "../../constants/home/contact";
+import { ContactForm } from "./components/contactForm";
 
 const ContactPage = () => {
 	return (
@@ -9,7 +8,7 @@ const ContactPage = () => {
 			id="contact-me"
 			className="w-full max-w-7xl mx-auto px-8 py-32 mb-20 flex flex-col justify-center"
 		>
-			<div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full mb-16">
+			<div className="grid grid-cols-1 lg:grid-cols-2 gap-2 w-full mb-16">
 				<div>
 					<h2 className="text-4xl md:text-6xl tracking-tight mb-6 select-none">
 						Let's Work
@@ -36,7 +35,7 @@ const ContactPage = () => {
 									rel="noreferrer"
 									className="transition-transform duration-200 hover:scale-[1.02] block"
 								>
-									<Card className="p-2 md:p-3 flex items-center gap-5 bg-white/90">
+									<Card className="p-2 md:p-3 flex items-center gap-5 bg-white/50">
 										{/* Left block */}
 										<div className="w-16 h-12 rounded-xl flex items-center justify-center shrink-0">
 											<IconComponent className="w-8 h-8 text-black" />
@@ -59,10 +58,8 @@ const ContactPage = () => {
 						})}
 					</div>
 				</div>
-				<div>
-					<Link href="/contact">
-						<Button>CONTACT ME</Button>
-					</Link>
+				<div className="p-7 items-center">
+					<ContactForm />
 				</div>
 			</div>
 		</section>

@@ -12,7 +12,7 @@ import {
 	CarouselNext,
 	CarouselPrevious,
 } from "../../ui/carousel/carousel";
-import SectionTitle from "../../ui/section-title";
+import SectionTitle from "../../ui/typography/section-title";
 
 const ActsEvents = () => {
 	const [api, setApi] = React.useState<CarouselApi>();

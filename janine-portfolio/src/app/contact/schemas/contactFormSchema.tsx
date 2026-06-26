@@ -17,7 +17,7 @@ export const contactFormSchema = z
 		body: z
 			.string()
 			.min(10, "Message body must be at least 10 characters.")
-			.max(200, "Message body must be at most 200 characters."),
+			.max(300, "Message body must be at most 200 characters."),
 	})
 	.superRefine((data, ctx) => {
 		// Custom logic to require email if "email" is selected

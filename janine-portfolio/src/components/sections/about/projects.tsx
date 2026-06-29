@@ -1,4 +1,4 @@
-import { PROJECTS } from "@/src/constants/home/projects";
+import { PROJECTS } from "@/src/app/projects/constants/projects";
 import ProjectCard from "../../ui/cards/project-card";
 import SectionTitle from "../../ui/typography/section-title";
 

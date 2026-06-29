@@ -8,7 +8,7 @@ const SectionTitle = ({ title, align, className = "" }: SectionTitleProps) => {
 	const alignmentType = align === "left" ? "text-left" : "text-center";
 
 	return (
-		<h2 className={`text-5xl mb-16 ${alignmentType} ${className}`}>{title}</h2>
+		<h2 className={`text-5xl mb-12 ${alignmentType} ${className}`}>{title}</h2>
 	);
 };
 

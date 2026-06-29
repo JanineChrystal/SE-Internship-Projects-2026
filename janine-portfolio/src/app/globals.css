@@ -1,0 +1,163 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+	/* Your original brand color tokens */
+	--color-brand-yellow: #fff458;
+
+	/* Kept only the bare minimum tokens that Shadcn's carousel buttons need */
+	--background: oklch(1 0 0);
+	--foreground: oklch(0.145 0 0);
+	--border: oklch(0.922 0 0);
+	--input: oklch(0.922 0 0);
+	--ring: oklch(0.708 0 0);
+	--radius: 0.625rem;
+}
+
+body {
+	/* Restored your beautiful original background gradient setup */
+	background: linear-gradient(180deg, #ffffff 0%, #fff458 60%, #ffffff 100%);
+	background-attachment: fixed;
+	color: #000000;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/*** CUSTOM STYLES ***/
+
+/*NAVBAR STYLES*/
+.nav-glow-indicator {
+	background-color: var(--color-brand-yellow);
+}
+
+/*BUTTON STYLES*/
+.btn-gradient-brand {
+	background: linear-gradient(
+		90deg,
+		var(--color-brand-yellow) 0%,
+		#ffffff 55%,
+		var(--color-brand-yellow) 100%
+	);
+}
+
+/*HOME - HERO SECTION STYLES*/
+.layout-hero-grid {
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 1fr);
+}
+
+/* Responsive height guard for the portrait image container */
+.layout-hero-portrait {
+	min-height: 500px;
+}
+
+/*HOME - ABOUT ME SECTION STYLES*/
+.layout-portrait-wrapper {
+	aspect-ratio: 4 / 5;
+	min-height: 400px;
+}
+
+.bg-portrait-fade {
+	background: linear-gradient(to top, #fff458 0%, transparent 100%);
+}
+
+/*** IMAGE STYLES ***/
+.portrait-silhouette-glow {
+	filter: drop-shadow(0px 0px 25px var(--color-brand-yellow));
+}
+
+/*** TYPOGRAPHY STYLES **/
+
+.text-gradient-fade {
+	background: linear-gradient(
+		to right,
+		#000000 0%,
+		var(--color-brand-yellow) 100%
+	);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	color: transparent;
+}
+
+.text-brand-yellow {
+	color: var(--color-brand-yellow);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: 900;
+	text-transform: uppercase;
+	letter-spacing: -0.025em;
+	line-height: 1.1;
+	color: #000000;
+}
+
+p {
+	line-height: 1.625;
+	color: rgba(0, 0, 0, 0.85);
+}
+
+@media (min-width: 768px) {
+	.layout-hero-portrait {
+		min-height: 600px;
+	}
+}
+
+/* Maps the remaining essential Shadcn variables to Tailwind classes */
+@theme inline {
+	--color-ring: var(--ring);
+	--color-input: var(--input);
+	--color-border: var(--border);
+	--radius-sm: calc(var(--radius) * 0.6);
+	--radius-md: calc(var(--radius) * 0.8);
+	--radius-lg: var(--radius);
+	--radius-xl: calc(var(--radius) * 1.4);
+	--radius-2xl: calc(var(--radius) * 1.8);
+}
+
+/* Keeps focus states working cleanly across Shadcn components */
+@layer base {
+	* {
+		@apply border-border outline-ring/50;
+	}
+}
+
+/* Simple comment: Keyframes to move the track from 0 to half of its total width */
+@keyframes infinite-scroll-left {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-50%);
+	}
+}
+
+/* Simple comment: Keyframes to move the track in the opposite direction */
+@keyframes infinite-scroll-right {
+	from {
+		transform: translateX(-50%);
+	}
+	to {
+		transform: translateX(0);
+	}
+}
+
+/* Simple comment: Utility classes to apply the animations infinitely over 30 seconds */
+.animate-scroll-left {
+	animation: infinite-scroll-left 30s linear infinite;
+}
+
+.animate-scroll-right {
+	animation: infinite-scroll-right 30s linear infinite;
+}
+
+/* Simple comment: Pauses the animation when a user hovers over the row so they can view a skill */
+.hover-pause:hover {
+	animation-play-state: paused;
+}

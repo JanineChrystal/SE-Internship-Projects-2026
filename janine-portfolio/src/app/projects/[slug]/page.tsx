@@ -12,6 +12,8 @@ const IndividualProjectPage = async ({ params }: ProjectPageProps) => {
 	// Await the dynamic routing parameters
 	const { slug } = await params;
 
+	await new Promise((resolve) => setTimeout(resolve, 2000));
+
 	// Match the URL slug against the static project data array
 	const project = projectsData.find((p) => p.slug === slug);
 

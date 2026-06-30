@@ -1,30 +1,33 @@
-import { notFound } from "next/navigation";
-import SectionTitle from "../../../components/ui/typography/section-title";
-import FeatureHighlights from "../components/sections/features";
-import ProjectOverview from "../components/sections/overview";
-import TechStack from "../components/sections/techStack";
-import projectsData from "../constants/project-detail";
+import FeatureHighlights from "@/src/app/projects/components/sections/features";
+import ProjectOverview from "@/src/app/projects/components/sections/overview";
+import TechStack from "@/src/app/projects/components/sections/techStack";
+import projectsData from "@/src/app/projects/constants/project-detail";
+import SectionTitle from "@/src/components/ui/typography/section-title";
 
 interface ProjectPageProps {
 	params: Promise<{ slug: string }>;
 }
 
 const IndividualProjectPage = async ({ params }: ProjectPageProps) => {
+	// Await the dynamic routing parameters
 	const { slug } = await params;
+
+	// Match the URL slug against the static project data array
 	const project = projectsData.find((p) => p.slug === slug);
 
+	// standard error to trigger your error page
 	if (!project) {
-		notFound();
+		throw new Error(`The project "${slug}" could not be loaded.`);
 	}
 
 	return (
-		<section
+		<main
 			id="project-details"
 			className="w-full max-w-7xl mx-auto px-8 py-32 flex flex-col items-center"
 		>
 			<SectionTitle title={project.title} align="center" />
 
-			<div className="w-full flex flex-col gap-24 mt-2  ">
+			<div className="w-full flex flex-col gap-24 mt-2">
 				<ProjectOverview
 					text={project.overviewText}
 					images={project.overviewImages}
@@ -34,7 +37,7 @@ const IndividualProjectPage = async ({ params }: ProjectPageProps) => {
 
 				<TechStack technologies={project.technologies} />
 			</div>
-		</section>
+		</main>
 	);
 };
 

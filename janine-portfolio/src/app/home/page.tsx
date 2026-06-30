@@ -1,5 +1,5 @@
 import About from "./components/sections/about";
-import Hero from "./components/hero";
+import Hero from "./components/sections/hero";
 
 interface ErrorProps {
 	searchParams: Promise<{ [key: string]: string | string[] | undefined }>;

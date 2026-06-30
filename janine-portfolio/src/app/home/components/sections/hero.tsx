@@ -1,11 +1,12 @@
 import Image from "next/image";
+import Link from "next/link";
 import Button from "@/src/components/buttons/button";
 
 const Hero = () => {
 	return (
 		<section
 			id="hero"
-			className="relative w-full max-w-7xl mx-auto min-h-[80vh] flex flex-col justify-center px-8 pt-25 overflow-hidden"
+			className="relative w-full max-w-7xl mx-auto min-h-[80vh] flex flex-col justify-center px-8 pt-25 pb-4 overflow-hidden"
 		>
 			{/* Background cursive text layer pushed behind the main content */}
 			<div className="absolute top-50 left-2 w-full flex justify-between px-35 -z-10 pointer-events-none select-none">
@@ -22,9 +23,6 @@ const Hero = () => {
 						<br />
 						Chrystal
 					</h1>
-					<span className="mt-20 text-sm text-black/50 font-medium">
-						Page Views 1999
-					</span>
 				</div>
 
 				<div className="relative top-15 flex justify-center z-20 w-full layout-hero-portrait">
@@ -50,11 +48,10 @@ const Hero = () => {
 						Engineer
 					</h2>
 					<div>
-						<Button>GET RESUME</Button>
+						<Link href="/projects">
+							<Button>VIEW PROJECTS</Button>
+						</Link>
 					</div>
-					<span className="mt-10 text-sm text-black/50 font-medium">
-						100 Accessed Resume
-					</span>
 				</div>
 			</div>
 		</section>

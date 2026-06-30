@@ -6,7 +6,7 @@ const About = () => {
 	return (
 		<section
 			id="aboutMe"
-			className="w-full max-w-7xl mx-auto px-8 py-32 flex flex-col items-center"
+			className="w-full max-w-7xl mx-auto px-8 pt-32 flex flex-col items-center"
 		>
 			<SectionTitle title="About Me" align="center" />
 			<Card className="w-full p-4 md:p-6 lg:p-6">

@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Card from "../../ui/cards/card";
-import SectionTitle from "../../ui/typography/section-title";
+import Card from "../../../../components/ui/cards/card";
+import SectionTitle from "../../../../components/ui/typography/section-title";
 
 const About = () => {
 	return (

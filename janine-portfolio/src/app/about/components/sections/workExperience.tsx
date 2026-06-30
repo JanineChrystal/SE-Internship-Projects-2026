@@ -1,6 +1,6 @@
 import { Work } from "@/src/constants/about/workExperience";
-import ExperienceCard from "../../ui/cards/experience-card";
-import SectionTitle from "../../ui/typography/section-title";
+import ExperienceCard from "../../../../components/ui/cards/experience-card";
+import SectionTitle from "../../../../components/ui/typography/section-title";
 
 const WorkExperience = () => {
 	return (

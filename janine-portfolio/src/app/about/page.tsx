@@ -3,7 +3,7 @@ import ActsEvents from "@/src/components/sections/about/actsAndEvents";
 import TechStack from "@/src/components/sections/about/techStack";
 import WorkExperience from "@/src/components/sections/about/workExperience";
 
-const HomePage = () => {
+const AboutPage = () => {
 	return (
 		<main className="flex flex-col w-full grow">
 			<About />
@@ -14,4 +14,4 @@ const HomePage = () => {
 	);
 };
 
-export default HomePage;
+export default AboutPage;

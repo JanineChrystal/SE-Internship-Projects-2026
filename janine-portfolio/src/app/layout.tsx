@@ -8,7 +8,7 @@ import Navbar from "../components/layout/nav";
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
-	title: "Janine Portfolio",
+	title: "Chrystl",
 	description: "Professional portfolio for project and skills showcase",
 };
 

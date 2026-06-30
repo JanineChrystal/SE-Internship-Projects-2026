@@ -15,7 +15,7 @@ const IndividualProjectPage = async ({ params }: ProjectPageProps) => {
 	// Match the URL slug against the static project data array
 	const project = projectsData.find((p) => p.slug === slug);
 
-	// standard error to trigger your error page
+	// standard error to trigger error page
 	if (!project) {
 		throw new Error(`The project "${slug}" could not be loaded.`);
 	}

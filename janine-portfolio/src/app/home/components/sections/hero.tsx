@@ -10,8 +10,8 @@ const Hero = () => {
 		>
 			{/* Background cursive text layer pushed behind the main content */}
 			<div className="absolute top-50 left-2 w-full flex justify-between px-35 -z-10 pointer-events-none select-none">
-				<span className="text-9xl font-serif text-black/90">Hello,</span>
-				<span className="text-9xl font-serif text-black/90">there</span>
+				<span className="text-9xl font-serif text-foreground/90">Hello,</span>
+				<span className="text-9xl font-serif text-foreground/90">there</span>
 			</div>
 
 			<div className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr_1fr] gap-8 items-center w-full">

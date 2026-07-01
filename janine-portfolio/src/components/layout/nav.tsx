@@ -21,7 +21,7 @@ const Navbar = () => {
 					)}
 					<Link
 						href={link.path}
-						className={`font-bold text-lg transition-colors ${isActive ? "text-black" : "text-black/80 hover:text-black"}`}
+						className={`font-bold text-lg transition-colors ${isActive ? "text-foreground" : "text-foreground/80 hover:text-foreground"}`}
 					>
 						{link.label}
 					</Link>
@@ -36,7 +36,7 @@ const Navbar = () => {
 			<div className="flex items-center gap-12">{renderLinks(LEFT_LINKS)}</div>
 
 			{/* Center signature layout branding token */}
-			<span className="text-3xl font-serif font-black tracking-wide">
+			<span className="text-3xl font-serif font-black tracking-wide text-foreground">
 				Chrystl.
 			</span>
 

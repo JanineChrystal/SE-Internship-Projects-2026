@@ -68,11 +68,11 @@ const PanelAssistant = () => {
 				</div>
 
 				{/** Custom Dark Mode Toggle Switch matching your design*/}
-				<div className="w-full flex justify-center bg-white dark:bg-black py-2 px-1 rounded-sm">
+				<div className="w-full flex justify-center">
 					<button
 						type="button"
 						onClick={toggleMode}
-						className="w-17.5 h-8.5 bg-black dark:bg-white rounded-full flex items-center px-1 relative transition-colors"
+						className="w-17.5 h-8.5 bg-black dark:bg-white rounded-full flex items-center px-1 relative transition-colors shadow-inner"
 					>
 						<div
 							className={`w-6.5 h-6.5 rounded-full bg-white dark:bg-black absolute transition-transform duration-300 flex items-center justify-center ${mode === "dark" ? "translate-x-9" : "translate-x-0"}`}
@@ -87,32 +87,32 @@ const PanelAssistant = () => {
 				</div>
 
 				{/** 2x2 Grid for Element Selection */}
-				<div className="grid grid-cols-2 gap-2 bg-white dark:bg-black p-2 rounded-sm">
+				<div className="grid grid-cols-2 gap-2 mt-2">
 					<button
 						type="button"
 						onClick={() => setElement("fire")}
-						className={`p-1.5 transition-colors ${element === "fire" ? "text-red-500 scale-110" : "text-black dark:text-white hover:text-red-400"}`}
+						className={`p-1.5 transition-colors rounded-full hover:bg-black/5 dark:hover:bg-white/10 ${element === "fire" ? "text-red-500 scale-110" : "text-black dark:text-white hover:text-red-400"}`}
 					>
 						<Flame size={28} />
 					</button>
 					<button
 						type="button"
 						onClick={() => setElement("water")}
-						className={`p-1.5 transition-colors ${element === "water" ? "text-blue-500 scale-110" : "text-black dark:text-white hover:text-blue-400"}`}
+						className={`p-1.5 transition-colors rounded-full hover:bg-black/5 dark:hover:bg-white/10 ${element === "water" ? "text-blue-500 scale-110" : "text-black dark:text-white hover:text-blue-400"}`}
 					>
 						<Droplets size={28} />
 					</button>
 					<button
 						type="button"
 						onClick={() => setElement("air")}
-						className={`p-1.5 transition-colors ${element === "air" ? "text-yellow-500 scale-110" : "text-black dark:text-white hover:text-yellow-400"}`}
+						className={`p-1.5 transition-colors rounded-full hover:bg-black/5 dark:hover:bg-white/10 ${element === "air" ? "text-yellow-500 scale-110" : "text-black dark:text-white hover:text-yellow-400"}`}
 					>
 						<Wind size={28} />
 					</button>
 					<button
 						type="button"
 						onClick={() => setElement("earth")}
-						className={`p-1.5 transition-colors ${element === "earth" ? "text-green-500 scale-110" : "text-black dark:text-white hover:text-green-400"}`}
+						className={`p-1.5 transition-colors rounded-full hover:bg-black/5 dark:hover:bg-white/10 ${element === "earth" ? "text-green-500 scale-110" : "text-black dark:text-white hover:text-green-400"}`}
 					>
 						<Leaf size={28} />
 					</button>

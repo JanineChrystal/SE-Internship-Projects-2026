@@ -7,7 +7,7 @@ const About = () => {
 	return (
 		<section
 			id="about"
-			className="w-full max-w-7xl mx-auto px-8 py-24 flex justify-center"
+			className="w-full max-w-7xl mx-auto px-8 py-16 flex justify-center"
 		>
 			<Card className="w-full max-w-6xl">
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -23,7 +23,7 @@ const About = () => {
 							performance to deliver smooth digital experiences.
 						</p>
 
-						<p className="text-lg text-black/90 leading-relaxed mb-10">
+						<p className="text-lg text-foreground/90 leading-relaxed mb-10">
 							With strong problem-solving skills, I follow clean coding
 							practices and modern development patterns. I am passionate about
 							creating maintainable solutions, improving UI/UX flows, and

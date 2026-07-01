@@ -4,11 +4,12 @@ import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
 import Footer from "../components/layout/footer";
 import Navbar from "../components/layout/nav";
+import PanelAssistant from "../components/layout/panel-assistant";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
-	title: "Janine Portfolio",
+	title: "Chrystl",
 	description: "Professional portfolio for project and skills showcase",
 };
 
@@ -22,6 +23,7 @@ export default function RootLayout({
 			<body className="min-h-screen flex flex-col m-0 p-0">
 				<Navbar />
 				{children}
+				<PanelAssistant />
 				<Footer />
 			</body>
 		</html>

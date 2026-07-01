@@ -5,11 +5,12 @@ const Footer = (): React.ReactElement => {
 	const currentYear = new Date().getFullYear();
 
 	return (
-		<footer className="w-full flex flex-col sm:flex-row items-center justify-between py-4 px-12 border-t border-black/10 mt-auto bg-transparent">
+		<footer className="w-full flex flex-col sm:flex-row items-center justify-between py-4 px-12 border-t border-foreground/10 mt-auto bg-transparent">
 			{/* Left branding layout*/}
-			<div className="text-sm text-black/70 font-medium mb-4 sm:mb-0">
-				© {currentYear} <span className="font-bold text-black">Chrystl.</span>{" "}
-				All rights reserved.
+			<div className="text-sm text-foreground/70 font-medium mb-4 sm:mb-0">
+				© {currentYear}{" "}
+				<span className="font-bold text-foreground">Chrystl.</span> All rights
+				reserved.
 			</div>
 
 			{/* Right container block */}
@@ -17,7 +18,7 @@ const Footer = (): React.ReactElement => {
 				{/* Email */}
 				<a
 					href="mailto:chrystalampusta@gmail.com"
-					className="text-black/75 hover:text-black transition-colors"
+					className="text-foreground/75 hover:text-foreground transition-colors"
 					aria-label="Email Address"
 				>
 					<span className="sr-only">Email</span>
@@ -42,7 +43,7 @@ const Footer = (): React.ReactElement => {
 					href="https://www.linkedin.com/in/janine-chrystal-ampusta-89814b227/"
 					target="_blank"
 					rel="noopener noreferrer"
-					className="text-black/75 hover:text-black transition-colors"
+					className="text-foreground/75 hover:text-foreground transition-colors"
 					aria-label="LinkedIn Profile"
 				>
 					<span className="sr-only">Linkedin Profile</span>
@@ -61,7 +62,7 @@ const Footer = (): React.ReactElement => {
 					href="https://github.com/JanineChrystal"
 					target="_blank"
 					rel="noopener noreferrer"
-					className="text-black/75 hover:text-black transition-colors"
+					className="text-foreground/75 hover:text-foreground transition-colors"
 					aria-label="GitHub Profile"
 				>
 					<span className="sr-only">GitHub Profile</span>

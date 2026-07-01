@@ -1,9 +1,11 @@
-import About from "@/src/components/sections/about/about";
-import ActsEvents from "@/src/components/sections/about/actsAndEvents";
-import TechStack from "@/src/components/sections/about/techStack";
-import WorkExperience from "@/src/components/sections/about/workExperience";
+import About from "@/src/app/about/components/sections/about";
+import ActsEvents from "@/src/app/about/components/sections/actsAndEvents";
+import TechStack from "@/src/app/about/components/sections/techStack";
+import WorkExperience from "@/src/app/about/components/sections/workExperience";
 
-const HomePage = () => {
+const AboutPage = async () => {
+	await new Promise((resolve) => setTimeout(resolve, 2000));
+
 	return (
 		<main className="flex flex-col w-full grow">
 			<About />
@@ -14,4 +16,4 @@ const HomePage = () => {
 	);
 };
 
-export default HomePage;
+export default AboutPage;

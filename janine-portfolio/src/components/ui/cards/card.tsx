@@ -1,4 +1,5 @@
 import type React from "react";
+import { twMerge } from "tailwind-merge";
 
 interface CardProps {
 	children: React.ReactNode;
@@ -8,7 +9,9 @@ interface CardProps {
 const Card = ({ children, className = "" }: CardProps) => {
 	return (
 		<div
-			className={`bg-white backdrop-blur-md rounded-3xl shadow-xl border border-white/70 p-5 md:p-12 ${className}`}
+			className={twMerge(
+				`bg-background backdrop-blur-md rounded-3xl shadow-2xl p-5 md:p-12 ${className}`,
+			)}
 		>
 			{children}
 		</div>

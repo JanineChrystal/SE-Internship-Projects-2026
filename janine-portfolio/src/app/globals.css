@@ -5,75 +5,132 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-	/* Your original brand color tokens */
-	--color-brand-yellow: #fff458;
-
-	/* Kept only the bare minimum tokens that Shadcn's carousel buttons need */
 	--background: oklch(1 0 0);
 	--foreground: oklch(0.145 0 0);
+	--active-element: var(--color-element-water);
 	--border: oklch(0.922 0 0);
 	--input: oklch(0.922 0 0);
 	--ring: oklch(0.708 0 0);
 	--radius: 0.625rem;
+
+	/* Custom variables for Light Mode backgrounds and text */
+	--bg-fade-start: #ffffff;
+	--bg-fade-end: #ffffff;
+	--heading-color: #000000;
+	--text-color: rgba(0, 0, 0, 0.85);
 }
 
+@theme inline {
+	/* Raw Avatar element colors */
+	--color-brand-yellow: #fff458;
+	--color-element-water: #3b82f6;
+	--color-element-fire: #ef4444;
+	--color-element-earth: #22c55e;
+	--color-element-air: #f59e0b;
+}
+
+/* Dynamic structure for Dark Mode */
+.dark {
+	--background: oklch(0.145 0 0);
+	--foreground: oklch(0.98 0 0);
+
+	/* Custom variables for Dark Mode backgrounds and text */
+	--bg-fade-start: #0f172a; /* Slate 900 */
+	--bg-fade-end: #020617; /* Slate 950 */
+	--heading-color: #ffffff;
+	--text-color: rgba(255, 255, 255, 0.85);
+}
+
+/* Dynamically swap the active element color based on the HTML attribute */
+[data-element="fire"] {
+	--active-element: var(--color-element-fire);
+}
+[data-element="earth"] {
+	--active-element: var(--color-element-earth);
+}
+[data-element="air"] {
+	--active-element: var(--color-element-air);
+}
+[data-element="water"] {
+	--active-element: var(--color-element-water);
+}
+/* Optional fallback to your original brand yellow if you want a 5th option */
+[data-element="yellow"] {
+	--active-element: var(--color-brand-yellow);
+}
+
+/* Map the body to use dynamic variables instead of hardcoded hex codes */
 body {
-	/* Restored your beautiful original background gradient setup */
-	background: linear-gradient(180deg, #ffffff 0%, #fff458 60%, #ffffff 100%);
+	background: linear-gradient(
+		180deg,
+		var(--bg-fade-start) 0%,
+		var(--active-element) 60%,
+		var(--bg-fade-end) 100%
+	);
 	background-attachment: fixed;
-	color: #000000;
+	color: var(--text-color);
 	font-family: Arial, Helvetica, sans-serif;
+	transition:
+		background 0.3s ease,
+		color 0.3s ease;
 }
 
 /*** CUSTOM STYLES ***/
 
-/*NAVBAR STYLES*/
+/* Replaced brand-yellow with active-element to react to the panel */
 .nav-glow-indicator {
-	background-color: var(--color-brand-yellow);
+	background-color: var(--active-element);
 }
 
-/*BUTTON STYLES*/
 .btn-gradient-brand {
 	background: linear-gradient(
 		90deg,
-		var(--color-brand-yellow) 0%,
-		#ffffff 55%,
-		var(--color-brand-yellow) 100%
+		var(--active-element) 0%,
+		var(--bg-fade-start) 55%,
+		var(--active-element) 100%
 	);
 }
 
-/*HOME - HERO SECTION STYLES*/
+.dark .btn-gradient-brand {
+	background: linear-gradient(
+		90deg,
+		var(--bg-fade-start) 0%,
+		var(--active-element) 50%,
+		var(--bg-fade-start) 100%
+	);
+}
+
 .layout-hero-grid {
 	grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 1fr);
 }
 
-/* Responsive height guard for the portrait image container */
 .layout-hero-portrait {
 	min-height: 500px;
 }
 
-/*HOME - ABOUT ME SECTION STYLES*/
 .layout-portrait-wrapper {
 	aspect-ratio: 4 / 5;
-	min-height: 400px;
+	min-height: 500px;
 }
 
+/* Active-element to react to the panel */
 .bg-portrait-fade {
-	background: linear-gradient(to top, #fff458 0%, transparent 100%);
+	background: linear-gradient(
+		to top,
+		var(--active-element) 0%,
+		transparent 100%
+	);
 }
 
-/*** IMAGE STYLES ***/
 .portrait-silhouette-glow {
-	filter: drop-shadow(0px 0px 25px var(--color-brand-yellow));
+	filter: drop-shadow(0px 0px 25px var(--active-element));
 }
-
-/*** TYPOGRAPHY STYLES **/
 
 .text-gradient-fade {
 	background: linear-gradient(
 		to right,
-		#000000 0%,
-		var(--color-brand-yellow) 100%
+		var(--heading-color) 0%,
+		var(--active-element) 100%
 	);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
@@ -82,9 +139,10 @@ body {
 }
 
 .text-brand-yellow {
-	color: var(--color-brand-yellow);
+	color: var(--active-element);
 }
 
+/* Typographies */
 h1,
 h2,
 h3,
@@ -95,12 +153,14 @@ h6 {
 	text-transform: uppercase;
 	letter-spacing: -0.025em;
 	line-height: 1.1;
-	color: #000000;
+	color: var(--heading-color);
+	transition: color 0.1s ease;
 }
 
 p {
 	line-height: 1.625;
-	color: rgba(0, 0, 0, 0.85);
+	color: var(--text-color);
+	transition: color 0.1s ease;
 }
 
 @media (min-width: 768px) {
@@ -109,7 +169,6 @@ p {
 	}
 }
 
-/* Maps the remaining essential Shadcn variables to Tailwind classes */
 @theme inline {
 	--color-ring: var(--ring);
 	--color-input: var(--input);
@@ -121,14 +180,12 @@ p {
 	--radius-2xl: calc(var(--radius) * 1.8);
 }
 
-/* Keeps focus states working cleanly across Shadcn components */
 @layer base {
 	* {
 		@apply border-border outline-ring/50;
 	}
 }
 
-/* Simple comment: Keyframes to move the track from 0 to half of its total width */
 @keyframes infinite-scroll-left {
 	from {
 		transform: translateX(0);
@@ -138,7 +195,6 @@ p {
 	}
 }
 
-/* Simple comment: Keyframes to move the track in the opposite direction */
 @keyframes infinite-scroll-right {
 	from {
 		transform: translateX(-50%);
@@ -148,7 +204,6 @@ p {
 	}
 }
 
-/* Simple comment: Utility classes to apply the animations infinitely over 30 seconds */
 .animate-scroll-left {
 	animation: infinite-scroll-left 30s linear infinite;
 }
@@ -157,7 +212,6 @@ p {
 	animation: infinite-scroll-right 30s linear infinite;
 }
 
-/* Simple comment: Pauses the animation when a user hovers over the row so they can view a skill */
 .hover-pause:hover {
 	animation-play-state: paused;
 }

@@ -37,7 +37,7 @@ export function ContactForm() {
 	);
 
 	return (
-		<div className="bg-white/80 backdrop-blur-sm p-8 rounded-3xl shadow-sm border border-black/5 w-full max-w-xl">
+		<div className="bg-background/80 backdrop-blur-sm p-6 md:p-8 mb-10 rounded-3xl shadow-xl border-background/5 w-full max-w-xl mx-auto">
 			<div className="text-center mb-8">
 				<h3 className="text-2xl font-bold uppercase tracking-wide">
 					Contact Form
@@ -48,20 +48,20 @@ export function ContactForm() {
 				{/* Radio Group Selection */}
 				<div className="flex justify-center mb-6">
 					<RadioGroup
-						value={contactMethod} // Simple comment: Binds the visual state
-						onValueChange={(val: "email" | "phone") => setContactMethod(val)} // Simple comment: Updates state on click
+						value={contactMethod} // Binds the visual state
+						onValueChange={(val: "email" | "phone") => setContactMethod(val)} // Updates state on click
 						name="contactMethod"
-						className="flex gap-8"
+						className="flex gap-4 md:gap-8"
 					>
 						<div className="flex items-center space-x-2">
 							<RadioGroupItem
 								value="email"
 								id="method-email"
-								className="border-black text-black"
+								className="border-background text-foreground"
 							/>
 							<Label
 								htmlFor="method-email"
-								className="font-semibold text-base cursor-pointer"
+								className="font-semibold text-sm md:text-base cursor-pointer"
 							>
 								Email
 							</Label>
@@ -70,11 +70,11 @@ export function ContactForm() {
 							<RadioGroupItem
 								value="phone"
 								id="method-phone"
-								className="border-black text-black"
+								className="border-background text-foreground"
 							/>
 							<Label
 								htmlFor="method-phone"
-								className="font-semibold text-base cursor-pointer"
+								className="font-semibold text-sm md:text-base cursor-pointer"
 							>
 								Contact Number
 							</Label>
@@ -95,7 +95,7 @@ export function ContactForm() {
 							id="email"
 							name="email"
 							placeholder="example@gmail.com"
-							className={`bg-white ${state.errors?.email ? "border-red-500 border-2" : "border-black/20"}`}
+							className={`bg-background ${state.errors?.email ? "border-red-500 border-2" : "border-background/20"}`}
 						/>
 						{state.errors?.email && (
 							<p className="text-red-500 text-sm">{state.errors.email[0]}</p>
@@ -108,7 +108,7 @@ export function ContactForm() {
 							id="phone"
 							name="phone"
 							placeholder="+63 912 345 6789"
-							className={`bg-white ${state.errors?.phone ? "border-red-500 border-2" : "border-black/20"}`}
+							className={`bg-background ${state.errors?.phone ? "border-red-500 border-2" : "border-background/20"}`}
 						/>
 						{state.errors?.phone && (
 							<p className="text-red-500 text-sm">{state.errors.phone[0]}</p>
@@ -123,7 +123,7 @@ export function ContactForm() {
 						id="subject"
 						name="subject"
 						placeholder="Company - Job Offer"
-						className={`bg-white ${state.errors?.subject ? "border-red-500 border-2" : "border-black/20"}`}
+						className={`bg-background ${state.errors?.subject ? "border-red-500 border-2" : "border-background/20"}`}
 					/>
 					{state.errors?.subject && (
 						<p className="text-red-500 text-sm">{state.errors.subject[0]}</p>
@@ -138,7 +138,7 @@ export function ContactForm() {
 						name="body"
 						placeholder="Hello,"
 						rows={6}
-						className={`bg-white resize-none ${state.errors?.body ? "border-red-500 border-2" : "border-black/20"}`}
+						className={`bg-background resize-none ${state.errors?.body ? "border-red-500 border-2" : "border-background/20"}`}
 					/>
 					{state.errors?.body && (
 						<p className="text-red-500 text-sm">{state.errors.body[0]}</p>
@@ -155,7 +155,7 @@ export function ContactForm() {
 				)}
 
 				{/* Submit Action Wrapper */}
-				<div className="flex justify-end pt-4">
+				<div className="flex justify-center md:justify-end pt-4">
 					<SubmitButton />
 				</div>
 			</form>

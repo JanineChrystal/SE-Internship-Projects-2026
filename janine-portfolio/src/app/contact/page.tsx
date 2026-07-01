@@ -6,17 +6,18 @@ const ContactPage = () => {
 	return (
 		<section
 			id="contact-me"
-			className="w-full max-w-7xl mx-auto px-8 py-32 mb-20 flex flex-col justify-center"
+			className="w-full min-h-screen max-w-7xl mx-auto px-6 md:px-8 py-15 mt-15 flex flex-col justify-center"
 		>
-			<div className="grid grid-cols-1 lg:grid-cols-2 gap-2 w-full mb-16">
-				<div>
-					<h2 className="text-4xl md:text-6xl tracking-tight mb-6 select-none">
+			<div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 w-full items-center">
+				{/* Left Column: Content */}
+				<div className="flex flex-col items-center lg:items-start text-center lg:text-left">
+					<h2 className="text-4xl md:text-5xl lg:text-6xl tracking-tight mb-6 select-none leading-tight">
 						Let's Work
 						<br />
 						Together!
 					</h2>
 
-					<p className="text-3xl md:text-3xl font-medium mb-12">
+					<p className="text-xl md:text-2xl font-medium mb-10 text-foreground/80">
 						Feel free to approach me
 					</p>
 
@@ -35,20 +36,15 @@ const ContactPage = () => {
 									rel="noreferrer"
 									className="transition-transform duration-200 hover:scale-[1.02] block"
 								>
-									<Card className="p-2 md:p-3 flex items-center gap-5 bg-white/50">
-										{/* Left block */}
-										<div className="w-16 h-12 rounded-xl flex items-center justify-center shrink-0">
-											<IconComponent className="w-8 h-8 text-black" />
+									<Card className="p-3 md:p-4 flex items-center gap-4 bg-background/50 border-border/50">
+										<div className="w-14 h-12 rounded-xl flex items-center justify-center shrink-0">
+											<IconComponent className="w-7 h-7 text-foreground" />
 										</div>
-
-										{/* Right block */}
 										<div className="flex flex-col min-w-0">
-											<h4 className="text-lg font-normal text-black m-0 leading-tight Normalcase select-none tracking-normal">
-												<span className="font-black uppercase tracking-tight">
-													{contact.actionText}
-												</span>
+											<h4 className="text-sm font-black uppercase tracking-tight">
+												{contact.actionText}
 											</h4>
-											<p className="text-base font-bold text-black leading-tight mt-1 truncate">
+											<p className="text-base font-bold text-foreground truncate">
 												{contact.value}
 											</p>
 										</div>
@@ -58,7 +54,9 @@ const ContactPage = () => {
 						})}
 					</div>
 				</div>
-				<div className="p-7 items-center">
+
+				{/* Right Column: Form*/}
+				<div className="flex justify-center lg:justify-end w-full">
 					<ContactForm />
 				</div>
 			</div>

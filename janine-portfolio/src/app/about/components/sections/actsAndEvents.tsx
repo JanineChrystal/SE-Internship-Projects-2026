@@ -35,11 +35,11 @@ const ActsEvents = () => {
 	return (
 		<section
 			id="actsNevents"
-			className="w-full max-w-7xl mx-auto px-8 py-24 flex flex-col items-center"
+			className="w-full min-h-screen max-w-7xl mx-auto px-8 pt-32 flex flex-col items-center"
 		>
 			<SectionTitle title="Activities and Events" align="center" />
 
-			<div className="w-full max-w-4xl mx-auto px-12">
+			<div className="w-full max-w-5xl mx-auto px-12">
 				<Carousel
 					setApi={setApi}
 					opts={{
@@ -81,7 +81,7 @@ const ActsEvents = () => {
 					<CarouselNext />
 				</Carousel>
 
-				<div className="py-6 text-center text-sm font-medium text-black/70">
+				<div className="py-6 text-center text-sm font-medium text-foreground/70">
 					Slide {current} of {count}
 				</div>
 			</div>

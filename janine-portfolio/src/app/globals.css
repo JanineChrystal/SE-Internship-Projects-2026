@@ -91,6 +91,15 @@ body {
 	);
 }
 
+.dark .btn-gradient-brand {
+	background: linear-gradient(
+		90deg,
+		var(--bg-fade-start) 0%,
+		var(--active-element) 50%,
+		var(--bg-fade-start) 100%
+	);
+}
+
 .layout-hero-grid {
 	grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 1fr);
 }
@@ -101,7 +110,7 @@ body {
 
 .layout-portrait-wrapper {
 	aspect-ratio: 4 / 5;
-	min-height: 400px;
+	min-height: 500px;
 }
 
 /* Active-element to react to the panel */
@@ -145,13 +154,13 @@ h6 {
 	letter-spacing: -0.025em;
 	line-height: 1.1;
 	color: var(--heading-color);
-	transition: color 0.3s ease;
+	transition: color 0.1s ease;
 }
 
 p {
 	line-height: 1.625;
 	color: var(--text-color);
-	transition: color 0.3s ease;
+	transition: color 0.1s ease;
 }
 
 @media (min-width: 768px) {

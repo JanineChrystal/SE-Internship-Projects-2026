@@ -7,9 +7,9 @@ const About = () => {
 	return (
 		<section
 			id="about"
-			className="w-full max-w-7xl mx-auto px-8 py-16 flex justify-center"
+			className="w-full min-h-screen max-w-7xl mx-auto px-8 py-16 flex justify-center"
 		>
-			<Card className="w-full max-w-6xl">
+			<Card className="w-full max-w-6xl mt-15">
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
 					{/* Left Column: Typography and Biography */}
 					<div className="flex flex-col z-10">
@@ -34,7 +34,8 @@ const About = () => {
 
 						<div>
 							<TextLink href="/about">
-								Know more <span className="text-gradient-fade">about me</span>
+								<p className="text-foreground">Know more</p>
+								<span className="text-gradient-fade">about me</span>
 								<span className="sr-only">Arrow Icon</span>
 								<svg
 									className="w-5 h-5 text-brand-yellow"

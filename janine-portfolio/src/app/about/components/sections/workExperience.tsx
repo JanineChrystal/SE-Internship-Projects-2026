@@ -6,7 +6,7 @@ const WorkExperience = () => {
 	return (
 		<section
 			id="workExperience"
-			className="w-full max-w-7xl mx-auto px-8 py-24 flex flex-col items-center"
+			className="w-full min-h-screen max-w-7xl mx-auto px-8 py-24 flex flex-col items-center"
 		>
 			<SectionTitle title="Career" align="center" />
 

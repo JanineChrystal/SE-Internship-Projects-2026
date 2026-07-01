@@ -6,22 +6,22 @@ const About = () => {
 	return (
 		<section
 			id="aboutMe"
-			className="w-full max-w-7xl mx-auto px-8 pt-32 flex flex-col items-center"
+			className="w-full min-h-screen max-w-7xl mx-auto px-8 pt-32 flex flex-col items-center"
 		>
 			<SectionTitle title="About Me" align="center" />
-			<Card className="w-full p-4 md:p-6 lg:p-6">
-				<div className="flex flex-col md:flex-row gap-2 lg:gap-3 items-center md:items-start">
-					{/* Left Column: Portrait Wrapper */}
-					<div className="relative w-full h-125 layout-portrait-wrapper">
-						<Image
-							src="/profile.png"
-							alt="Janine Chrystal Professional Portrait"
-							fill
-							sizes="(max-width: 768px) 100vw, 50vw"
-							className="object-contain object-top portrait-silhouette-glow z-10"
-						/>
-					</div>
 
+			<div className="top-15 flex flex-col md:flex-row gap-2 lg:gap-3 items-center md:items-start mt-10">
+				{/* Left Column: Portrait Wrapper */}
+				<div className="relative w-full h-125 layout-portrait-wrapper mb-15">
+					<Image
+						src="/profile.png"
+						alt="Janine Chrystal Professional Portrait"
+						fill
+						sizes="(max-width: 768px) 100vw, 50vw"
+						className="object-contain object-top portrait-silhouette-glow z-10 scale-110 md:scale-125"
+					/>
+				</div>
+				<Card className="w-full p-4 md:p-6 lg:p-6">
 					{/* Right Column: Information Stack */}
 					<div className="flex flex-col justify-center w-full mt-4 md:mt-6">
 						{/* Top Block: Contact Info */}
@@ -64,8 +64,8 @@ const About = () => {
 							</div>
 						</div>
 					</div>
-				</div>
-			</Card>
+				</Card>
+			</div>
 		</section>
 	);
 };

@@ -15,6 +15,20 @@ export async function submitContactForm(
 	_prevState: ContactFormState,
 	formData: FormData,
 ): Promise<ContactFormState> {
+
+	// Honeypot check — must run first, before any real processing.
+	// "company" is a hidden field that only bots (which fill in every
+	// field they find in the DOM) will ever populate. Real users never
+	// see it, so if it has a value, this submission is spam.
+	const honeypot = formData.get("company");
+	if (honeypot) {
+		// Pretend success so the bot doesn't learn to route around this check.
+		return {
+			success: true,
+			message: "Message sent successfully! I will get back to you soon.",
+		};
+	}
+
 	// Extract raw string data from the incoming form submission
 	const rawData = {
 		contactMethod: formData.get("contactMethod"),

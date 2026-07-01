@@ -13,12 +13,16 @@ interface ProjectOverviewProps {
 
 const ProjectOverview = ({ text, images }: ProjectOverviewProps) => {
 	return (
-		<div className="w-full flex flex-col items-center">
+		<section
+			id="overview"
+			className="w-full max-w-7xl mx-auto px-8 mb-24 flex flex-col justify-center"
+		>
 			<SectionTitle title="Project Overview" align="center" />
+
 			{/* // Bento Box Grid Layout */}
 			<div className="grid grid-cols-1 lg:grid-cols-3 gap-6 min-h-100">
 				<div className="rounded-3xl p-8 flex lg:col-span-1 shadow-2xl transition-transform duration-200 hover:-translate-y-1">
-					<p className="text-slate-800 font-semibold leading-relaxed text-justify">
+					<p className="text-foreground-800 font-semibold leading-relaxed text-justify">
 						{text}
 					</p>
 				</div>
@@ -64,7 +68,7 @@ const ProjectOverview = ({ text, images }: ProjectOverviewProps) => {
 					</div>
 				</div>
 			</div>
-		</div>
+		</section>
 	);
 };
 

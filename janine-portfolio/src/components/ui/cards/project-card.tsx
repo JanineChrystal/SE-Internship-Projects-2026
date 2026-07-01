@@ -16,26 +16,31 @@ const ProjectCard = ({
 	tags,
 }: ProjectCardProps) => {
 	return (
-		<Card className="flex flex-col p-4 md:p-6 h-full">
-			<div className="bg-white rounded-lg overflow-hidden p-2 mb-2 shrink-0 w-full h-32">
-				<div className="relative w-full h-full">
-					<Image
-						src={imageSrc as string}
-						alt={altText || `${title} Image`}
-						fill
-						sizes="(max-width: 768px) 100vw, 140px"
-						className="object-contain object-center"
-					/>
-				</div>
+		<Card className="flex flex-col p-4 md:p-6 h-full gap-4 transition-colors duration-300 bg-background border-border">
+			<div className="relative w-full aspect-video min-h-35 sm:min-h-45 bg-foreground/5 rounded-lg overflow-hidden shrink-0 flex items-center justify-center p-2 border-border/50">
+				<Image
+					src={imageSrc as string}
+					alt={altText || `${title} Image`}
+					fill
+					sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+					className="object-contain object-center transition-transform duration-300 hover:scale-105"
+					priority={true}
+				/>
 			</div>
 
-			<div className="flex flex-col items-start w-full gap-2">
-				{title && <h3 className="text-xl font-bold leading-tight">{title}</h3>}
+			<div className="flex flex-col items-start w-full gap-2 grow">
+				{title && (
+					<h3 className="text-xl font-bold leading-tight text-foreground">
+						{title}
+					</h3>
+				)}
 
-				{date && <p className="text-sm font-medium text-slate-500">{date}</p>}
+				{date && (
+					<p className="text-sm font-medium text-foreground/60">{date}</p>
+				)}
 
 				{description && (
-					<p className="text-md leading-relaxed text-justify text-slate-700">
+					<p className="text-md leading-relaxed text-justify text-foreground/80">
 						{description}
 					</p>
 				)}
@@ -46,7 +51,8 @@ const ProjectCard = ({
 						{tags.map((tag) => (
 							<span
 								key={tag}
-								className="text-xs font-medium bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full"
+								// Tied tags to  active element color (Water/Fire/Earth/Air) for a custom theme pop
+								className="text-xs font-medium bg-(--active-element)/10 text-(--active-element) border border-(--active-element)/20 px-2.5 py-1 shadow-sm rounded-full"
 							>
 								{tag}
 							</span>

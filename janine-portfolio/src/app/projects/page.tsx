@@ -1,4 +1,5 @@
 import Link from "next/link";
+import SectionTitle from "@/src/components/ui/typography/section-title";
 import ProjectCard from "../../components/ui/cards/project-card";
 import PROJECTS from "./constants/projects";
 
@@ -6,13 +7,11 @@ const ProjectsPage = async () => {
 	return (
 		<section
 			id="projects"
-			className="w-full max-w-7xl mx-auto px-8 py-32 mb-20 flex flex-col justify-center"
+			className="w-full min-h-screen max-w-7xl mx-auto px-8 pt-16 py-12 flex flex-col justify-center"
 		>
-			<div className="mb-12">
-				<h1 className="text-3xl font-bold tracking-tight text-slate-900">
-					PROJECTS
-				</h1>
-				<p className="text-slate-500 mt-2">
+			<div className="mb-5">
+				<SectionTitle title="Projects" align="left" className="mt-12 mb-0" />
+				<p className="text-slate-500">
 					A collection of systems and applications I have built and contributed.
 				</p>
 			</div>

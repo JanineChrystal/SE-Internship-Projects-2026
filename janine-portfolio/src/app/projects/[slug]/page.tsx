@@ -29,7 +29,7 @@ const IndividualProjectPage = async ({ params }: ProjectPageProps) => {
 		>
 			<SectionTitle title={project.title} align="center" />
 
-			<div className="w-full flex flex-col gap-24 mt-2">
+			<div className="w-full flex flex-col gap-24">
 				<ProjectOverview
 					text={project.overviewText}
 					images={project.overviewImages}

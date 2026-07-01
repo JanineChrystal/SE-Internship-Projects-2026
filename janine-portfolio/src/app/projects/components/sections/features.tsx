@@ -15,7 +15,7 @@ interface FeatureHighlightsProps {
 
 const FeatureHighlights = ({ features }: FeatureHighlightsProps) => {
 	return (
-		<div className="w-full flex flex-col items-center">
+		<section className="w-full min-h-screen flex flex-col items-center">
 			<SectionTitle title="Feature Highlights" align="center" />
 
 			<div className="flex flex-col gap-12">
@@ -60,7 +60,7 @@ const FeatureHighlights = ({ features }: FeatureHighlightsProps) => {
 					);
 				})}
 			</div>
-		</div>
+		</section>
 	);
 };
 

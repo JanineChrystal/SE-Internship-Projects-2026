@@ -36,6 +36,11 @@ export function ContactForm() {
 		"email",
 	);
 
+	// Captured once when the form mounts — used as an anti-bot timing check.
+	// Real users take at least a couple seconds to read the form and type
+	// a message; bots that auto-submit immediately will trip this.
+	const [formLoadTime] = useState(() => Date.now());
+
 	return (
 		<div className="relative bg-background/80 backdrop-blur-sm p-6 md:p-8 mb-10 rounded-3xl shadow-xl border-background/5 w-full max-w-xl mx-auto">
 			<div className="text-center mb-8">
@@ -68,6 +73,13 @@ export function ContactForm() {
 						autoComplete="off"
 					/>
 				</div>
+
+				{/*
+					Timing check field — hidden, holds the timestamp the form
+					was rendered. Server compares this against submit time to
+					catch bots that submit instantly without reading the form.
+				*/}
+				<input type="hidden" name="formLoadTime" value={formLoadTime} />
 
 				{/* Radio Group Selection */}
 				<div className="flex justify-center mb-6">

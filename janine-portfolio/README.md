@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Chrystl. - Personal Developer Portfolio
 
-## Getting Started
+An interactive, responsive developer portfolio built to showcase my software engineering projects, professional experience, and technical skills. It features custom GSAP scroll animations, native CSS page transitions, and a modern, modular architecture.
 
-First, run the development server:
+## 📑 Table of Contents
+1. [Tech Stack](#-tech-stack)
+2. [Project Structure](#-project-structure)
+3. [Prerequisites](#-prerequisites)
+4. [Environment Setup](#-environment-setup)
+5. [Installation & Local Setup](#-installation--local-setup)
+6. [Technical Architecture](#-technical-architecture)
+7. [Deployment](#-deployment)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 💻 Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**Core Frameworks & Languages**
+* **Next.js (App Router):** React framework handling routing, server-side rendering, and layout structure.
+* **React 19:** Component-based UI library.
+* **TypeScript:** Superset of JavaScript for strict type safety across props, server actions, and components.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**State & Data Management**
+* **Jotai:** Atomic state management used for global theme toggling and panel states.
+* **TanStack Query:** Handles asynchronous server-side data fetching and caching.
 
-## Learn More
+**Styling & Animation**
+* **Tailwind CSS:** Utility-first CSS framework for rapid, responsive UI development.
+* **GSAP (GreenSock):** Powers complex scroll-triggered layout animations and pinned contexts (e.g., the Home page stage).
+* **CSS `@starting-style`:** Handles lightweight, native browser page transition entries.
+* **Lucide React:** Clean, consistent iconography across the application.
 
-To learn more about Next.js, take a look at the following resources:
+**Tooling**
+* **pnpm:** Fast, disk-space efficient package manager.
+* **Biome:** High-performance toolchain for fast formatting and linting.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📂 Project Structure
 
-## Deploy on Vercel
+This project follows a modular, feature-based architecture utilizing colocation best practices:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+janine-portfolio/
+├── public/                # Static assets (images, icons, photos)
+├── src/
+│   ├── app/               # Next.js App Router (Pages, Layouts, Templates)
+│   │   ├── about/         # About page, local components, and transitions
+│   │   ├── contact/       # Contact page, server actions, and schemas
+│   │   ├── home/          # Home page and GSAP scroll contexts
+│   │   ├── projects/      # Dynamic project routing and details
+│   │   ├── error.tsx      # Global error boundary
+│   │   ├── globals.css    # Global styles and Tailwind imports
+│   │   ├── icon.png       # Website icon
+│   │   └── layout.tsx     # Root layout (Navbar, Footer injection)
+│   ├── components/        # Shared global React components
+│   │   ├── layout/        # Navbar, Footer, Panel Assistant
+│   │   └── ui/            # Reusable UI elements (cards, transitions, buttons)
+│   ├── constants/         # Static data arrays (tech stack, project details)
+│   └── store/             # Global state management (Jotai atoms)
+├── .env.local             # Local environment variables
+├── biome.json             # Biome linter and formatter configuration
+├── components.json        # shadcn/ui configuration
+└── package.json           # Project dependencies and scripts

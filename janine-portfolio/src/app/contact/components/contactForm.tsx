@@ -36,8 +36,13 @@ export function ContactForm() {
 		"email",
 	);
 
+	// Captured once when the form mounts — used as an anti-bot timing check.
+	// Real users take at least a couple seconds to read the form and type
+	// a message; bots that auto-submit immediately will trip this.
+	const [formLoadTime] = useState(() => Date.now());
+
 	return (
-		<div className="bg-background/80 backdrop-blur-sm p-6 md:p-8 mb-10 rounded-3xl shadow-xl border-background/5 w-full max-w-xl mx-auto">
+		<div className="relative bg-background/80 backdrop-blur-sm p-6 md:p-8 mb-10 rounded-3xl shadow-xl border-background/5 w-full max-w-xl mx-auto">
 			<div className="text-center mb-8">
 				<h3 className="text-2xl font-bold uppercase tracking-wide">
 					Contact Form
@@ -45,6 +50,37 @@ export function ContactForm() {
 			</div>
 
 			<form action={formAction} className="space-y-6">
+				{/*
+					Honeypot field — invisible to real users, but a bot that
+					auto-fills every field in the DOM will populate it.
+					- Positioned off-screen instead of `display:none`/`hidden`,
+					  because unlike those two, off-screen positioning is not
+					  a well-known anti-spam signature bots specifically skip.
+					- tabIndex={-1} keeps sighted keyboard users from tabbing into it.
+					- aria-hidden hides it from screen readers.
+					- autoComplete="off" stops browsers auto-filling it for real users.
+				*/}
+				<div
+					className="absolute left-[-9999px] top-auto w-px h-px overflow-hidden"
+					aria-hidden="true"
+				>
+					<Label htmlFor="company">Company</Label>
+					<Input
+						id="company"
+						name="company"
+						type="text"
+						tabIndex={-1}
+						autoComplete="off"
+					/>
+				</div>
+
+				{/*
+					Timing check field — hidden, holds the timestamp the form
+					was rendered. Server compares this against submit time to
+					catch bots that submit instantly without reading the form.
+				*/}
+				<input type="hidden" name="formLoadTime" value={formLoadTime} />
+
 				{/* Radio Group Selection */}
 				<div className="flex justify-center mb-6">
 					<RadioGroup

@@ -124,6 +124,7 @@ export default function RouteErrorPage({ error, reset }: ErrorProps) {
 					{board.map((cell, idx) => (
 						<button
 							type="button"
+							// biome-ignore lint/suspicious/noArrayIndexKey: board is fixed-size (9 cells), positions never reorder
 							key={`ttt-cell-${idx}`}
 							onClick={() => handleClick(idx)}
 							className="h-20 bg-white rounded-lg flex items-center justify-center text-2xl font-mono font-bold transition-colors hover:bg-slate-50 disabled:opacity-100"

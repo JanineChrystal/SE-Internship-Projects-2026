@@ -9,13 +9,13 @@ import { LEFT_LINKS, type NavItem, RIGHT_LINKS } from "../../constants/nav";
 const Navbar = () => {
 	const pathname = usePathname();
 
-	// // State to track if the mobile burger menu is open
+	// State to track if the mobile burger menu is open
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-	// // Combine all links into one array for the mobile view stack
+	// Combine all links into one array for the mobile view stack
 	const ALL_LINKS = [...LEFT_LINKS, ...RIGHT_LINKS];
 
-	// // Lock the background scroll when the mobile menu is open
+	// Lock the background scroll when the mobile menu is open
 	useEffect(() => {
 		if (isMobileMenuOpen) {
 			document.body.style.overflow = "hidden";
@@ -24,7 +24,7 @@ const Navbar = () => {
 		}
 	}, [isMobileMenuOpen]);
 
-	// // Helper function mapped to handle both desktop and mobile link rendering
+	// Helper function mapped to handle both desktop and mobile link rendering
 	const renderLinks = (items: NavItem[], onClickCallback?: () => void) => {
 		return items.map((link) => {
 			const isActive = pathname === link.path;
@@ -47,14 +47,14 @@ const Navbar = () => {
 	};
 
 	return (
-		// // Adjusted padding for responsiveness: px-8 on mobile, px-24 on large screens
-		<nav className="absolute top-0 left-0 mt-3 w-full flex items-center justify-between px-8 lg:px-24 xl:px-98 py-8 z-50 bg-transparent">
-			{/* // Desktop: Left side navigation block (Hidden on mobile) */}
+		// px-8 on mobile, px-24 on large screens
+		<nav className="fixed top-0 left-0 mt-3 w-full flex items-center justify-between px-8 lg:px-24 xl:px-98 py-8 z-50 bg-transparent">
+			{/* Desktop: Left side navigation block (Hidden on mobile) */}
 			<div className="hidden lg:flex items-center gap-8 xl:gap-12 flex-1">
 				{renderLinks(LEFT_LINKS)}
 			</div>
 
-			{/* // Center signature layout branding token (Visible on all sizes) */}
+			{/* Center signature layout branding token (Visible on all sizes) */}
 			<div className="flex justify-start lg:justify-center flex-1 lg:flex-none">
 				<span className="text-3xl font-serif font-black tracking-wide text-foreground relative z-50">
 					Chrystl.

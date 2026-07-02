@@ -1,5 +1,5 @@
 import Card from "../../components/ui/cards/card";
-import Contact_Details from "../../constants/home/contact";
+import Contact_Details from "./constants/contact";
 import { ContactForm } from "./components/contactForm";
 
 const ContactPage = () => {

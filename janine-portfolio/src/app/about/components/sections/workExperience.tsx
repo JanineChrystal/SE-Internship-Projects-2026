@@ -1,4 +1,4 @@
-import { Work } from "@/src/constants/about/workExperience";
+import { Work } from "@/src/app/about/constants/workExperience";
 import ExperienceCard from "../../../../components/ui/cards/experience-card";
 import SectionTitle from "../../../../components/ui/typography/section-title";
 

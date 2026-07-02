@@ -1,4 +1,4 @@
-import { techStack } from "@/src/constants/about/techStack";
+import { techStack } from "@/src/app/about/constants/techStack";
 import InfiniteSlider from "../../../../components/ui/slider/infinite-slider";
 import SectionTitle from "../../../../components/ui/typography/section-title";
 

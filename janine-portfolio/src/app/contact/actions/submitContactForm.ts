@@ -15,7 +15,6 @@ export async function submitContactForm(
 	_prevState: ContactFormState,
 	formData: FormData,
 ): Promise<ContactFormState> {
-
 	// Honeypot check — must run first, before any real processing.
 	// "company" is a hidden field that only bots (which fill in every
 	// field they find in the DOM) will ever populate. Real users never

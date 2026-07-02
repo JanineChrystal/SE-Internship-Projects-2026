@@ -1,19 +1,22 @@
 import type { Metadata } from "next";
 import About from "./components/sections/about";
 import Hero from "./components/sections/hero";
+import Stage from "./components/stage/stage";
+import { StageProvider } from "./contexts/stageContext";
 
 interface ErrorProps {
 	searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
 export const metadata: Metadata = {
-    title: "Janine Chrystal | Portfolio",
-    description: "Software Engineer specializing in Web and Frontend Development.",
-    openGraph: {
-        title: "Janine Chrystal | Portfolio",
-        description: "Professional portfolio for project and skills showcase.",
-        type: "website",
-    },
+	title: "Janine Chrystal | Portfolio",
+	description:
+		"Software Engineer specializing in Web and Frontend Development.",
+	openGraph: {
+		title: "Janine Chrystal | Portfolio",
+		description: "Professional portfolio for project and skills showcase.",
+		type: "website",
+	},
 };
 
 const HomePage = async ({ searchParams }: ErrorProps) => {
@@ -24,10 +27,14 @@ const HomePage = async ({ searchParams }: ErrorProps) => {
 	}
 
 	return (
-		<main className="flex flex-col w-full grow">
-			<Hero />
-			<About />
-		</main>
+		<div className="w-full block">
+			<StageProvider>
+				<Stage>
+					<Hero />
+					<About />
+				</Stage>
+			</StageProvider>
+		</div>
 	);
 };
 

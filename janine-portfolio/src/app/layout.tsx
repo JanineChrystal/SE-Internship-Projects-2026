@@ -20,9 +20,9 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en" className={cn("font-sans", geist.variable)}>
-			<body className="min-h-screen flex flex-col m-0 p-0">
+			<body className="relative min-h-screen flex flex-col m-0 p-0">
 				<Navbar />
-				{children}
+				<main className="w-full grow">{children}</main>
 				<PanelAssistant />
 				<Footer />
 			</body>

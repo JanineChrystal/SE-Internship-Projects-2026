@@ -1,18 +1,21 @@
 import type React from "react";
 
 const Footer = (): React.ReactElement => {
-	// Gets the current year dynamically for your copyright context
+	// Gets the current year dynamically for copyright context
 	const currentYear = new Date().getFullYear();
 
 	return (
-		<footer className="w-full flex flex-col sm:flex-row items-center justify-between py-4 px-12 border-t border-foreground/10 mt-auto bg-transparent">
+		<footer
+			id="site-footer"
+			className="z-40 bg-background w-full flex flex-col sm:flex-row items-center justify-between py-4 px-12 border-t border-foreground/10 mt-auto"
+		>
+			{" "}
 			{/* Left branding layout*/}
 			<div className="text-sm text-foreground/70 font-medium mb-4 sm:mb-0">
 				© {currentYear}{" "}
 				<span className="font-bold text-foreground">Chrystl.</span> All rights
 				reserved.
 			</div>
-
 			{/* Right container block */}
 			<div className="flex items-center gap-6">
 				{/* Email */}

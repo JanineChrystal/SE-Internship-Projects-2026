@@ -22,6 +22,12 @@ const IndividualProjectPage = async ({ params }: ProjectPageProps) => {
 		throw new Error(`The project "${slug}" could not be loaded.`);
 	}
 
+	// Finds the current project index to navigate neighbors
+	const currentIndex = projectsData.findIndex((p) => p.slug === slug);
+
+	const prevProject = currentIndex > 0 ? projectsData[currentIndex - 1] : null;
+	const nextProject = currentIndex < projectsData.length - 1 ? projectsData[currentIndex + 1] : null;
+
 	return (
 		<main
 			id="project-details"
@@ -38,6 +44,31 @@ const IndividualProjectPage = async ({ params }: ProjectPageProps) => {
 				<FeatureHighlights features={project.features} />
 
 				<TechStack technologies={project.technologies} />
+			</div>
+
+			{/* Navigation footer for projects */}
+			<div className="w-full flex justify-between items-center mt-20 pt-10 border-t border-foreground/10">
+				
+				{/* Previous / Back to Projects */}
+				{prevProject ? (
+					<a href={`/projects/${prevProject.slug}`} className="text-lg font-bold hover:underline">
+						← Previous
+					</a>
+				) : (
+					<a href="/projects" className="text-lg font-bold hover:underline">
+						← Back to Projects
+					</a>
+				)}
+
+				{/* Next Project */}
+				{nextProject ? (
+					<a href={`/projects/${nextProject.slug}`} className="text-lg font-bold hover:underline">
+						Next →
+					</a>
+				) : (
+					<span className="text-lg text-foreground/30 italic">End of List</span>
+				)}
+				
 			</div>
 		</main>
 	);

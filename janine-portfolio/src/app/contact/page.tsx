@@ -6,7 +6,7 @@ const ContactPage = () => {
 	return (
 		<section
 			id="contact-me"
-			className="w-full min-h-screen max-w-7xl mx-auto px-6 md:px-8 py-15 mt-15 flex flex-col justify-center"
+			className="w-full min-h-screen max-w-7xl mx-auto px-6 md:px-8 py-15 mt-8 mb-0 flex flex-col justify-center"
 		>
 			<div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 w-full items-center">
 				{/* Left Column: Content */}

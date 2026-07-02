@@ -14,7 +14,7 @@ const PROJECTS: ProjectData[] = [
 		role: "Frontend Developer",
 		description:
 			"The AllCard Admin Console is a proof-of-concept web application designed to modernize administrative workflows. It features a responsive frontend built with React, TypeScript, and MUI, integrated with REST APIs for dynamic data flow. Key modules include card-based automated attendance tracking, payroll monitoring, and analytics dashboards, providing a user-friendly interface across devices.",
-		imageSrc: "/allcard.jpg",
+		imageSrc: "/projects/allcard.jpg",
 		altText: "AllCard Logo",
 		tags: ["React", "TypeScript", "MUI", "Vite", "Swagger"],
 	},
@@ -27,7 +27,7 @@ const PROJECTS: ProjectData[] = [
 		description: `The PUP Smart Resource Acquisition, Monitoring, and Procurement System (SCRAMPS) is a full-stack solution developed 
 			for the PUP Ninoy Aquino Library. It integrates request and budget forecasting models, alongside analytics 
 			dashboards for requests, vendors, budgets, and user engagement, and deployed on Microsoft Azure`,
-		imageSrc: "/pup.png",
+		imageSrc: "/projects/pup.png",
 		altText: "Polytechnic University of the Philippines Logo",
 		tags: ["ML.NET", "Azure", "Full Stack", "C#", "Javascript", "Bootstrap"],
 	},
@@ -40,7 +40,7 @@ const PROJECTS: ProjectData[] = [
 		description: `Tikiting Rail is a database‑driven application designed to modernize the manual process of train ticket card management. 
 			The system streamlines passenger registration, card issuance, and transaction tracking through an integrated digital 
 			platform. It eliminates redundant paperwork and minimizes human error by automating record‑keeping and validation.`,
-		imageSrc: "/projects/tikiting.png",
+		imageSrc: "/projects/Tikiting.png",
 		altText: "Tikiting Card UI",
 		tags: ["Database", "Architecture"],
 	},

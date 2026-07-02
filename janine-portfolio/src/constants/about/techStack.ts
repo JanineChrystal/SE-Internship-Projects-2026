@@ -115,4 +115,14 @@ export const techStack: techData[] = [
 		imageSrc: "/techStack/Zod.png",
 		altText: "Zod",
 	},
+	{
+		id: 23,
+		imageSrc: "/techStack/gsap.png",
+		altText: "GSAP",
+	},
+	{
+		id: 24,
+		imageSrc: "/techStack/shadcn.png",
+		altText: "GSAP",
+	},
 ];

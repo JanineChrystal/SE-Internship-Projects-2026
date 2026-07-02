@@ -104,6 +104,19 @@ const Stage = ({ children }: { children: React.ReactNode }) => {
 					invalidateOnRefresh: true,
 					// markers: true,
 					id: "stageTrigger",
+					onUpdate: (self) => {
+						const aboutSection = document.getElementById("about");
+						if (aboutSection) {
+							aboutSection.style.pointerEvents =
+								self.progress >= 0.5 ? "auto" : "none";
+						}
+
+						const heroSection = document.getElementById("hero");
+						if (heroSection) {
+							heroSection.style.pointerEvents =
+								self.progress >= 0.5 ? "none" : "auto";
+						}
+					},
 				},
 			});
 

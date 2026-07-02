@@ -26,7 +26,10 @@ const IndividualProjectPage = async ({ params }: ProjectPageProps) => {
 	const currentIndex = projectsData.findIndex((p) => p.slug === slug);
 
 	const prevProject = currentIndex > 0 ? projectsData[currentIndex - 1] : null;
-	const nextProject = currentIndex < projectsData.length - 1 ? projectsData[currentIndex + 1] : null;
+	const nextProject =
+		currentIndex < projectsData.length - 1
+			? projectsData[currentIndex + 1]
+			: null;
 
 	return (
 		<main
@@ -48,10 +51,12 @@ const IndividualProjectPage = async ({ params }: ProjectPageProps) => {
 
 			{/* Navigation footer for projects */}
 			<div className="w-full flex justify-between items-center mt-20 pt-10 border-t border-foreground/10">
-				
 				{/* Previous / Back to Projects */}
 				{prevProject ? (
-					<a href={`/projects/${prevProject.slug}`} className="text-lg font-bold hover:underline">
+					<a
+						href={`/projects/${prevProject.slug}`}
+						className="text-lg font-bold hover:underline"
+					>
 						← Previous
 					</a>
 				) : (
@@ -62,13 +67,15 @@ const IndividualProjectPage = async ({ params }: ProjectPageProps) => {
 
 				{/* Next Project */}
 				{nextProject ? (
-					<a href={`/projects/${nextProject.slug}`} className="text-lg font-bold hover:underline">
+					<a
+						href={`/projects/${nextProject.slug}`}
+						className="text-lg font-bold hover:underline"
+					>
 						Next →
 					</a>
 				) : (
 					<span className="text-lg text-foreground/30 italic">End of List</span>
 				)}
-				
 			</div>
 		</main>
 	);

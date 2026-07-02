@@ -3,8 +3,8 @@ import InfiniteSlider from "../../../../components/ui/slider/infinite-slider";
 import SectionTitle from "../../../../components/ui/typography/section-title";
 
 const TechStack = () => {
-	const rowOneSkills = techStack.slice(0, 11);
-	const rowTwoSkills = techStack.slice(11, 22);
+	const rowOneSkills = techStack.slice(0, 12);
+	const rowTwoSkills = techStack.slice(12, 24);
 
 	return (
 		<section

@@ -3,7 +3,7 @@
 import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
 import * as React from "react";
-import { Carousel_Data } from "@/src/constants/about/actsEvents";
+import { Carousel_Data } from "@/src/app/about/constants/actsEvents";
 import {
 	Carousel,
 	type CarouselApi,

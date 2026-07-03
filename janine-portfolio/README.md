@@ -49,6 +49,7 @@ An interactive, responsive developer portfolio built to showcase my software eng
 
 This project follows a modular, feature-based architecture utilizing colocation best practices:
 
+```text
 janine-portfolio/
 ├── public/                # Static assets (images, icons, photos)
 ├── src/

@@ -4,7 +4,6 @@ import {
 	integer,
 	pgTable,
 	primaryKey,
-	serial,
 	text,
 	timestamp,
 	uuid,
@@ -13,7 +12,7 @@ import {
 
 // Tables
 export const admin = pgTable("admin_table", {
-	userId: serial("user_id").primaryKey(),
+	userId: uuid("user_id").primaryKey().defaultRandom().notNull(),
 	userName: varchar("username", { length: 50 }),
 	passwordHash: varchar("password_hash", { length: 255 }),
 	themeMode: varchar("theme_mode", { length: 20 }),

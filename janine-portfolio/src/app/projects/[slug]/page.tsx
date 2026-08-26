@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import FeatureHighlights from "@/src/app/projects/components/sections/features";
 import ProjectOverview from "@/src/app/projects/components/sections/overview";
 import TechStack from "@/src/app/projects/components/sections/techStack";
@@ -8,18 +9,24 @@ interface ProjectPageProps {
 	params: Promise<{ slug: string }>;
 }
 
+// Static params - prerender every known project at build time
+export function generateStaticParams() {
+	return projectsData.map((project) => ({ slug: project.slug }));
+}
+
+// Closed slug set - any unlisted slug returns a real 404 response
+export const dynamicParams = false;
+
 const IndividualProjectPage = async ({ params }: ProjectPageProps) => {
 	// Await the dynamic routing parameters
 	const { slug } = await params;
 
-	await new Promise((resolve) => setTimeout(resolve, 2000));
-
 	// Match the URL slug against the static project data array
 	const project = projectsData.find((p) => p.slug === slug);
 
-	// standard error to trigger error page
+	// Unknown slug - render the 404 page instead of the error boundary
 	if (!project) {
-		throw new Error(`The project "${slug}" could not be loaded.`);
+		notFound();
 	}
 
 	// Finds the current project index to navigate neighbors

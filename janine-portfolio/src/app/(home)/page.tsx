@@ -4,10 +4,6 @@ import Hero from "./components/sections/hero";
 import Stage from "./components/stage/stage";
 import { StageProvider } from "./contexts/stageContext";
 
-interface ErrorProps {
-	searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-}
-
 export const metadata: Metadata = {
 	title: "Janine Chrystal | Portfolio",
 	description:
@@ -19,13 +15,7 @@ export const metadata: Metadata = {
 	},
 };
 
-const HomePage = async ({ searchParams }: ErrorProps) => {
-	const params = await searchParams;
-
-	if (params.triggerError === "true") {
-		throw new Error("Testing production Tic-Tac-Toe error boundary");
-	}
-
+const HomePage = () => {
 	return (
 		<div className="w-full block">
 			<StageProvider>

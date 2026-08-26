@@ -17,7 +17,7 @@ const InfiniteSlider = ({ items, direction = "left" }: InfiniteSliderProps) => {
 					{items.map((skill) => (
 						<div
 							key={`first-${skill.id}`}
-							className="relative w-48 h-48 shrink-0 bg-white-1/2 rounded-xl shadow-sm flex items-center justify-center p-4"
+							className="relative w-48 h-48 shrink-0 bg-background/50 rounded-xl shadow-sm flex items-center justify-center p-4"
 						>
 							<Image
 								src={skill.imageSrc}
@@ -34,7 +34,7 @@ const InfiniteSlider = ({ items, direction = "left" }: InfiniteSliderProps) => {
 					{items.map((skill) => (
 						<div
 							key={`second-${skill.id}`}
-							className="relative w-48 h-48 shrink-0 bg-white-1/2 rounded-xl shadow-sm flex items-center justify-center p-4"
+							className="relative w-48 h-48 shrink-0 bg-background/50 rounded-xl shadow-sm flex items-center justify-center p-4"
 						>
 							<Image
 								src={skill.imageSrc}

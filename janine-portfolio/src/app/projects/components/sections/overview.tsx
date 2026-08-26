@@ -22,7 +22,7 @@ const ProjectOverview = ({ text, images }: ProjectOverviewProps) => {
 			{/* // Bento Box Grid Layout */}
 			<div className="grid grid-cols-1 lg:grid-cols-3 gap-6 min-h-100">
 				<div className="rounded-3xl p-8 flex lg:col-span-1 shadow-2xl transition-transform duration-200 hover:-translate-y-1">
-					<p className="text-foreground-800 font-semibold leading-relaxed text-justify">
+					<p className="text-foreground/80 font-semibold leading-relaxed text-justify">
 						{text}
 					</p>
 				</div>

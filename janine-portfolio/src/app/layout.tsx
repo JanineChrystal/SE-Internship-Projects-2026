@@ -6,7 +6,8 @@ import Footer from "../components/layout/footer";
 import Navbar from "../components/layout/nav";
 import PanelAssistant from "../components/layout/panel-assistant";
 
-const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
+// Font variable - mapped to Tailwind's --font-sans in globals.css
+const geist = Geist({ subsets: ["latin"], variable: "--font-geist" });
 
 export const metadata: Metadata = {
 	title: "Chrystl",

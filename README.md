@@ -13,7 +13,7 @@ This repository serves as a monorepo for my core software engineering projects, 
 
 | Project Name | Description | Status | Link |
 | :--- | :--- | :--- | :--- |
-| **Portfolio** | My interactive personal developer portfolio featuring GSAP scroll animations and native CSS transitions. | ✅ Done | [View Portfolio](https://devchrystl.vercel.app/home | devchrystl.vercel.app) |
+| **Portfolio** | My interactive personal developer portfolio featuring GSAP scroll animations and native CSS transitions. | ✅ Done | [View Portfolio](https://devchrystl.vercel.app) |
 | **BlogSite** | A modern, responsive content platform for sharing technical articles and personal insights. | ⏳ Pending | [View BlogSite](#) |
 | **Project Management Webapp** | A comprehensive web application designed for tracking tasks, agile planning, and managing system workflows. | ⏳ Pending | [View Webapp](#) |
 

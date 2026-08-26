@@ -31,6 +31,7 @@ const ProjectOverview = ({ text, images }: ProjectOverviewProps) => {
 									src={images[0].imageUrl}
 									alt={images[0].altText}
 									fill
+									sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
 									className="object-cover w-full h-full absolute inset-0"
 								/>
 							) : (
@@ -43,6 +44,7 @@ const ProjectOverview = ({ text, images }: ProjectOverviewProps) => {
 									src={images[1].imageUrl}
 									alt={images[1].altText}
 									fill
+									sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
 									className="object-cover w-full h-full absolute inset-0"
 								/>
 							) : (
@@ -56,6 +58,7 @@ const ProjectOverview = ({ text, images }: ProjectOverviewProps) => {
 								src={images[2].imageUrl}
 								alt={images[2].altText}
 								fill
+								sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
 								className="object-cover w-full h-full absolute inset-0"
 							/>
 						) : (

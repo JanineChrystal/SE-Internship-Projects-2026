@@ -19,15 +19,15 @@ export const scrampsProject: Project = {
 		efficiency, and decision‑making.`,
 	overviewImages: [
 		{
-			imageUrl: "/projects/scramps1.png",
+			imageUrl: "/projects/scramps1.webp",
 			altText: "Scramps Sign Up UI",
 		},
 		{
-			imageUrl: "/projects/scramps2.png",
+			imageUrl: "/projects/scramps2.webp",
 			altText: "Scramps UI",
 		},
 		{
-			imageUrl: "/projects/scrampsPub.jpg",
+			imageUrl: "/projects/scrampsPub.webp",
 			altText: "Scramps Public page UI",
 		},
 	],
@@ -36,7 +36,7 @@ export const scrampsProject: Project = {
 			title: "Request Management",
 			description:
 				"Handles resource requests from departments, enabling tracking, approval, and forecasting of future demands.",
-			imageUrl: "/projects/scrampsRM.jpg",
+			imageUrl: "/projects/scrampsRM.webp",
 			altText: "Request Management UI",
 			extendedDescription: `My primary role in this project was as a Frontend Developer,
 			where I designed and implemented responsive user interfaces that ensured seamless navigation and
@@ -48,7 +48,7 @@ export const scrampsProject: Project = {
 		{
 			title: "Budget Management",
 			description: `Automates budget allocation and monitoring, integrating forecasting models to predict spending trends.`,
-			imageUrl: "/projects/scrampsBM.jpg",
+			imageUrl: "/projects/scrampsBM.webp",
 			altText: "Budget Management UI",
 			extendedDescription: `This project reflects my ability to combine user‑centric design with data‑driven engineering
 			bridging frontend usability, backend logic, and intelligent automation to deliver a scalable enterprise‑grade solution.`,
@@ -56,21 +56,21 @@ export const scrampsProject: Project = {
 		{
 			title: "Vendor Management",
 			description: `Maintains vendor profiles and transaction histories, supporting smart AI vendor evaluation and procurement decisions.`,
-			imageUrl: "/projects/scrampsVM.jpg",
+			imageUrl: "/projects/scrampsVM.webp",
 			altText: "Vendor Management UI",
 			extendedDescription: ``,
 		},
 		{
 			title: "Analytics Dashboards",
 			description: `Provides interactive visualizations for requests, budgets, vendors, and user engagement, enabling data‑driven insights.`,
-			imageUrl: "/projects/scramps4.png",
+			imageUrl: "/projects/scramps4.webp",
 			altText: "Analytics Dashboard UI",
 			extendedDescription: ``,
 		},
 		{
 			title: "Machine Learning Forecasting",
 			description: `Implements ML.NET regression models to forecast resource requests and budget utilization for proactive planning.`,
-			imageUrl: "/projects/scrampsForecast.png",
+			imageUrl: "/projects/scrampsForecast.webp",
 			altText: "Budget Forecast",
 			extendedDescription: ``,
 		},
@@ -78,37 +78,37 @@ export const scrampsProject: Project = {
 	technologies: [
 		{
 			id: 1,
-			imageUrl: "/techStack/ASPNetCore.png",
+			imageUrl: "/techStack/ASPNetCore.webp",
 			altText: "ASP .NET Logo",
 		},
 		{
 			id: 2,
-			imageUrl: "/techStack/Azure.png",
+			imageUrl: "/techStack/Azure.webp",
 			altText: "Azure logo",
 		},
 		{
 			id: 3,
-			imageUrl: "/techStack/Bootstrap.png",
+			imageUrl: "/techStack/Bootstrap.webp",
 			altText: "Bootstrap logo",
 		},
 		{
 			id: 4,
-			imageUrl: "/techStack/CSharp.png",
+			imageUrl: "/techStack/CSharp.webp",
 			altText: "Csharp logo",
 		},
 		{
 			id: 5,
-			imageUrl: "/techStack/CSS.png",
+			imageUrl: "/techStack/CSS.webp",
 			altText: "CSS logo",
 		},
 		{
 			id: 6,
-			imageUrl: "/techStack/Figma.png",
+			imageUrl: "/techStack/Figma.webp",
 			altText: "Figma logo",
 		},
 		{
 			id: 7,
-			imageUrl: "/techStack/Html.png",
+			imageUrl: "/techStack/Html.webp",
 			altText: "HTML logo",
 		},
 		{
@@ -118,32 +118,32 @@ export const scrampsProject: Project = {
 		},
 		{
 			id: 9,
-			imageUrl: "/techStack/Github.png",
+			imageUrl: "/techStack/Github.webp",
 			altText: "Github logo",
 		},
 		{
 			id: 10,
-			imageUrl: "/techStack/Javascript.png",
+			imageUrl: "/techStack/Javascript.webp",
 			altText: "Javascript logo",
 		},
 		{
 			id: 11,
-			imageUrl: "/techStack/mlNet.png",
+			imageUrl: "/techStack/mlNet.webp",
 			altText: "ML.NET logo",
 		},
 		{
 			id: 12,
-			imageUrl: "/techStack/MySQL.png",
+			imageUrl: "/techStack/MySQL.webp",
 			altText: "MySQL logo",
 		},
 		{
 			id: 13,
-			imageUrl: "/techStack/Ssm21.png",
+			imageUrl: "/techStack/Ssm21.webp",
 			altText: "SSMS logo",
 		},
 		{
 			id: 14,
-			imageUrl: "/techStack/Swagger.png",
+			imageUrl: "/techStack/Swagger.webp",
 			altText: "Swagger logo",
 		},
 	],

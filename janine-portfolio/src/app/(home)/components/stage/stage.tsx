@@ -193,7 +193,7 @@ const Stage = ({ children }: { children: React.ReactNode }) => {
 			<div ref={portraitWrapperRef} className="pointer-events-none z-40">
 				<div ref={portraitInnerRef} className="relative w-full h-full">
 					<Image
-						src="/profile.png"
+						src="/profile.webp"
 						alt="Janine Chrystal Portrait"
 						fill
 						sizes="(max-width: 768px) 100vw, 50vw"

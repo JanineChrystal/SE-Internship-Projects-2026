@@ -9,7 +9,7 @@ export const tikitingProject: Project = {
 	description: `Tikiting Rail is a database‑driven application designed to modernize the manual process of train ticket card management.
 		The system streamlines passenger registration, card issuance, and transaction tracking through an integrated digital
 		platform. It eliminates redundant paperwork and minimizes human error by automating record‑keeping and validation.`,
-	imageSrc: "/projects/Tikiting.png",
+	imageSrc: "/projects/Tikiting.webp",
 	altText: "Tikiting Card UI",
 	tags: ["Database", "Architecture"],
 	overviewText: `Tikiting Rail: Train Ticket Card Management System is a database‑driven application developed to digitize and
@@ -19,15 +19,15 @@ export const tikitingProject: Project = {
 		enabling administrators to monitor activities and generate reports seamlessly.`,
 	overviewImages: [
 		{
-			imageUrl: "/projects/tikiting4.png",
+			imageUrl: "/projects/tikiting4.webp",
 			altText: "Tikiting UI",
 		},
 		{
-			imageUrl: "/projects/tikiting5.png",
+			imageUrl: "/projects/tikiting5.webp",
 			altText: "Tikiting UI",
 		},
 		{
-			imageUrl: "/projects/tikitingF3.png",
+			imageUrl: "/projects/tikitingF3.webp",
 			altText: "Tikiting UI",
 		},
 	],
@@ -36,7 +36,7 @@ export const tikitingProject: Project = {
 			title: "Ticket Card Issuance",
 			description:
 				"Automates the generation and activation of train ticket cards linked to passenger profiles, reducing manual processing time.",
-			imageUrl: "/projects/tikitingF1.png",
+			imageUrl: "/projects/tikitingF1.webp",
 			altText: "Ticket Card Issuance UI",
 			extendedDescription: `As the Database Designer, I was responsible for architecting the system's relational
 			database structure. My role involved designing entity relationships, defining table schemas, and applying
@@ -47,7 +47,7 @@ export const tikitingProject: Project = {
 		{
 			title: "Transaction Management",
 			description: `Tracks ticket purchases, reloads, and usage history in real time, providing transparency and auditability.`,
-			imageUrl: "/projects/tikitingF3.png",
+			imageUrl: "/projects/tikitingF3.webp",
 			altText: "Transaction Management UI",
 			extendedDescription: `This project demonstrates my ability to translate real‑world operational workflows into optimized
 			database models and integrate them into a functional application ecosystem, a key competency in software engineering
@@ -57,27 +57,27 @@ export const tikitingProject: Project = {
 	technologies: [
 		{
 			id: 1,
-			imageUrl: "/techStack/php.png",
+			imageUrl: "/techStack/php.webp",
 			altText: "PHP logo",
 		},
 		{
 			id: 2,
-			imageUrl: "/techStack/xampp.png",
+			imageUrl: "/techStack/xampp.webp",
 			altText: "Xampp logo",
 		},
 		{
 			id: 3,
-			imageUrl: "/techStack/MySQL.png",
+			imageUrl: "/techStack/MySQL.webp",
 			altText: "MySQL logo",
 		},
 		{
 			id: 4,
-			imageUrl: "/techStack/Html.png",
+			imageUrl: "/techStack/Html.webp",
 			altText: "HTML logo",
 		},
 		{
 			id: 5,
-			imageUrl: "/techStack/CSS.png",
+			imageUrl: "/techStack/CSS.webp",
 			altText: "CSS logo",
 		},
 	],

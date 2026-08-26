@@ -4,7 +4,7 @@ export interface NavItem {
 }
 
 export const LEFT_LINKS: NavItem[] = [
-	{ label: "Home", path: "/home" },
+	{ label: "Home", path: "/" },
 	{ label: "About Me", path: "/about" },
 ];
 

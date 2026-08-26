@@ -1,5 +1,5 @@
 import Link from "next/link";
-import AnimTarget from "@/src/app/home/components/stage/animationTarget";
+import AnimTarget from "@/src/app/(home)/components/stage/animationTarget";
 import Button from "@/src/components/ui/buttons/button";
 
 const Hero = () => {

@@ -1,5 +1,5 @@
 "use client";
-import { useStage } from "@/src/app/home/contexts/stageContext";
+import { useStage } from "@/src/app/(home)/contexts/stageContext";
 
 const AnimTarget = ({
 	id,

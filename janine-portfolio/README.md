@@ -1,5 +1,5 @@
 # Chrystl. - Personal Developer Portfolio
-Portfolio Link: https://devchrystl.vercel.app/home | devchrystl.vercel.app 
+Portfolio Link: [devchrystl.vercel.app](https://devchrystl.vercel.app)
 
 An interactive, responsive developer portfolio built to showcase my software engineering projects, professional experience, and technical skills. It features custom GSAP scroll animations, native CSS page transitions, and a modern, modular architecture.
 
@@ -56,7 +56,7 @@ janine-portfolio/
 │   ├── app/               # Next.js App Router (Pages, Layouts, Templates)
 │   │   ├── about/         # About page, local components, and transitions
 │   │   ├── contact/       # Contact page, server actions, and schemas
-│   │   ├── home/          # Home page and GSAP scroll contexts
+│   │   ├── (home)/        # Home page (served at /) and GSAP scroll contexts
 │   │   ├── projects/      # Dynamic project routing and details
 │   │   ├── error.tsx      # Global error boundary
 │   │   ├── globals.css    # Global styles and Tailwind imports
@@ -118,7 +118,7 @@ Dynamic Routing: The projects section uses dynamic slug routing (/projects/[slug
 Animation Systems
 Route-Specific Templates: Global page entry transitions (Scale & Pop) are handled natively via CSS @starting-style wrapped in Next.js template.tsx files.
 
-Isolated Contexts: Heavy JavaScript animations (GSAP) are strictly isolated to specific pages (like /home) to prevent conflicting with native DOM unmounting during route changes.
+Isolated Contexts: Heavy JavaScript animations (GSAP) are strictly isolated to specific pages (like the home route) to prevent conflicting with native DOM unmounting during route changes.
 
 🌐 Deployment
 This project is optimized for deployment on Vercel.

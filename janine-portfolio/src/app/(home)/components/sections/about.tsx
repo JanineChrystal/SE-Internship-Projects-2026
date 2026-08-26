@@ -1,4 +1,4 @@
-import AnimTarget from "@/src/app/home/components/stage/animationTarget";
+import AnimTarget from "@/src/app/(home)/components/stage/animationTarget";
 import Card from "../../../../components/ui/cards/card";
 import SectionTitle from "../../../../components/ui/typography/section-title";
 import TextLink from "../../../../components/ui/typography/text-link";

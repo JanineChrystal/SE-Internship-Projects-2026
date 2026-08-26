@@ -1,27 +1,50 @@
 import { cn } from "@/lib/utils";
 
 interface SectionTitleProps {
-	className?: string;
-	align?: "left" | "center";
 	title: string;
+	// Small mono label sitting above the heading
+	eyebrow?: string;
+	description?: string;
+	align?: "left" | "center";
+	as?: "h1" | "h2" | "h3";
+	className?: string;
 }
 
 const SectionTitle = ({
 	title,
+	eyebrow,
+	description,
 	align = "center",
-	className = "",
+	as: Heading = "h2",
+	className,
 }: SectionTitleProps) => {
-	const alignmentType = align === "left" ? "text-left" : "text-center";
+	const isCentered = align === "center";
 
 	return (
-		<h2
+		<div
 			className={cn(
-				`text-3xl md:text-4xl lg:text-5xl mb-8 md:mb-10 lg:mb-12 text-foreground font-black tracking-tight ${alignmentType}`,
+				"flex flex-col gap-3 mb-8 md:mb-12",
+				isCentered ? "items-center text-center" : "items-start text-left",
 				className,
 			)}
 		>
-			{title}
-		</h2>
+			{eyebrow && <span className="eyebrow">{eyebrow}</span>}
+
+			<Heading className="text-h2 font-extrabold text-ink-strong">
+				{title}
+			</Heading>
+
+			{description && (
+				<p
+					className={cn(
+						"text-lead text-ink-muted max-w-2xl",
+						isCentered && "mx-auto",
+					)}
+				>
+					{description}
+				</p>
+			)}
+		</div>
 	);
 };
 

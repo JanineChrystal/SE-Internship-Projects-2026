@@ -37,9 +37,9 @@ const Hero = () => {
 						Software Engineer
 					</h2>
 					<div>
-						<Link href="/projects">
-							<Button>VIEW PROJECTS</Button>
-						</Link>
+						<Button asChild size="lg">
+							<Link href="/projects">VIEW PROJECTS</Link>
+						</Button>
 					</div>
 				</AnimTarget>
 			</div>

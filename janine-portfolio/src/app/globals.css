@@ -239,7 +239,6 @@
 	--text-h2: clamp(1.75rem, 3.6vw, 2.75rem);
 	--text-h3: clamp(1.25rem, 2vw, 1.6rem);
 	--text-lead: clamp(1.05rem, 1.5vw, 1.3rem);
-	--text-label: 0.75rem;
 }
 
 /* ============================================================
@@ -320,9 +319,12 @@
    SURFACE EFFECTS
    ============================================================ */
 
-/* Glass - for buttons, panels and floating controls */
+/* Glass - for buttons, panels and floating controls
+   isolation + negative z-index keeps the sheen above the
+   background but behind the content */
 .surface-glass {
 	position: relative;
+	isolation: isolate;
 	background: var(--glass-fill);
 	border: 1px solid var(--glass-edge);
 	box-shadow:
@@ -337,6 +339,7 @@
 	content: "";
 	position: absolute;
 	inset: 0;
+	z-index: -1;
 	border-radius: inherit;
 	pointer-events: none;
 	background: linear-gradient(
@@ -384,9 +387,9 @@
 /* ============================================================
    TYPOGRAPHY HELPERS
    ============================================================ */
-.text-label {
+.eyebrow {
 	font-family: var(--font-mono);
-	font-size: var(--text-label);
+	font-size: 0.75rem;
 	font-weight: 700;
 	letter-spacing: 0.14em;
 	text-transform: uppercase;

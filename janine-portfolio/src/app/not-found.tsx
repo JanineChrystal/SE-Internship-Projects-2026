@@ -24,9 +24,9 @@ const NotFoundPage = () => {
 			</p>
 
 			<div className="flex flex-col sm:flex-row items-center gap-6">
-				<Link href="/">
-					<Button>BACK TO HOME</Button>
-				</Link>
+				<Button asChild size="lg">
+					<Link href="/">BACK TO HOME</Link>
+				</Button>
 
 				<TextLink href="/projects" className="text-foreground">
 					<span>View projects instead</span>

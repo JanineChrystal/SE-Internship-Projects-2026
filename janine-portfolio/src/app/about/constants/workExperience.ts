@@ -11,7 +11,7 @@ export const Work: WorkExperience[] = [
 		id: "Stratpoint",
 		company: "Stratpoint Technologies Inc.",
 		title: "Software Engineer Web Intern",
-		duration: "June 2023 - August 2023",
+		duration: "June 2026 - August 2026",
 		description: `As a Web Engineer Intern, I built and deployed a portfolio site, a blog platform, and a project management web app using Next.js, React 19, TypeScript, Drizzle ORM v2, Neon Postgres, Tailwind CSS v4, and Vercel. 
         This role strengthened my full‑stack development skills and gave me hands‑on experience deploying production‑ready applications.`,
 	},

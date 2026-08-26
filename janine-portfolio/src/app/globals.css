@@ -3,137 +3,446 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ============================================================
+   ELEMENT PALETTES
+   Two shades carry the identity: deep and mid.
+   Tint and ink are derived so text stays legible in both modes.
+   ============================================================ */
 :root {
-	--background: oklch(1 0 0);
-	--foreground: oklch(0.145 0 0);
-	--active-element: var(--color-element-water);
-	--border: oklch(0.922 0 0);
-	--input: oklch(0.922 0 0);
-	--ring: oklch(0.708 0 0);
-	--radius: 0.625rem;
+	/* Navy Mirage */
+	--el-water-deep: #141e30;
+	--el-water-mid: #35577d;
+	--el-water-tint: #eaeff6;
+	--el-water-ink-light: #294f7a;
+	--el-water-ink-dark: #81abda;
 
-	/* Surface tokens - shadcn primitives read these */
-	--card: oklch(1 0 0);
-	--card-foreground: oklch(0.145 0 0);
-	--popover: oklch(1 0 0);
-	--popover-foreground: oklch(0.145 0 0);
+	/* Crimson Velvet */
+	--el-fire-deep: #2c0f12;
+	--el-fire-mid: #6b1e23;
+	--el-fire-tint: #f7e9ea;
+	--el-fire-ink-light: #7f242a;
+	--el-fire-ink-dark: #db8085;
 
-	/* Intent tokens - buttons, badges and form states */
-	--primary: oklch(0.205 0 0);
-	--primary-foreground: oklch(0.985 0 0);
-	--secondary: oklch(0.97 0 0);
-	--secondary-foreground: oklch(0.205 0 0);
-	--muted: oklch(0.97 0 0);
-	--muted-foreground: oklch(0.556 0 0);
-	--accent: oklch(0.97 0 0);
-	--accent-foreground: oklch(0.205 0 0);
-	--destructive: oklch(0.577 0.245 27.325);
+	/* Emerald Depth */
+	--el-earth-deep: #0f2027;
+	--el-earth-mid: #28623a;
+	--el-earth-tint: #e9f6ed;
+	--el-earth-ink-light: #297a42;
+	--el-earth-ink-dark: #81da9c;
 
-	/* Custom variables for Light Mode backgrounds and text */
-	--bg-fade-start: #ffffff;
-	--bg-fade-end: #ffffff;
-	--heading-color: #000000;
-	--text-color: rgba(0, 0, 0, 0.85);
+	/* Amber Dusk */
+	--el-air-deep: #2e2410;
+	--el-air-mid: #a8761f;
+	--el-air-tint: #f7f2e9;
+	--el-air-ink-light: #8a6119;
+	--el-air-ink-dark: #e6bd75;
+
+	/* Walnut Noir */
+	--el-wood-deep: #2e1f1b;
+	--el-wood-mid: #5e4b43;
+	--el-wood-tint: #f2efed;
+	--el-wood-ink-light: #7a4129;
+	--el-wood-ink-dark: #da9b81;
 }
 
-@theme inline {
-	/* Raw Avatar element colors */
-	--color-brand-yellow: #fff458;
-	--color-element-water: #3b82f6;
-	--color-element-fire: #ef4444;
-	--color-element-earth: #22c55e;
-	--color-element-air: #f59e0b;
-}
-
-/* Dynamic structure for Dark Mode */
-.dark {
-	--background: oklch(0.145 0 0);
-	--foreground: oklch(0.98 0 0);
-	--border: oklch(1 0 0 / 12%);
-	--input: oklch(1 0 0 / 16%);
-	--ring: oklch(0.556 0 0);
-
-	/* Surface tokens - shadcn primitives read these */
-	--card: oklch(0.205 0 0);
-	--card-foreground: oklch(0.985 0 0);
-	--popover: oklch(0.269 0 0);
-	--popover-foreground: oklch(0.985 0 0);
-
-	/* Intent tokens - buttons, badges and form states */
-	--primary: oklch(0.922 0 0);
-	--primary-foreground: oklch(0.205 0 0);
-	--secondary: oklch(0.269 0 0);
-	--secondary-foreground: oklch(0.985 0 0);
-	--muted: oklch(0.269 0 0);
-	--muted-foreground: oklch(0.708 0 0);
-	--accent: oklch(0.371 0 0);
-	--accent-foreground: oklch(0.985 0 0);
-	--destructive: oklch(0.704 0.191 22.216);
-
-	/* Custom variables for Dark Mode backgrounds and text */
-	--bg-fade-start: #0f172a; /* Slate 900 */
-	--bg-fade-end: #020617; /* Slate 950 */
-	--heading-color: #ffffff;
-	--text-color: rgba(255, 255, 255, 0.85);
-}
-
-/* Dynamically swap the active element color based on the HTML attribute */
-[data-element="fire"] {
-	--active-element: var(--color-element-fire);
-}
-[data-element="earth"] {
-	--active-element: var(--color-element-earth);
-}
-[data-element="air"] {
-	--active-element: var(--color-element-air);
-}
+/* ============================================================
+   ACTIVE ELEMENT
+   The panel writes data-element on <html>; water is the default.
+   ============================================================ */
+:root,
 [data-element="water"] {
-	--active-element: var(--color-element-water);
-}
-/* Optional fallback to your original brand yellow if you want a 5th option */
-[data-element="yellow"] {
-	--active-element: var(--color-brand-yellow);
+	--el-deep: var(--el-water-deep);
+	--el-mid: var(--el-water-mid);
+	--el-tint: var(--el-water-tint);
+	--el-ink-light: var(--el-water-ink-light);
+	--el-ink-dark: var(--el-water-ink-dark);
 }
 
-/* Map the body to use dynamic variables instead of hardcoded hex codes */
-body {
+[data-element="fire"] {
+	--el-deep: var(--el-fire-deep);
+	--el-mid: var(--el-fire-mid);
+	--el-tint: var(--el-fire-tint);
+	--el-ink-light: var(--el-fire-ink-light);
+	--el-ink-dark: var(--el-fire-ink-dark);
+}
+
+[data-element="earth"] {
+	--el-deep: var(--el-earth-deep);
+	--el-mid: var(--el-earth-mid);
+	--el-tint: var(--el-earth-tint);
+	--el-ink-light: var(--el-earth-ink-light);
+	--el-ink-dark: var(--el-earth-ink-dark);
+}
+
+[data-element="air"] {
+	--el-deep: var(--el-air-deep);
+	--el-mid: var(--el-air-mid);
+	--el-tint: var(--el-air-tint);
+	--el-ink-light: var(--el-air-ink-light);
+	--el-ink-dark: var(--el-air-ink-dark);
+}
+
+[data-element="wood"] {
+	--el-deep: var(--el-wood-deep);
+	--el-mid: var(--el-wood-mid);
+	--el-tint: var(--el-wood-tint);
+	--el-ink-light: var(--el-wood-ink-light);
+	--el-ink-dark: var(--el-wood-ink-dark);
+}
+
+/* ============================================================
+   SEMANTIC TOKENS - LIGHT MODE
+   Surfaces take the element tint, so the whole page reacts
+   to the panel and not just the background.
+   ============================================================ */
+:root {
+	--surface-0: var(--el-tint);
+	--surface-1: color-mix(in oklab, var(--el-tint) 45%, #ffffff);
+	--surface-2: #ffffff;
+
+	--ink-strong: #16181c;
+	--ink-body: #33373f;
+	--ink-muted: #5c626b;
+
+	--accent: var(--el-mid);
+	--accent-ink: var(--el-ink-light);
+
+	--rule: color-mix(in oklab, var(--el-mid) 20%, transparent);
+	--rule-soft: color-mix(in oklab, var(--el-mid) 10%, transparent);
+
+	/* Glass - translucent pane over the themed ground */
+	--glass-fill: color-mix(in oklab, #ffffff 62%, transparent);
+	--glass-edge: color-mix(in oklab, #ffffff 85%, transparent);
+	--glass-sheen: color-mix(in oklab, #ffffff 70%, transparent);
+	--glass-cast: 0 10px 30px -12px
+		color-mix(in oklab, var(--el-deep) 32%, transparent);
+
+	/* Neumorphism - light source sits top-left */
+	--neu-light: color-mix(in oklab, #ffffff 92%, transparent);
+	--neu-shadow: color-mix(in oklab, var(--el-deep) 22%, transparent);
+
+	--radius: 0.75rem;
+	color-scheme: light;
+}
+
+/* ============================================================
+   SEMANTIC TOKENS - DARK MODE
+   The ground becomes the element deep shade, matching the
+   reference palettes directly.
+   ============================================================ */
+.dark {
+	--surface-0: var(--el-deep);
+	--surface-1: color-mix(in oklab, var(--el-deep) 88%, #ffffff);
+	--surface-2: color-mix(in oklab, var(--el-deep) 78%, #ffffff);
+
+	--ink-strong: #f5f7fa;
+	--ink-body: #dde2e9;
+	--ink-muted: #98a1ad;
+
+	--accent: var(--el-mid);
+	--accent-ink: var(--el-ink-dark);
+
+	--rule: color-mix(in oklab, #ffffff 14%, transparent);
+	--rule-soft: color-mix(in oklab, #ffffff 7%, transparent);
+
+	--glass-fill: color-mix(in oklab, #ffffff 10%, transparent);
+	--glass-edge: color-mix(in oklab, #ffffff 22%, transparent);
+	--glass-sheen: color-mix(in oklab, #ffffff 16%, transparent);
+	--glass-cast: 0 10px 30px -12px rgb(0 0 0 / 0.55);
+
+	--neu-light: color-mix(in oklab, #ffffff 9%, transparent);
+	--neu-shadow: rgb(0 0 0 / 0.55);
+
+	color-scheme: dark;
+}
+
+/* ============================================================
+   COMPATIBILITY ALIASES
+   Existing components still read the shadcn token names and
+   --active-element. Mapped here so nothing breaks mid-rebuild.
+   ============================================================ */
+:root,
+.dark {
+	--active-element: var(--accent);
+	--background: var(--surface-0);
+	--foreground: var(--ink-body);
+	--card: var(--surface-1);
+	--card-foreground: var(--ink-body);
+	--popover: var(--surface-1);
+	--popover-foreground: var(--ink-body);
+	--primary: var(--accent);
+	--primary-foreground: var(--surface-2);
+	--secondary: var(--surface-1);
+	--secondary-foreground: var(--ink-body);
+	--muted: var(--surface-1);
+	--muted-foreground: var(--ink-muted);
+	--accent-foreground: var(--ink-strong);
+	--border: var(--rule);
+	--input: var(--rule);
+	--ring: var(--accent);
+	--destructive: #b0392c;
+}
+
+.dark {
+	--destructive: #e8796b;
+}
+
+/* ============================================================
+   TAILWIND THEME MAPPING
+   ============================================================ */
+@theme inline {
+	--font-sans: var(--font-geist);
+	--font-display: var(--font-archivo);
+	--font-mono: var(--font-geist-mono);
+
+	--color-surface: var(--surface-0);
+	--color-surface-raised: var(--surface-1);
+	--color-surface-top: var(--surface-2);
+
+	--color-ink: var(--ink-body);
+	--color-ink-strong: var(--ink-strong);
+	--color-ink-muted: var(--ink-muted);
+
+	--color-accent: var(--accent);
+	--color-accent-ink: var(--accent-ink);
+
+	--color-el-deep: var(--el-deep);
+	--color-el-mid: var(--el-mid);
+	--color-el-tint: var(--el-tint);
+
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-card: var(--card);
+	--color-card-foreground: var(--card-foreground);
+	--color-popover: var(--popover);
+	--color-popover-foreground: var(--popover-foreground);
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-secondary: var(--secondary);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-destructive: var(--destructive);
+	--color-border: var(--border);
+	--color-input: var(--input);
+	--color-ring: var(--ring);
+
+	--radius-sm: calc(var(--radius) * 0.6);
+	--radius-md: calc(var(--radius) * 0.8);
+	--radius-lg: var(--radius);
+	--radius-xl: calc(var(--radius) * 1.6);
+	--radius-2xl: calc(var(--radius) * 2.2);
+
+	--text-display: clamp(3rem, 9vw, 7rem);
+	--text-h1: clamp(2.25rem, 5.5vw, 4rem);
+	--text-h2: clamp(1.75rem, 3.6vw, 2.75rem);
+	--text-h3: clamp(1.25rem, 2vw, 1.6rem);
+	--text-lead: clamp(1.05rem, 1.5vw, 1.3rem);
+	--text-label: 0.75rem;
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+@layer base {
+	* {
+		@apply border-border;
+	}
+
+	html {
+		scroll-behavior: smooth;
+	}
+
+	body {
+		background: var(--surface-0);
+		color: var(--ink-body);
+		font-family: var(--font-sans);
+		line-height: 1.6;
+		-webkit-font-smoothing: antialiased;
+		transition:
+			background-color 0.4s ease,
+			color 0.4s ease;
+	}
+
+	/* Themed ground - fixed layer, safe inside a transformed wrapper */
+	body::before {
+		content: "";
+		position: fixed;
+		inset: 0;
+		z-index: -1;
+		pointer-events: none;
+		background:
+			radial-gradient(
+				120% 90% at 50% 0%,
+				color-mix(in oklab, var(--el-mid) 26%, transparent) 0%,
+				transparent 62%
+			),
+			linear-gradient(
+				180deg,
+				var(--surface-0) 0%,
+				color-mix(in oklab, var(--el-mid) 14%, var(--surface-0)) 55%,
+				var(--surface-0) 100%
+			);
+		transition: background 0.4s ease;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: var(--font-display);
+		color: var(--ink-strong);
+		letter-spacing: -0.025em;
+		line-height: 1.05;
+		text-wrap: balance;
+	}
+
+	p {
+		color: var(--ink-body);
+	}
+
+	::selection {
+		background: color-mix(in oklab, var(--accent) 35%, transparent);
+		color: var(--ink-strong);
+	}
+
+	:focus-visible {
+		outline: 2px solid var(--accent-ink);
+		outline-offset: 2px;
+		border-radius: var(--radius-sm);
+	}
+}
+
+/* ============================================================
+   SURFACE EFFECTS
+   ============================================================ */
+
+/* Glass - for buttons, panels and floating controls */
+.surface-glass {
+	position: relative;
+	background: var(--glass-fill);
+	border: 1px solid var(--glass-edge);
+	box-shadow:
+		inset 0 1px 0 var(--glass-sheen),
+		var(--glass-cast);
+	backdrop-filter: blur(14px) saturate(150%);
+	-webkit-backdrop-filter: blur(14px) saturate(150%);
+}
+
+/* Diagonal sheen across the upper-left corner */
+.surface-glass::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	border-radius: inherit;
+	pointer-events: none;
 	background: linear-gradient(
-		180deg,
-		var(--bg-fade-start) 0%,
-		var(--active-element) 60%,
-		var(--bg-fade-end) 100%
+		135deg,
+		var(--glass-sheen) 0%,
+		transparent 42%,
+		transparent 100%
 	);
-	background-attachment: fixed;
-	color: var(--text-color);
-	font-family: var(--font-sans);
-	transition:
-		background 0.3s ease,
-		color 0.3s ease;
+	opacity: 0.7;
 }
 
-/*** CUSTOM STYLES ***/
+/* Solid fallback where backdrop-filter is unsupported */
+@supports not (
+		(backdrop-filter: blur(1px)) or
+		(-webkit-backdrop-filter: blur(1px))
+	) {
+	.surface-glass {
+		background: var(--surface-2);
+	}
+}
 
-/* Replaced brand-yellow with active-element to react to the panel */
+/* Neumorphism - for image frames and inert panels
+   Requires a flat ground, so it paints its own surface */
+.surface-neu {
+	background: var(--surface-0);
+	box-shadow:
+		6px 6px 16px var(--neu-shadow),
+		-6px -6px 16px var(--neu-light);
+}
+
+.surface-neu-inset {
+	background: var(--surface-0);
+	box-shadow:
+		inset 5px 5px 12px var(--neu-shadow),
+		inset -5px -5px 12px var(--neu-light);
+}
+
+/* Element glow - outer glow keyed to the active palette */
+.glow-element {
+	filter: drop-shadow(
+		0 0 24px color-mix(in oklab, var(--accent) 55%, transparent)
+	);
+}
+
+/* ============================================================
+   TYPOGRAPHY HELPERS
+   ============================================================ */
+.text-label {
+	font-family: var(--font-mono);
+	font-size: var(--text-label);
+	font-weight: 700;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--ink-muted);
+}
+
+.text-gradient-accent {
+	background: linear-gradient(
+		100deg,
+		var(--ink-strong) 0%,
+		var(--accent-ink) 100%
+	);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+
+/* ============================================================
+   LEGACY CLASSES - retired as sections are rebuilt
+   ============================================================ */
 .nav-glow-indicator {
-	background-color: var(--active-element);
+	background-color: var(--accent);
 }
 
 .btn-gradient-brand {
 	background: linear-gradient(
 		90deg,
-		var(--active-element) 0%,
-		var(--bg-fade-start) 55%,
-		var(--active-element) 100%
+		var(--accent) 0%,
+		color-mix(in oklab, var(--accent) 35%, var(--surface-2)) 55%,
+		var(--accent) 100%
 	);
 }
 
-.dark .btn-gradient-brand {
-	background: linear-gradient(
-		90deg,
-		var(--bg-fade-start) 0%,
-		var(--active-element) 50%,
-		var(--bg-fade-start) 100%
+.bg-portrait-fade {
+	background: linear-gradient(to top, var(--accent) 0%, transparent 100%);
+}
+
+.portrait-silhouette-glow {
+	filter: drop-shadow(
+		0 0 25px color-mix(in oklab, var(--accent) 60%, transparent)
 	);
+}
+
+.text-gradient-fade {
+	background: linear-gradient(
+		to right,
+		var(--ink-strong) 0%,
+		var(--accent-ink) 100%
+	);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+
+.text-brand-yellow {
+	color: var(--accent-ink);
 }
 
 .layout-hero-grid {
@@ -149,98 +458,15 @@ body {
 	min-height: 500px;
 }
 
-/* Active-element to react to the panel */
-.bg-portrait-fade {
-	background: linear-gradient(
-		to top,
-		var(--active-element) 0%,
-		transparent 100%
-	);
-}
-
-.portrait-silhouette-glow {
-	filter: drop-shadow(0px 0px 25px var(--active-element));
-}
-
-.text-gradient-fade {
-	background: linear-gradient(
-		to right,
-		var(--heading-color) 0%,
-		var(--active-element) 100%
-	);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	background-clip: text;
-	color: transparent;
-}
-
-.text-brand-yellow {
-	color: var(--active-element);
-}
-
-/* Typographies */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	font-weight: 900;
-	text-transform: uppercase;
-	letter-spacing: -0.025em;
-	line-height: 1.1;
-	color: var(--heading-color);
-	transition: color 0.1s ease;
-}
-
-p {
-	line-height: 1.625;
-	color: var(--text-color);
-	transition: color 0.1s ease;
-}
-
 @media (min-width: 768px) {
 	.layout-hero-portrait {
 		min-height: 600px;
 	}
 }
 
-@theme inline {
-	/* Font mapping - points Tailwind at the next/font variable */
-	--font-sans: var(--font-geist);
-
-	--color-ring: var(--ring);
-	--color-input: var(--input);
-	--color-border: var(--border);
-	--color-background: var(--background);
-	--color-foreground: var(--foreground);
-	--color-card: var(--card);
-	--color-card-foreground: var(--card-foreground);
-	--color-popover: var(--popover);
-	--color-popover-foreground: var(--popover-foreground);
-	--color-primary: var(--primary);
-	--color-primary-foreground: var(--primary-foreground);
-	--color-secondary: var(--secondary);
-	--color-secondary-foreground: var(--secondary-foreground);
-	--color-muted: var(--muted);
-	--color-muted-foreground: var(--muted-foreground);
-	--color-accent: var(--accent);
-	--color-accent-foreground: var(--accent-foreground);
-	--color-destructive: var(--destructive);
-
-	--radius-sm: calc(var(--radius) * 0.6);
-	--radius-md: calc(var(--radius) * 0.8);
-	--radius-lg: var(--radius);
-	--radius-xl: calc(var(--radius) * 1.4);
-	--radius-2xl: calc(var(--radius) * 1.8);
-}
-
-@layer base {
-	* {
-		@apply border-border outline-ring/50;
-	}
-}
-
+/* ============================================================
+   MARQUEE
+   ============================================================ */
 @keyframes infinite-scroll-left {
 	from {
 		transform: translateX(0);
@@ -269,4 +495,24 @@ p {
 
 .hover-pause:hover {
 	animation-play-state: paused;
+}
+
+/* ============================================================
+   MOTION PREFERENCES
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		/* biome-ignore lint/complexity/noImportantStyles: must beat author animations */
+		animation-duration: 0.01ms !important;
+		/* biome-ignore lint/complexity/noImportantStyles: must beat author animations */
+		animation-iteration-count: 1 !important;
+		/* biome-ignore lint/complexity/noImportantStyles: must beat author transitions */
+		transition-duration: 0.01ms !important;
+	}
 }

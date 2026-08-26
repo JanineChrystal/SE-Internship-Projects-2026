@@ -1,7 +1,7 @@
 import { atomWithStorage } from "jotai/utils";
 
 export type ThemeMode = "light" | "dark";
-export type ThemeElement = "water" | "air" | "fire" | "earth";
+export type ThemeElement = "water" | "air" | "fire" | "earth" | "wood";
 
 export const themeModeAtom = atomWithStorage<ThemeMode>("theme-mode", "light");
 export const themeElementAtom = atomWithStorage<ThemeElement>(

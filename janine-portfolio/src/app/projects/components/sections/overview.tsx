@@ -1,10 +1,6 @@
 import Image from "next/image";
+import type { ProjectImage } from "@/src/types/project";
 import SectionTitle from "../../../../components/ui/typography/section-title";
-
-interface ProjectImage {
-	imageUrl: string;
-	altText: string;
-}
 
 interface ProjectOverviewProps {
 	text: string;

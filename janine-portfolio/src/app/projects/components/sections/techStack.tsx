@@ -1,14 +1,9 @@
+import type { ProjectTechnology } from "@/src/types/project";
 import InfiniteSlider from "../../../../components/ui/slider/infinite-slider";
 import SectionTitle from "../../../../components/ui/typography/section-title";
 
-interface Technology {
-	id: number;
-	imageUrl: string;
-	altText: string;
-}
-
 interface TechStackProps {
-	technologies: Technology[];
+	technologies: ProjectTechnology[];
 }
 
 const TechStack = ({ technologies }: TechStackProps) => {

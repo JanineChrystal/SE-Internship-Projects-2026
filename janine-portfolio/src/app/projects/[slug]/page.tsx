@@ -2,7 +2,10 @@ import { notFound } from "next/navigation";
 import FeatureHighlights from "@/src/app/projects/components/sections/features";
 import ProjectOverview from "@/src/app/projects/components/sections/overview";
 import TechStack from "@/src/app/projects/components/sections/techStack";
-import projectsData from "@/src/app/projects/constants/project-detail";
+import PROJECTS, {
+	getProjectBySlug,
+	getProjectIndexBySlug,
+} from "@/src/app/projects/constants/projects";
 import SectionTitle from "@/src/components/ui/typography/section-title";
 
 interface ProjectPageProps {
@@ -11,7 +14,7 @@ interface ProjectPageProps {
 
 // Static params - prerender every known project at build time
 export function generateStaticParams() {
-	return projectsData.map((project) => ({ slug: project.slug }));
+	return PROJECTS.map((project) => ({ slug: project.slug }));
 }
 
 // Closed slug set - any unlisted slug returns a real 404 response
@@ -21,22 +24,20 @@ const IndividualProjectPage = async ({ params }: ProjectPageProps) => {
 	// Await the dynamic routing parameters
 	const { slug } = await params;
 
-	// Match the URL slug against the static project data array
-	const project = projectsData.find((p) => p.slug === slug);
+	// Match the URL slug against the single project data source
+	const project = getProjectBySlug(slug);
 
 	// Unknown slug - render the 404 page instead of the error boundary
 	if (!project) {
 		notFound();
 	}
 
-	// Finds the current project index to navigate neighbors
-	const currentIndex = projectsData.findIndex((p) => p.slug === slug);
+	// Neighbor lookup - drives the previous and next footer links
+	const currentIndex = getProjectIndexBySlug(slug);
 
-	const prevProject = currentIndex > 0 ? projectsData[currentIndex - 1] : null;
+	const prevProject = currentIndex > 0 ? PROJECTS[currentIndex - 1] : null;
 	const nextProject =
-		currentIndex < projectsData.length - 1
-			? projectsData[currentIndex + 1]
-			: null;
+		currentIndex < PROJECTS.length - 1 ? PROJECTS[currentIndex + 1] : null;
 
 	return (
 		<main

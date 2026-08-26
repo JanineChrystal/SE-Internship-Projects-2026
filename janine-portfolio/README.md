@@ -23,14 +23,13 @@ An interactive, responsive developer portfolio built to showcase my software eng
 
 **State, Data & Forms**
 * **Jotai:** Atomic state management used for global theme toggling and panel states.
-* **React Hook Form & Zod:** Schema validation and performant form state management.
+* **Zod:** Schema validation for the contact form, parsed inside the Server Action.
 
 **Styling & UI Components**
 * **Tailwind CSS v4:** Utility-first CSS framework for rapid, responsive UI development.
 * **shadcn/ui & Radix UI:** Accessible, customizable UI component primitives.
 * **Lucide React:** Clean, consistent iconography.
 * **Embla Carousel:** Lightweight and fluid carousel slider components.
-* **Sonner:** Toast notification system for user feedback.
 
 **Animation System**
 * **GSAP (GreenSock):** Powers complex scroll-triggered layout animations and pinned contexts.

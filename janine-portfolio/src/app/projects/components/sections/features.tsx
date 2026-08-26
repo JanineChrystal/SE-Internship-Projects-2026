@@ -1,16 +1,9 @@
 import Image from "next/image";
+import type { ProjectFeature } from "@/src/types/project";
 import SectionTitle from "../../../../components/ui/typography/section-title";
 
-interface Feature {
-	title: string;
-	description: string;
-	imageUrl: string;
-	altText: string;
-	extendedDescription: string;
-}
-
 interface FeatureHighlightsProps {
-	features: Feature[];
+	features: ProjectFeature[];
 }
 
 const FeatureHighlights = ({ features }: FeatureHighlightsProps) => {

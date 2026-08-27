@@ -17,7 +17,7 @@ export const Carousel_Data: SlideData[] = [
 	},
 	{
 		id: 2,
-		imageSrc: "/actsAndEvents/mnet1.webp",
+		imageSrc: "/actsAndEvents/mnet2.webp",
 		altText: "Microsoft Azure Fundamentals Webinar",
 		title: "Microsoft Azure Fundamentals: Build Your Cloud Foundation",
 		date: "February 17, 2026",

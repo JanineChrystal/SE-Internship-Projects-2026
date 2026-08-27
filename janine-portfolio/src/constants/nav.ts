@@ -1,9 +1,11 @@
 import {
 	FolderKanban,
 	Info,
+	Layers,
 	LayoutGrid,
 	type LucideIcon,
 	Mail,
+	Medal,
 	Sparkles,
 	UserRound,
 } from "lucide-react";
@@ -31,6 +33,8 @@ export const SECTION_LINKS: SectionLink[] = [
 	{ label: "Intro", target: "#intro", icon: Sparkles },
 	{ label: "Hero", target: "#hero", icon: UserRound, offsetVh: 0.55 },
 	{ label: "About", target: "#about", icon: Info },
+	{ label: "Stack", target: "#stack", icon: Layers },
+	{ label: "Activities", target: "#activities", icon: Medal },
 	{ label: "Projects", target: "#projects", icon: FolderKanban },
 	{ label: "Contact", target: "#contact", icon: Mail },
 ];

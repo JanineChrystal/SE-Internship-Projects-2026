@@ -23,7 +23,7 @@ export const techStack: techData[] = [
 	{
 		id: 4,
 		imageSrc: "/techStack/Bootstrap.webp",
-		altText: "ASP .NET Core",
+		altText: "Bootstrap",
 	},
 	{
 		id: 5,
@@ -123,6 +123,6 @@ export const techStack: techData[] = [
 	{
 		id: 24,
 		imageSrc: "/techStack/shadcn.png",
-		altText: "GSAP",
+		altText: "shadcn/ui",
 	},
 ];

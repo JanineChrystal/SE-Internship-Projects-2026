@@ -46,7 +46,7 @@ const ScrollStack = ({ children, heightPerCard = 0.9 }: ScrollStackProps) => {
 					const timeline = gsap.timeline({
 						scrollTrigger: {
 							trigger: root,
-							start: "top top",
+							start: "center center",
 							end: () =>
 								`+=${window.innerHeight * heightPerCard * cards.length}`,
 							scrub: 0.7,

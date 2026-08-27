@@ -44,20 +44,40 @@ const Hero = () => {
 					.from(right, { xPercent: 35, opacity: 0 }, 0)
 					.from(portrait, { scale: 1.22, opacity: 0, duration: 1.2 }, 0);
 
-				// Exit stays scroll-driven - the reverse of the entrance
+				// Exit is the reverse of the entrance, scrubbed across the
+				// hero scrolling out of view
+				// fromTo with explicit endpoints keeps it fully reversible -
+				// a plain .to() records whatever value it happens to find when
+				// first activated, which can be mid-entrance
 				const exit = gsap.timeline({
+					defaults: { ease: "none", immediateRender: false },
 					scrollTrigger: {
 						trigger: root,
-						start: "bottom 90%",
+						start: "top top",
 						end: "bottom top",
-						scrub: 0.6,
+						scrub: 0.8,
 					},
 				});
 
 				exit
-					.to(left, { xPercent: -35, opacity: 0, ease: "power2.in" }, 0)
-					.to(right, { xPercent: 35, opacity: 0, ease: "power2.in" }, 0)
-					.to(portrait, { scale: 1.15, opacity: 0.5, ease: "power2.in" }, 0);
+					.fromTo(
+						left,
+						{ xPercent: 0, opacity: 1 },
+						{ xPercent: -35, opacity: 0 },
+						0,
+					)
+					.fromTo(
+						right,
+						{ xPercent: 0, opacity: 1 },
+						{ xPercent: 35, opacity: 0 },
+						0,
+					)
+					.fromTo(
+						portrait,
+						{ scale: 1, opacity: 1 },
+						{ scale: 1.15, opacity: 0.4 },
+						0,
+					);
 
 				return () => {
 					entrance.kill();
@@ -78,7 +98,7 @@ const Hero = () => {
 			id="hero"
 			className="relative w-full min-h-screen overflow-x-clip flex items-center px-6 md:px-16 lg:px-24 py-28"
 		>
-			<div className="w-full grid grid-cols-1 md:grid-cols-[1fr_1.2fr_1fr] gap-10 md:gap-6 items-center">
+			<div className="w-full grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)_minmax(0,1fr)] gap-10 md:gap-6 items-center">
 				{/* Left - identity */}
 				<div className="hero-left flex flex-col text-center md:text-left z-10">
 					<span className="eyebrow mb-3">Portfolio</span>

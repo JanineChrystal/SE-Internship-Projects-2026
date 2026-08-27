@@ -8,9 +8,9 @@ interface RoleCycleProps {
 	className?: string;
 }
 
-const TYPE_MS = 70;
-const DELETE_MS = 35;
-const HOLD_MS = 1600;
+const TYPE_MS = 115;
+const DELETE_MS = 55;
+const HOLD_MS = 2400;
 
 // Type cycle - types a role, holds, deletes, moves to the next
 // The visible text is decorative; the full list is exposed once to

@@ -33,9 +33,9 @@ const ContactCta = () => {
 	return (
 		<section
 			id="contact"
-			className="relative w-full px-6 md:px-16 lg:px-24 py-28 md:py-36"
+			className="relative flex min-h-screen w-full items-center justify-center px-6 py-28 md:px-16 md:py-36 lg:px-24"
 		>
-			<div className="surface-glass rounded-3xl max-w-4xl mx-auto px-6 py-14 md:px-14 md:py-20 flex flex-col items-center text-center gap-6">
+			<div className="surface-glass flex w-full max-w-4xl flex-col items-center gap-6 rounded-3xl px-6 py-14 text-center md:px-14 md:py-20">
 				<span className="eyebrow">{CONTACT_EYEBROW}</span>
 
 				<h2 className="text-h2 font-extrabold text-ink-strong max-w-2xl">

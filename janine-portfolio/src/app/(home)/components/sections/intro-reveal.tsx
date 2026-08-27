@@ -2,8 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { gsap } from "@/lib/gsap";
-import { scrollToPosition } from "@/lib/scroll";
-import { INTRO_LINES, INTRO_SKIP_LABEL } from "../../constants/intro";
+import { INTRO_LINES } from "../../constants/intro";
 
 // 3D text reveal - lines roll up in depth on load
 // Deliberately not scroll-driven: position sticky does not work
@@ -46,11 +45,6 @@ const IntroReveal = () => {
 
 		return () => ctx.revert();
 	}, []);
-
-	// Jump past the intro to the hero
-	const skipIntro = () => {
-		scrollToPosition("#hero", true);
-	};
 
 	return (
 		<section

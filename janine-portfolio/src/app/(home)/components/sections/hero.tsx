@@ -27,74 +27,73 @@ const Hero = () => {
 		const ctx = gsap.context(() => {
 			const mm = gsap.matchMedia();
 
-			mm.add("(prefers-reduced-motion: no-preference)", () => {
-				const left = root.querySelector(".hero-left");
-				const right = root.querySelector(".hero-right");
-				const portrait = root.querySelector(".hero-portrait");
+			// Pinned like the project section - the page holds still and
+			// scroll drives the animation instead of moving past it
+			mm.add(
+				"(min-width: 1024px) and (prefers-reduced-motion: no-preference)",
+				() => {
+					const left = root.querySelector(".hero-left");
+					const right = root.querySelector(".hero-right");
+					const portrait = root.querySelector(".hero-portrait");
 
-				// Explicit start state, then tween to natural position
-				// Using set + to rather than from means neither timeline has
-				// to guess a start value while the other is mid-flight
-				gsap.set(left, { xPercent: -35, opacity: 0 });
-				gsap.set(right, { xPercent: 35, opacity: 0 });
-				gsap.set(portrait, { scale: 1.22, opacity: 0 });
+					const timeline = gsap.timeline({
+						scrollTrigger: {
+							trigger: root,
+							start: "top top",
+							end: () => `+=${window.innerHeight * 1.6}`,
+							scrub: 0.4,
+							pin: true,
+							anticipatePin: 1,
+							invalidateOnRefresh: true,
+						},
+					});
 
-				const entrance = gsap.timeline({
-					paused: true,
-					defaults: { ease: "power3.out", duration: 1 },
-				});
+					// In - columns push inward, portrait zooms out
+					timeline
+						.fromTo(
+							left,
+							{ xPercent: -45, opacity: 0 },
+							{ xPercent: 0, opacity: 1, ease: "power4.out", duration: 0.2 },
+							0,
+						)
+						.fromTo(
+							right,
+							{ xPercent: 45, opacity: 0 },
+							{ xPercent: 0, opacity: 1, ease: "power4.out", duration: 0.2 },
+							0,
+						)
+						.fromTo(
+							portrait,
+							{ scale: 1.25, opacity: 0 },
+							{ scale: 1, opacity: 1, ease: "power4.out", duration: 0.25 },
+							0,
+						)
+						// Hold - everything settled and readable
+						.to({}, { duration: 0.5 })
+						// Out - the exact reverse, portrait fades without resizing
+						.to(left, {
+							xPercent: -45,
+							opacity: 0,
+							ease: "power4.in",
+							duration: 0.2,
+						})
+						.to(
+							right,
+							{ xPercent: 45, opacity: 0, ease: "power4.in", duration: 0.2 },
+							"<",
+						)
+						.to(
+							portrait,
+							{ opacity: 0, ease: "power4.in", duration: 0.2 },
+							"<",
+						);
 
-				entrance
-					.to(left, { xPercent: 0, opacity: 1 }, 0)
-					.to(right, { xPercent: 0, opacity: 1 }, 0)
-					.to(portrait, { scale: 1, opacity: 1, duration: 1.2 }, 0);
-
-				const entranceTrigger = ScrollTrigger.create({
-					trigger: root,
-					start: "top 80%",
-					onEnter: () => entrance.play(),
-					onLeaveBack: () => entrance.reverse(),
-				});
-
-				// Exit is the reverse of the entrance, scrubbed while the hero
-				// scrolls out of view. immediateRender false keeps it from
-				// overwriting the entrance before it is needed
-				const exit = gsap.timeline({
-					defaults: { ease: "none", immediateRender: false },
-					scrollTrigger: {
-						trigger: root,
-						start: "top top",
-						end: "bottom top",
-						scrub: 0.8,
-					},
-				});
-
-				exit
-					.fromTo(
-						left,
-						{ xPercent: 0, opacity: 1 },
-						{ xPercent: -35, opacity: 0 },
-						0,
-					)
-					.fromTo(
-						right,
-						{ xPercent: 0, opacity: 1 },
-						{ xPercent: 35, opacity: 0 },
-						0,
-					)
-					.fromTo(
-						portrait,
-						{ scale: 1, opacity: 1 },
-						{ scale: 1.15, opacity: 0.4 },
-						0,
-					);
-
-				return () => {
-					entranceTrigger.kill();
-					entrance.kill();
-					exit.scrollTrigger?.kill();
-				};
-			});
+					return () => {
+						timeline.scrollTrigger?.kill();
+						gsap.set([left, right, portrait], { clearProps: "all" });
+					};
+				},
+			);
 
 			return () => mm.revert();
 		}, rootRef);

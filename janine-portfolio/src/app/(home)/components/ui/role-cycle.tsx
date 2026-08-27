@@ -10,7 +10,7 @@ interface RoleCycleProps {
 
 const TYPE_MS = 115;
 const DELETE_MS = 55;
-const HOLD_MS = 2400;
+const HOLD_MS = 5000;
 
 // Type cycle - types a role, holds, deletes, moves to the next
 // The visible text is decorative; the full list is exposed once to
@@ -38,28 +38,31 @@ const RoleCycle = ({ roles, className }: RoleCycleProps) => {
 
 		const step = () => {
 			const current = roles[roleIndex];
+			let delay: number;
 
 			if (deleting) {
 				charIndex -= 1;
+				setTyped(current.slice(0, Math.max(charIndex, 0)));
+				delay = DELETE_MS;
+
 				if (charIndex <= 0) {
 					deleting = false;
 					roleIndex = (roleIndex + 1) % roles.length;
 				}
 			} else {
 				charIndex += 1;
+				setTyped(current.slice(0, charIndex));
+
 				if (charIndex >= current.length) {
+					// Word just completed - hold it before deleting
 					deleting = true;
+					delay = HOLD_MS;
+				} else {
+					delay = TYPE_MS;
 				}
 			}
 
-			const next = roles[roleIndex].slice(0, Math.max(charIndex, 0));
-			setTyped(next);
-
-			const atFullWord = !deleting && charIndex >= roles[roleIndex].length;
-			timer.current = setTimeout(
-				step,
-				atFullWord ? HOLD_MS : deleting ? DELETE_MS : TYPE_MS,
-			);
+			timer.current = setTimeout(step, delay);
 		};
 
 		timer.current = setTimeout(step, HOLD_MS);

@@ -417,6 +417,44 @@
 		will-change: transform, opacity;
 	}
 
+	/* Fades a decorative layer out at its edges
+	   One axis per element on purpose: two mask layers on a single
+	   element need mask-composite, and the -webkit alias fights the
+	   standard property, so the fade silently stops working */
+	.reel-mask-y {
+		-webkit-mask-image: linear-gradient(
+			to bottom,
+			transparent 0%,
+			black 24%,
+			black 76%,
+			transparent 100%
+		);
+		mask-image: linear-gradient(
+			to bottom,
+			transparent 0%,
+			black 24%,
+			black 76%,
+			transparent 100%
+		);
+	}
+
+	.reel-mask-x {
+		-webkit-mask-image: linear-gradient(
+			to right,
+			transparent 0%,
+			black 12%,
+			black 88%,
+			transparent 100%
+		);
+		mask-image: linear-gradient(
+			to right,
+			transparent 0%,
+			black 12%,
+			black 88%,
+			transparent 100%
+		);
+	}
+
 	/* Lifts text off a busy backdrop without a solid panel behind it */
 	.text-shadow-pop {
 		text-shadow:

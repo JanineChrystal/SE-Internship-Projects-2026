@@ -94,11 +94,10 @@ const TechStack = () => {
 		>
 			<ReelGallery items={techStack} />
 
-			{/* Vignette, not a colour wash - a flat fill over the reels
-			    made this section read as a different colour block from
-			    the rest of the page */}
-			<div className="pointer-events-none absolute inset-0 z-1 bg-radial-[at_30%_50%] from-transparent via-surface/55 to-surface" />
-			<div className="pointer-events-none absolute inset-0 z-1 bg-linear-to-r from-surface via-surface/25 to-transparent" />
+			{/* Vignette only - the reels are edge-masked, so these just
+			    settle the middle rather than covering a seam */}
+			<div className="pointer-events-none absolute inset-0 z-1 bg-radial-[at_30%_50%] from-transparent via-surface/35 to-surface/80" />
+			<div className="pointer-events-none absolute inset-0 z-1 bg-linear-to-r from-surface/85 via-surface/20 to-transparent" />
 
 			{/* Title sits above both, and lets the pointer through so the
 			    reels stay draggable underneath it */}

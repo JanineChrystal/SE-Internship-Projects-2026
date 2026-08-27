@@ -96,7 +96,10 @@ const ReelGallery = ({
 	}, []);
 
 	return (
-		<div ref={rootRef} className="absolute inset-0 z-0 overflow-hidden">
+		<div
+			ref={rootRef}
+			className="reel-mask-y absolute inset-0 z-0 overflow-hidden"
+		>
 			{/* Names are exposed once here; the reels are decorative */}
 			<ul className="sr-only">
 				{items.map((item) => (
@@ -104,40 +107,42 @@ const ReelGallery = ({
 				))}
 			</ul>
 
-			<div
-				aria-hidden="true"
-				className="reel-stage absolute left-1/2 top-1/2 flex w-[200%] flex-col gap-4 md:gap-6"
-				style={{ transform: `translate(-50%, -50%) rotate(${tilt}deg)` }}
-			>
-				{reels.map((reel, rowIndex) => (
-					<div
-						// biome-ignore lint/suspicious/noArrayIndexKey: rows are positional, not data
-						key={`reel-${rowIndex}`}
-						className="reel-strip flex shrink-0 items-center justify-center"
-					>
-						<div className="reel-drag flex cursor-grab items-center justify-center gap-4 active:cursor-grabbing md:gap-6">
-							{Array.from({ length: repeats }).flatMap((_, pass) =>
-								reel.map((item) => (
-									<div
-										// biome-ignore lint/suspicious/noArrayIndexKey: the pass index distinguishes deliberate duplicates
-										key={`${item.id}-${pass}`}
-										className="relative h-28 w-44 shrink-0 rounded-xl bg-surface-top/80 p-4 shadow-xl md:h-40 md:w-64"
-									>
-										<div className="relative h-full w-full">
-											<Image
-												src={item.imageSrc}
-												alt=""
-												fill
-												sizes="16rem"
-												className="object-contain"
-											/>
+			<div className="reel-mask-x absolute inset-0 overflow-hidden">
+				<div
+					aria-hidden="true"
+					className="reel-stage absolute left-1/2 top-1/2 flex w-[200%] flex-col gap-4 md:gap-6"
+					style={{ transform: `translate(-50%, -50%) rotate(${tilt}deg)` }}
+				>
+					{reels.map((reel, rowIndex) => (
+						<div
+							// biome-ignore lint/suspicious/noArrayIndexKey: rows are positional, not data
+							key={`reel-${rowIndex}`}
+							className="reel-strip flex shrink-0 items-center justify-center"
+						>
+							<div className="reel-drag flex cursor-grab items-center justify-center gap-4 active:cursor-grabbing md:gap-6">
+								{Array.from({ length: repeats }).flatMap((_, pass) =>
+									reel.map((item) => (
+										<div
+											// biome-ignore lint/suspicious/noArrayIndexKey: the pass index distinguishes deliberate duplicates
+											key={`${item.id}-${pass}`}
+											className="relative h-28 w-44 shrink-0 rounded-xl bg-surface-top/80 p-4 shadow-xl md:h-40 md:w-64"
+										>
+											<div className="relative h-full w-full">
+												<Image
+													src={item.imageSrc}
+													alt=""
+													fill
+													sizes="16rem"
+													className="object-contain"
+												/>
+											</div>
 										</div>
-									</div>
-								)),
-							)}
+									)),
+								)}
+							</div>
 						</div>
-					</div>
-				))}
+					))}
+				</div>
 			</div>
 		</div>
 	);

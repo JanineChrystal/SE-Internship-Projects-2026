@@ -55,7 +55,7 @@ const SelfIntro = () => {
 		<section
 			ref={rootRef}
 			id="about"
-			className="relative w-full px-6 md:px-16 lg:px-24 py-28 md:py-36"
+			className="relative flex min-h-screen w-full items-center px-6 py-28 md:px-16 md:py-36 lg:px-24"
 		>
 			<div className="max-w-4xl mx-auto flex flex-col gap-6">
 				<span className="eyebrow self-intro-line">{SELF_INTRO_EYEBROW}</span>

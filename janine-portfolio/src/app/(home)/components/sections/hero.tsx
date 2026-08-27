@@ -41,7 +41,7 @@ const Hero = () => {
 							trigger: root,
 							start: "top top",
 							end: () => `+=${window.innerHeight * 1.6}`,
-							scrub: 0.4,
+							scrub: 0.5,
 							pin: true,
 							anticipatePin: 1,
 							invalidateOnRefresh: true,
@@ -71,20 +71,41 @@ const Hero = () => {
 						// Hold - everything settled and readable
 						.to({}, { duration: 0.3 })
 						// Out - the exact reverse, portrait fades without resizing
-						.to(left, {
-							xPercent: -45,
-							opacity: 0,
-							ease: "power4.in",
-							duration: 0.2,
-						})
-						.to(
+						// fromTo with immediateRender false, not to(): a to() tween
+						// records its start value lazily, so it can capture the
+						// already-exited state and then animate from -45 to -45
+						.fromTo(
+							left,
+							{ xPercent: 0, opacity: 1 },
+							{
+								xPercent: -45,
+								opacity: 0,
+								ease: "power4.in",
+								duration: 0.2,
+								immediateRender: false,
+							},
+						)
+						.fromTo(
 							right,
-							{ xPercent: 45, opacity: 0, ease: "power4.in", duration: 0.2 },
+							{ xPercent: 0, opacity: 1 },
+							{
+								xPercent: 45,
+								opacity: 0,
+								ease: "power4.in",
+								duration: 0.2,
+								immediateRender: false,
+							},
 							"<",
 						)
-						.to(
+						.fromTo(
 							portrait,
-							{ opacity: 0, ease: "power4.in", duration: 0.2 },
+							{ opacity: 1 },
+							{
+								opacity: 0,
+								ease: "power4.in",
+								duration: 0.2,
+								immediateRender: false,
+							},
 							"<",
 						);
 

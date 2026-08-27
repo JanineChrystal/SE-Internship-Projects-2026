@@ -56,19 +56,22 @@ const ScrollStack = ({ children, heightPerCard = 0.9 }: ScrollStackProps) => {
 						},
 					});
 
+					// Each card gets one slot: arrive, hold, then leave as the
+					// next one arrives. Incoming and outgoing must not overlap on
+					// the same card, or it never settles at centre
 					cards.forEach((card, index) => {
 						const isLast = index === cards.length - 1;
 
-						// Incoming card rises into place
+						// Rises into place at the start of its own slot
 						if (index > 0) {
 							timeline.to(
 								card,
-								{ yPercent: 0, opacity: 1, ease: "power2.out", duration: 0.6 },
+								{ yPercent: 0, opacity: 1, ease: "power2.out", duration: 0.5 },
 								index,
 							);
 						}
 
-						// Outgoing card turns and dissolves behind the next
+						// Turns and dissolves exactly as the next card rises
 						if (!isLast) {
 							timeline.to(
 								card,
@@ -78,9 +81,9 @@ const ScrollStack = ({ children, heightPerCard = 0.9 }: ScrollStackProps) => {
 									rotate: -3,
 									opacity: 0,
 									ease: "power2.inOut",
-									duration: 0.6,
+									duration: 0.5,
 								},
-								index + 0.15,
+								index + 1,
 							);
 						}
 					});

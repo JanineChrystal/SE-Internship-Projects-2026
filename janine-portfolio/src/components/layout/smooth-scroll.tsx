@@ -60,7 +60,7 @@ const SmoothScroll = ({ children }: { children: React.ReactNode }) => {
 
 	return (
 		<div id="smooth-wrapper">
-			<div id="smooth-content" className="flex min-h-screen flex-col">
+			<div id="smooth-content" className="relative flex min-h-screen flex-col">
 				{children}
 			</div>
 		</div>

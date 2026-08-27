@@ -15,6 +15,7 @@
 	--el-water-tint: #eaeff6;
 	--el-water-ink-light: #294f7a;
 	--el-water-ink-dark: #81abda;
+	--el-water-on: #ffffff;
 
 	/* Crimson Velvet */
 	--el-fire-deep: #2c0f12;
@@ -22,6 +23,7 @@
 	--el-fire-tint: #f7e9ea;
 	--el-fire-ink-light: #7f242a;
 	--el-fire-ink-dark: #db8085;
+	--el-fire-on: #ffffff;
 
 	/* Emerald Depth */
 	--el-earth-deep: #0f2027;
@@ -29,6 +31,7 @@
 	--el-earth-tint: #e9f6ed;
 	--el-earth-ink-light: #297a42;
 	--el-earth-ink-dark: #81da9c;
+	--el-earth-on: #ffffff;
 
 	/* Amber Dusk */
 	--el-air-deep: #2e2410;
@@ -36,6 +39,7 @@
 	--el-air-tint: #f7f2e9;
 	--el-air-ink-light: #8a6119;
 	--el-air-ink-dark: #e6bd75;
+	--el-air-on: #2e2410;
 
 	/* Walnut Noir */
 	--el-wood-deep: #2e1f1b;
@@ -43,6 +47,7 @@
 	--el-wood-tint: #f2efed;
 	--el-wood-ink-light: #7a4129;
 	--el-wood-ink-dark: #da9b81;
+	--el-wood-on: #ffffff;
 }
 
 /* ============================================================
@@ -56,6 +61,7 @@
 	--el-tint: var(--el-water-tint);
 	--el-ink-light: var(--el-water-ink-light);
 	--el-ink-dark: var(--el-water-ink-dark);
+	--el-on: var(--el-water-on);
 }
 
 [data-element="fire"] {
@@ -64,6 +70,7 @@
 	--el-tint: var(--el-fire-tint);
 	--el-ink-light: var(--el-fire-ink-light);
 	--el-ink-dark: var(--el-fire-ink-dark);
+	--el-on: var(--el-fire-on);
 }
 
 [data-element="earth"] {
@@ -72,6 +79,7 @@
 	--el-tint: var(--el-earth-tint);
 	--el-ink-light: var(--el-earth-ink-light);
 	--el-ink-dark: var(--el-earth-ink-dark);
+	--el-on: var(--el-earth-on);
 }
 
 [data-element="air"] {
@@ -80,6 +88,7 @@
 	--el-tint: var(--el-air-tint);
 	--el-ink-light: var(--el-air-ink-light);
 	--el-ink-dark: var(--el-air-ink-dark);
+	--el-on: var(--el-air-on);
 }
 
 [data-element="wood"] {
@@ -88,6 +97,7 @@
 	--el-tint: var(--el-wood-tint);
 	--el-ink-light: var(--el-wood-ink-light);
 	--el-ink-dark: var(--el-wood-ink-dark);
+	--el-on: var(--el-wood-on);
 }
 
 /* ============================================================
@@ -118,8 +128,8 @@
 		color-mix(in oklab, var(--el-deep) 32%, transparent);
 
 	/* Neumorphism - light source sits top-left */
-	--neu-light: color-mix(in oklab, #ffffff 92%, transparent);
-	--neu-shadow: color-mix(in oklab, var(--el-deep) 22%, transparent);
+	--neu-light: color-mix(in oklab, #ffffff 50%, transparent);
+	--neu-shadow: color-mix(in oklab, var(--el-deep) 30%, transparent);
 
 	--radius: 0.75rem;
 	color-scheme: light;
@@ -205,6 +215,7 @@
 
 	--color-accent: var(--accent);
 	--color-accent-ink: var(--accent-ink);
+	--color-accent-on: var(--el-on);
 
 	--color-el-deep: var(--el-deep);
 	--color-el-mid: var(--el-mid);
@@ -361,6 +372,7 @@
    Requires a flat ground, so it paints its own surface */
 .surface-neu {
 	background: var(--surface-0);
+	border: 1px solid var(--rule-soft);
 	box-shadow:
 		6px 6px 16px var(--neu-shadow),
 		-6px -6px 16px var(--neu-light);

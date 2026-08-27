@@ -45,7 +45,11 @@ const ContactCta = () => {
 				<p className="text-lead text-ink-muted max-w-xl">{CONTACT_BODY}</p>
 
 				<div className="flex flex-col sm:flex-row gap-4 mt-4">
-					<Drawer open={isOpen} onOpenChange={handleOpenChange}>
+					<Drawer
+						direction="left"
+						open={isOpen}
+						onOpenChange={handleOpenChange}
+					>
 						<DrawerTrigger asChild>
 							<Button size="lg" variant="solid">
 								CONNECT

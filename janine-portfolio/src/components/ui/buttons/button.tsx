@@ -11,7 +11,7 @@ export const buttonVariants = cva(
 			variant: {
 				glass: "surface-glass text-ink-strong hover:bg-accent/15",
 				solid:
-					"bg-accent text-surface-top shadow-lg shadow-el-deep/25 hover:opacity-90",
+					"bg-accent text-accent-on shadow-xl shadow-el-deep/45 hover:opacity-90",
 				outline:
 					"border border-accent/40 text-accent-ink hover:bg-accent/10 hover:border-accent/70",
 				ghost: "text-accent-ink hover:bg-accent/10",

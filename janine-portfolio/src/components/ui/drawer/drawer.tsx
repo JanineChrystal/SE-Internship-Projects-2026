@@ -21,8 +21,8 @@ function DrawerOverlay({
 	);
 }
 
-// Slides up from the bottom edge, capped so tall content scrolls
-// inside the panel rather than pushing it off screen
+// Slides in from the left edge, full height, with its own
+// scroll area so long forms stay usable on short screens
 function DrawerContent({
 	className,
 	children,
@@ -33,16 +33,14 @@ function DrawerContent({
 			<DrawerOverlay />
 			<DrawerPrimitive.Content
 				className={cn(
-					"fixed inset-x-0 bottom-0 z-100 mt-24 flex max-h-[92vh] flex-col rounded-t-3xl border-t border-border bg-surface-raised shadow-2xl",
+					"fixed inset-y-0 left-0 z-100 flex h-full w-full max-w-lg flex-col rounded-r-3xl border-r border-border bg-surface-raised shadow-2xl",
 					className,
 				)}
 				{...props}
 			>
-				{/* Grab handle - the affordance for dragging the panel down */}
-				<div className="mx-auto mt-4 h-1.5 w-12 shrink-0 rounded-full bg-ink-muted/40" />
-				<div className="overflow-y-auto px-5 pb-10 pt-4 md:px-8">
-					{children}
-				</div>
+				{/* Grab handle - vertical, since the panel drags sideways */}
+				<div className="absolute right-2 top-1/2 h-12 w-1.5 -translate-y-1/2 rounded-full bg-ink-muted/40" />
+				<div className="overflow-y-auto px-6 py-10 md:px-10">{children}</div>
 			</DrawerPrimitive.Content>
 		</DrawerPortal>
 	);

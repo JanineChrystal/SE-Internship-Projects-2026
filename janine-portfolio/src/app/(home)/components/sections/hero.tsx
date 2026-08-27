@@ -69,7 +69,7 @@ const Hero = () => {
 							0,
 						)
 						// Hold - everything settled and readable
-						.to({}, { duration: 0.5 })
+						.to({}, { duration: 0.3 })
 						// Out - the exact reverse, portrait fades without resizing
 						.to(left, {
 							xPercent: -45,

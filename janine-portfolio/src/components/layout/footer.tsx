@@ -13,7 +13,7 @@ const Footer = (): React.ReactElement => {
 	return (
 		<footer
 			id="site-footer"
-			className="relative z-10 mt-auto w-full border-t border-border px-6 py-16 md:px-16 lg:px-24"
+			className="relative z-10 mt-auto w-full px-6 pb-16 pt-32 md:px-16 lg:px-24"
 		>
 			<div className="mx-auto flex w-full max-w-6xl flex-col gap-12">
 				{/* Identity and socials */}

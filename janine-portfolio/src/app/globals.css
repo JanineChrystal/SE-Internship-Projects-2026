@@ -417,6 +417,13 @@
 		will-change: transform, opacity;
 	}
 
+	/* Lifts text off a busy backdrop without a solid panel behind it */
+	.text-shadow-pop {
+		text-shadow:
+			0 2px 24px color-mix(in oklab, var(--el-deep) 90%, transparent),
+			0 2px 6px color-mix(in oklab, var(--el-deep) 80%, transparent);
+	}
+
 	/* ============================================================
 	   LETTER SWAP
 	   Each character is a two-faced edge rolling on the X axis.

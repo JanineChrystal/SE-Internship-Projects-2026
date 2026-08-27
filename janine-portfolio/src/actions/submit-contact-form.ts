@@ -8,7 +8,7 @@ import { escapeHtml, escapeHtmlWithLineBreaks } from "@/lib/sanitize";
 import {
 	type ContactFormState,
 	contactFormSchema,
-} from "../schemas/contactFormSchema";
+} from "@/src/schemas/contact-form-schema";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 

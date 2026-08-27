@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useMemo, useRef } from "react";
 import { Draggable, gsap } from "@/lib/gsap";
-import type { techData } from "@/src/app/about/constants/techStack";
+import type { techData } from "@/src/constants/tech-stack";
 
 interface ReelGalleryProps {
 	items: techData[];

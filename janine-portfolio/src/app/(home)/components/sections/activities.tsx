@@ -6,11 +6,8 @@ import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { setScrollPaused } from "@/lib/scroll";
-import {
-	Carousel_Data,
-	type SlideData,
-} from "@/src/app/about/constants/actsEvents";
 import SectionTitle from "@/src/components/ui/typography/section-title";
+import { Carousel_Data, type SlideData } from "@/src/constants/activities";
 
 // Activities and events - certificates on a drag-scrolled rail
 // Embla handles the drag physics, so none of that is hand-written

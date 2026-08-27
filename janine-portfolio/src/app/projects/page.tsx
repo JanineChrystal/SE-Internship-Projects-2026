@@ -1,7 +1,23 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import SectionTitle from "@/src/components/ui/typography/section-title";
+import { OG_IMAGE } from "@/src/constants/site";
 import ProjectCard from "../../components/ui/cards/project-card";
 import PROJECTS from "./constants/projects";
+
+export const metadata: Metadata = {
+	title: "Projects",
+	description:
+		"Systems and applications I have built and contributed to, from admin consoles to full-stack web platforms.",
+	alternates: { canonical: "/projects" },
+	openGraph: {
+		title: "Projects",
+		description: "Systems and applications I have built and contributed to.",
+		url: "/projects",
+		type: "website",
+		images: [OG_IMAGE],
+	},
+};
 
 const ProjectsPage = async () => {
 	return (

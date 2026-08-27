@@ -14,6 +14,16 @@ const nextConfig: NextConfig = {
 	},
 
 	devIndicators: false,
+
+	// Retired routes - the home page absorbed both sections
+	// Permanent (308) so search engines transfer the old ranking
+	// rather than treating these as temporary detours
+	async redirects() {
+		return [
+			{ source: "/about", destination: "/#about", permanent: true },
+			{ source: "/contact", destination: "/#contact", permanent: true },
+		];
+	},
 };
 
 export default nextConfig;

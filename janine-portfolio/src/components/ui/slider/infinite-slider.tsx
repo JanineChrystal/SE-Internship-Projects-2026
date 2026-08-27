@@ -23,7 +23,7 @@ const InfiniteSlider = ({ items, direction = "left" }: InfiniteSliderProps) => {
 								src={skill.imageSrc}
 								alt={skill.altText}
 								fill
-								sizes="96px"
+								sizes="192px"
 								className="object-contain p-2"
 							/>
 						</div>
@@ -40,7 +40,7 @@ const InfiniteSlider = ({ items, direction = "left" }: InfiniteSliderProps) => {
 								src={skill.imageSrc}
 								alt={skill.altText}
 								fill
-								sizes="96px"
+								sizes="192px"
 								className="object-contain p-2"
 							/>
 						</div>

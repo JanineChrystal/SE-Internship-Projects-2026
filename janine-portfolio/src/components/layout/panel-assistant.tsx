@@ -3,6 +3,7 @@
 import { useAtom } from "jotai";
 import { ArrowDown, ArrowUp, Moon, Sun } from "lucide-react";
 import { useEffect } from "react";
+import { scrollToBottom, scrollToTop } from "@/lib/scroll";
 import { THEME_ELEMENTS } from "@/src/constants/themeElements";
 import { themeElementAtom, themeModeAtom } from "@/src/store/themeAtom";
 
@@ -23,17 +24,6 @@ const PanelAssistant = () => {
 		html.setAttribute("data-element", element);
 	}, [mode, element]);
 
-	// Scroll to top of the document window
-	// Replaced by the ScrollSmoother API in Stage B
-	const scrollToTop = () => {
-		window.scrollTo({ top: 0, behavior: "smooth" });
-	};
-
-	// Scroll to bottom of the document window
-	const scrollToBottom = () => {
-		window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
-	};
-
 	// Toggle state between light and dark modes
 	const toggleMode = () => {
 		setMode(mode === "light" ? "dark" : "light");
@@ -49,7 +39,7 @@ const PanelAssistant = () => {
 				<div className="flex flex-col gap-2">
 					<button
 						type="button"
-						onClick={scrollToTop}
+						onClick={() => scrollToTop()}
 						aria-label="Scroll to top"
 						className="p-2 rounded-full text-ink-strong hover:bg-accent/15 transition-colors"
 					>
@@ -57,7 +47,7 @@ const PanelAssistant = () => {
 					</button>
 					<button
 						type="button"
-						onClick={scrollToBottom}
+						onClick={() => scrollToBottom()}
 						aria-label="Scroll to bottom"
 						className="p-2 rounded-full text-ink-strong hover:bg-accent/15 transition-colors"
 					>

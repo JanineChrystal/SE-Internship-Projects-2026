@@ -57,7 +57,7 @@ export const tikitingProject: Project = {
 	technologies: [
 		{
 			id: 1,
-			imageUrl: "/techStack/php.webp",
+			imageUrl: "/techStack/php.png",
 			altText: "PHP logo",
 		},
 		{

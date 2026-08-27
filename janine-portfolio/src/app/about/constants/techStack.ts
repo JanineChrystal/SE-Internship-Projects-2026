@@ -82,7 +82,7 @@ export const techStack: techData[] = [
 	},
 	{
 		id: 16,
-		imageSrc: "/techStack/Python.webp",
+		imageSrc: "/techStack/Python.png",
 		altText: "Python",
 	},
 	{
@@ -122,7 +122,7 @@ export const techStack: techData[] = [
 	},
 	{
 		id: 24,
-		imageSrc: "/techStack/shadcn.webp",
+		imageSrc: "/techStack/shadcn.png",
 		altText: "GSAP",
 	},
 ];

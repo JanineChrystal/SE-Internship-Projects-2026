@@ -387,21 +387,40 @@
    ============================================================ */
 .letter-swap {
 	display: inline-flex;
-	perspective: 700px;
 	line-height: 1;
 }
 
 .letter-swap-char {
-	position: relative;
 	display: inline-block;
-	transform-style: preserve-3d;
 	line-height: 1;
+	/* Perspective per character - a shared perspective on the whole
+	   word projects outer letters away from its centre and spreads
+	   them apart */
+	perspective: 1000px;
+}
+
+.letter-swap-inner {
+	position: relative;
+	display: block;
+	transform-style: preserve-3d;
 	will-change: transform;
 	transition: transform 0.42s cubic-bezier(0.65, 0, 0.35, 1);
 	transition-delay: calc(var(--i, 0) * 40ms);
 }
 
-.letter-swap:hover .letter-swap-char {
+.letter-swap-face {
+	display: block;
+	backface-visibility: hidden;
+	transform: translateZ(0.5em);
+}
+
+.letter-swap-face--back {
+	position: absolute;
+	inset: 0;
+	transform: rotateX(90deg) translateZ(0.5em);
+}
+
+.letter-swap:hover .letter-swap-inner {
 	transform: rotateX(-90deg);
 }
 

@@ -34,8 +34,14 @@ const ScrollStack = ({ children, heightPerCard = 0.9 }: ScrollStackProps) => {
 			mm.add(
 				"(min-width: 1024px) and (prefers-reduced-motion: no-preference)",
 				() => {
-					gsap.set(cards, { position: "absolute", inset: 0 });
-					gsap.set(cards.slice(1), { yPercent: 110, opacity: 0 });
+					// The first card stays in normal flow so it defines the
+					// container height; the rest stack on top of it
+					gsap.set(cards.slice(1), {
+						position: "absolute",
+						inset: 0,
+						yPercent: 110,
+						opacity: 0,
+					});
 
 					const timeline = gsap.timeline({
 						scrollTrigger: {
@@ -96,7 +102,7 @@ const ScrollStack = ({ children, heightPerCard = 0.9 }: ScrollStackProps) => {
 	return (
 		<div
 			ref={rootRef}
-			className="scroll-stack relative w-full lg:h-screen flex flex-col lg:block gap-8"
+			className="scroll-stack relative w-full mx-auto max-w-5xl flex flex-col lg:block gap-8"
 		>
 			{children}
 		</div>

@@ -25,18 +25,16 @@ const ProjectTeaser = () => {
 				{featured.map((project) => (
 					<article
 						key={project.slug}
-						className="scroll-stack-card surface-glass rounded-2xl p-6 md:p-10 flex flex-col lg:flex-row gap-8 items-center"
+						className="scroll-stack-card surface-neu rounded-2xl p-6 md:p-10 flex flex-col lg:flex-row gap-8 items-center"
 					>
-						<div className="relative w-full lg:w-1/2 aspect-video rounded-xl overflow-hidden surface-neu-inset p-3">
-							<div className="relative w-full h-full rounded-lg overflow-hidden">
-								<Image
-									src={project.imageSrc}
-									alt={project.altText}
-									fill
-									sizes="(max-width: 1024px) 100vw, 50vw"
-									className="object-contain"
-								/>
-							</div>
+						<div className="relative w-full lg:w-1/2 aspect-video shrink-0">
+							<Image
+								src={project.imageSrc}
+								alt={project.altText}
+								fill
+								sizes="(max-width: 1024px) 100vw, 45vw"
+								className="object-contain"
+							/>
 						</div>
 
 						<div className="w-full lg:w-1/2 flex flex-col gap-4">

@@ -32,38 +32,35 @@ const Hero = () => {
 				const right = root.querySelector(".hero-right");
 				const portrait = root.querySelector(".hero-portrait");
 
-				// Entrance - columns push inward while the portrait zooms out
+				// Entrance plays on load, not on scroll
+				// The hero is the first thing on the page, so a scroll-driven
+				// entrance would already be finished before anyone can see it
 				const entrance = gsap.timeline({
-					scrollTrigger: {
-						trigger: root,
-						start: "top 85%",
-						end: "top 35%",
-						scrub: 0.6,
-					},
+					defaults: { ease: "power3.out", duration: 1 },
 				});
 
 				entrance
-					.from(left, { xPercent: -60, opacity: 0, ease: "power2.out" }, 0)
-					.from(right, { xPercent: 60, opacity: 0, ease: "power2.out" }, 0)
-					.from(portrait, { scale: 1.35, ease: "power2.out" }, 0);
+					.from(left, { xPercent: -35, opacity: 0 }, 0)
+					.from(right, { xPercent: 35, opacity: 0 }, 0)
+					.from(portrait, { scale: 1.22, opacity: 0, duration: 1.2 }, 0);
 
-				// Exit - the same movement, reversed, as the hero leaves
+				// Exit stays scroll-driven - the reverse of the entrance
 				const exit = gsap.timeline({
 					scrollTrigger: {
 						trigger: root,
-						start: "bottom 80%",
+						start: "bottom 90%",
 						end: "bottom top",
 						scrub: 0.6,
 					},
 				});
 
 				exit
-					.to(left, { xPercent: -60, opacity: 0, ease: "power2.in" }, 0)
-					.to(right, { xPercent: 60, opacity: 0, ease: "power2.in" }, 0)
-					.to(portrait, { scale: 1.2, opacity: 0.6, ease: "power2.in" }, 0);
+					.to(left, { xPercent: -35, opacity: 0, ease: "power2.in" }, 0)
+					.to(right, { xPercent: 35, opacity: 0, ease: "power2.in" }, 0)
+					.to(portrait, { scale: 1.15, opacity: 0.5, ease: "power2.in" }, 0);
 
 				return () => {
-					entrance.scrollTrigger?.kill();
+					entrance.kill();
 					exit.scrollTrigger?.kill();
 				};
 			});
@@ -79,7 +76,7 @@ const Hero = () => {
 		<section
 			ref={rootRef}
 			id="hero"
-			className="relative w-full min-h-screen flex items-center px-6 md:px-16 lg:px-24 py-28"
+			className="relative w-full min-h-screen overflow-x-clip flex items-center px-6 md:px-16 lg:px-24 py-28"
 		>
 			<div className="w-full grid grid-cols-1 md:grid-cols-[1fr_1.2fr_1fr] gap-10 md:gap-6 items-center">
 				{/* Left - identity */}

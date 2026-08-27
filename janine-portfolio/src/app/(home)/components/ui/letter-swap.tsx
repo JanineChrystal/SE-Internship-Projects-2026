@@ -22,14 +22,18 @@ const LetterSwap = ({ text, className }: LetterSwapProps) => {
 					// biome-ignore lint/suspicious/noArrayIndexKey: fixed string, characters never reorder
 					key={`${char}-${index}`}
 					className="letter-swap-char"
-					style={{ "--i": index } as CSSProperties}
 					aria-hidden="true"
 				>
-					<span className="letter-swap-face letter-swap-face--front">
-						{char === " " ? " " : char}
-					</span>
-					<span className="letter-swap-face letter-swap-face--back">
-						{char === " " ? " " : char}
+					<span
+						className="letter-swap-inner"
+						style={{ "--i": index } as CSSProperties}
+					>
+						<span className="letter-swap-face letter-swap-face--front">
+							{char === " " ? " " : char}
+						</span>
+						<span className="letter-swap-face letter-swap-face--back">
+							{char === " " ? " " : char}
+						</span>
 					</span>
 				</span>
 			))}

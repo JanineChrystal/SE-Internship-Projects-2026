@@ -15,10 +15,7 @@ function DrawerOverlay({
 }: React.ComponentProps<typeof DrawerPrimitive.Overlay>) {
 	return (
 		<DrawerPrimitive.Overlay
-			className={cn(
-				"fixed inset-0 z-50 bg-el-deep/60 backdrop-blur-sm",
-				className,
-			)}
+			className={cn("fixed inset-0 z-100 bg-el-deep/70", className)}
 			{...props}
 		/>
 	);
@@ -36,7 +33,7 @@ function DrawerContent({
 			<DrawerOverlay />
 			<DrawerPrimitive.Content
 				className={cn(
-					"surface-glass fixed inset-x-0 bottom-0 z-50 mt-24 flex max-h-[92vh] flex-col rounded-t-3xl",
+					"fixed inset-x-0 bottom-0 z-100 mt-24 flex max-h-[92vh] flex-col rounded-t-3xl border-t border-border bg-surface-raised shadow-2xl",
 					className,
 				)}
 				{...props}

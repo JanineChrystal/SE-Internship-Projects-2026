@@ -20,6 +20,11 @@ export function scrollToPosition(target: number | string, smooth = true): void {
 	});
 }
 
+// Freezes smooth scrolling - modals need the page behind them still
+export function setScrollPaused(paused: boolean): void {
+	ScrollSmoother.get()?.paused(paused);
+}
+
 export function scrollToTop(smooth = true): void {
 	scrollToPosition(0, smooth);
 }

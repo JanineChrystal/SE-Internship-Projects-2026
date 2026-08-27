@@ -1,16 +1,27 @@
-export interface NavItem {
+export interface SectionLink {
 	label: string;
-	path: string;
-	// Anchors resolve against sections on the home page
-	isAnchor?: boolean;
+	// Selector of the section this jumps to on the home page
+	target: string;
 }
 
-export const LEFT_LINKS: NavItem[] = [
-	{ label: "Home", path: "/" },
-	{ label: "About Me", path: "/#about", isAnchor: true },
+export interface RouteLink {
+	label: string;
+	path: string;
+}
+
+// Section navigation - lives in the side panel, not the navbar
+// Add a section here and the panel picks it up
+export const SECTION_LINKS: SectionLink[] = [
+	{ label: "Intro", target: "#intro" },
+	{ label: "Home", target: "#hero" },
+	{ label: "About", target: "#about" },
+	{ label: "Projects", target: "#projects" },
+	{ label: "Contact", target: "#contact" },
 ];
 
-export const RIGHT_LINKS: NavItem[] = [
-	{ label: "Projects", path: "/projects" },
-	{ label: "Contact Me", path: "/#contact", isAnchor: true },
+// Real routes, as opposed to in-page sections
+export const ROUTE_LINKS: RouteLink[] = [
+	{ label: "All projects", path: "/projects" },
 ];
+
+export const WORDMARK = "Chrystl.";

@@ -22,7 +22,9 @@ const SmoothScroll = ({ children }: { children: React.ReactNode }) => {
 				content: "#smooth-content",
 				smooth: 1.1,
 				effects: true,
-				normalizeScroll: true,
+				// normalizeScroll intercepts pointer events at the document
+				// level and blocks interaction inside overlays such as the
+				// contact drawer
 			});
 
 			// Page children mount before this effect, so any pinned

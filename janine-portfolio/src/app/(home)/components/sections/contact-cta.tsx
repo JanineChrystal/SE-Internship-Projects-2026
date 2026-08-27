@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+import { setScrollPaused } from "@/lib/scroll";
 import { ContactForm } from "@/src/app/contact/components/contactForm";
 import Button from "@/src/components/ui/buttons/button";
 import {
@@ -19,6 +21,15 @@ import {
 } from "../../constants/contact";
 
 const ContactCta = () => {
+	const [isOpen, setIsOpen] = useState(false);
+
+	// Freeze smooth scrolling while the drawer is up, or the page
+	// keeps scrolling behind the modal
+	const handleOpenChange = (open: boolean) => {
+		setIsOpen(open);
+		setScrollPaused(open);
+	};
+
 	return (
 		<section
 			id="contact"
@@ -34,7 +45,7 @@ const ContactCta = () => {
 				<p className="text-lead text-ink-muted max-w-xl">{CONTACT_BODY}</p>
 
 				<div className="flex flex-col sm:flex-row gap-4 mt-4">
-					<Drawer>
+					<Drawer open={isOpen} onOpenChange={handleOpenChange}>
 						<DrawerTrigger asChild>
 							<Button size="lg" variant="solid">
 								CONNECT

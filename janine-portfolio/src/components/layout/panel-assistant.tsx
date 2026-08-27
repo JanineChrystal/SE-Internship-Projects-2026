@@ -2,8 +2,10 @@
 
 import { useAtom } from "jotai";
 import { ArrowDown, ArrowUp, Moon, Sun } from "lucide-react";
+import Link from "next/link";
 import { useEffect } from "react";
-import { scrollToBottom, scrollToTop } from "@/lib/scroll";
+import { scrollToBottom, scrollToPosition, scrollToTop } from "@/lib/scroll";
+import { ROUTE_LINKS, SECTION_LINKS } from "@/src/constants/nav";
 import { THEME_ELEMENTS } from "@/src/constants/themeElements";
 import { themeElementAtom, themeModeAtom } from "@/src/store/themeAtom";
 
@@ -35,6 +37,35 @@ const PanelAssistant = () => {
 		<div className="fixed top-0 right-0 h-full w-8 z-50 group flex items-center justify-end">
 			{/* Panel - slides into view on hover, glass surface */}
 			<div className="surface-glass rounded-l-3xl py-6 px-3 transform translate-x-full group-hover:translate-x-0 focus-within:translate-x-0 transition-transform duration-300 ease-in-out flex flex-col items-center gap-6 mr-0.5">
+				{/* Section navigation - moved out of the navbar */}
+				<nav
+					aria-label="Sections"
+					className="flex flex-col items-stretch gap-1"
+				>
+					{SECTION_LINKS.map((link) => (
+						<button
+							key={link.target}
+							type="button"
+							onClick={() => scrollToPosition(link.target, true)}
+							className="eyebrow px-3 py-1.5 rounded-full text-left hover:bg-accent/15 hover:text-accent-ink transition-colors"
+						>
+							{link.label}
+						</button>
+					))}
+
+					{ROUTE_LINKS.map((link) => (
+						<Link
+							key={link.path}
+							href={link.path}
+							className="eyebrow px-3 py-1.5 rounded-full text-left hover:bg-accent/15 hover:text-accent-ink transition-colors"
+						>
+							{link.label}
+						</Link>
+					))}
+				</nav>
+
+				<div className="w-full h-px bg-border" />
+
 				{/* Scroll navigation */}
 				<div className="flex flex-col gap-2">
 					<button

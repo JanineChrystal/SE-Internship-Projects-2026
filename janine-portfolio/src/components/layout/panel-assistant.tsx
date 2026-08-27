@@ -97,7 +97,7 @@ const PanelAssistant = () => {
 					className={cn(
 						// shrink-0 matters: the desktop hover strip is only w-8, and
 						// a flex item shrinks below its width unless told not to
-						"surface-glass flex max-h-[80vh] w-16 shrink-0 flex-col items-center gap-3 overflow-y-auto p-2 transition-transform duration-300 ease-in-out",
+						"surface-glass flex max-h-[80vh] w-16 shrink-0 flex-col items-center gap-3 overflow-y-auto no-scrollbar p-2 transition-transform duration-300 ease-in-out",
 						// Desktop - parked off-screen until hover or keyboard focus
 						"lg:mr-0.5 lg:translate-x-full lg:rounded-l-3xl lg:group-hover:translate-x-0 lg:group-focus-within:translate-x-0",
 						// Touch - driven by the sticky trigger instead

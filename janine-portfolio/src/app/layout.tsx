@@ -44,12 +44,12 @@ export default function RootLayout({
 			)}
 		>
 			<body className="relative m-0 p-0">
-				{/* Fixed chrome sits outside the smooth wrapper, or it
-				    would be transformed along with the scrolling content */}
-				<Navbar />
+				{/* The panel is fixed, so it stays outside the smooth wrapper
+				    or it would be transformed with the scrolling content */}
 				<PanelAssistant />
 
 				<SmoothScroll>
+					<Navbar />
 					<main className="w-full grow">{children}</main>
 					<Footer />
 				</SmoothScroll>

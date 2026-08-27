@@ -418,42 +418,6 @@
 	}
 
 	/* ============================================================
-	   TECH FLIP CARD
-	   Logo on the front, name on the back, rotating on Y
-	   Perspective sits on each card so neighbours are unaffected
-	   ============================================================ */
-	.tech-card {
-		perspective: 800px;
-	}
-
-	.tech-card-inner {
-		position: relative;
-		display: grid;
-		width: 100%;
-		height: 100%;
-		transform-style: preserve-3d;
-		transition: transform 0.5s cubic-bezier(0.65, 0, 0.35, 1);
-	}
-
-	.tech-card:hover .tech-card-inner,
-	.tech-card:focus-within .tech-card-inner {
-		transform: rotateY(180deg);
-	}
-
-	.tech-card-face {
-		grid-area: 1 / 1;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		backface-visibility: hidden;
-		border-radius: inherit;
-	}
-
-	.tech-card-face--back {
-		transform: rotateY(180deg);
-	}
-
-	/* ============================================================
 	   LETTER SWAP
 	   Each character is a two-faced edge rolling on the X axis.
 	   Requires line-height 1 so translateZ(0.5em) is half the height.

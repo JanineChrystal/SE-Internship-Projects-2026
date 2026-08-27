@@ -35,7 +35,9 @@ const SelfIntro = () => {
 					scrollTrigger: {
 						trigger: root,
 						start: "top 75%",
-						toggleActions: "play none none reverse",
+						// Restart on the way back up too - otherwise arriving
+						// from below shows the section already settled
+						toggleActions: "restart none restart reverse",
 					},
 				});
 

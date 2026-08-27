@@ -4,6 +4,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import { X } from "lucide-react";
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { setScrollPaused } from "@/lib/scroll";
 import {
 	Carousel_Data,
@@ -94,49 +95,60 @@ const Activities = () => {
 				</div>
 			</div>
 
-			{/* Full-screen viewer */}
-			{active && (
-				<div
-					role="dialog"
-					aria-modal="true"
-					aria-label={active.title}
-					className="fixed inset-0 z-100 flex flex-col items-center justify-center gap-4 bg-el-deep/90 p-4 md:p-10"
-				>
-					{/* Clicking the backdrop dismisses, same as Escape */}
-					<button
-						type="button"
-						onClick={close}
-						aria-label="Close certificate viewer"
-						className="absolute inset-0 cursor-zoom-out"
-					/>
-
-					<div className="relative z-10 h-[75vh] w-full max-w-5xl">
-						<Image
-							src={active.imageSrc}
-							alt={active.altText}
-							fill
-							sizes="100vw"
-							className="object-contain"
-						/>
-					</div>
-
-					<div className="relative z-10 max-w-2xl text-center">
-						<p className="eyebrow">{active.date}</p>
-						<p className="mt-1 font-display text-lg font-bold text-ink-strong">
-							{active.title}
-						</p>
-					</div>
-
-					<button
-						type="button"
-						onClick={close}
-						aria-label="Close certificate viewer"
-						className="surface-glass absolute right-6 top-6 z-10 flex h-11 w-11 items-center justify-center rounded-full text-ink-strong"
+			{/* Full-screen viewer, portalled to the body
+			    ScrollSmoother transforms #smooth-content, and a transformed
+			    ancestor becomes the containing block for fixed children - so
+			    rendered in place this would anchor to the section, not the
+			    viewport */}
+			{active &&
+				createPortal(
+					<div
+						role="dialog"
+						aria-modal="true"
+						aria-label={active.title}
+						className="fixed inset-0 z-100 flex flex-col items-center justify-center gap-6 overflow-hidden bg-el-deep/95 p-6 md:p-10"
 					>
-						<X size={20} />
-					</button>
-				</div>
-			)}
+						{/* Backdrop dismiss, same as Escape */}
+						<button
+							type="button"
+							onClick={close}
+							className="absolute inset-0 cursor-zoom-out"
+						>
+							<span className="sr-only">Close certificate viewer</span>
+						</button>
+
+						<div className="relative z-10 h-[62vh] w-full max-w-5xl md:h-[68vh]">
+							<Image
+								src={active.imageSrc}
+								alt={active.altText}
+								fill
+								sizes="100vw"
+								className="object-contain"
+							/>
+						</div>
+
+						{/* The scrim is dark in both themes, so this text is
+					    deliberately fixed rather than theme-aware */}
+						<div className="relative z-10 max-w-2xl shrink-0 text-center">
+							<p className="font-mono text-xs font-bold uppercase tracking-[0.14em] text-white/60">
+								{active.date}
+							</p>
+							<p className="mt-2 font-display text-base font-bold leading-snug text-white md:text-lg">
+								{active.title}
+							</p>
+						</div>
+
+						<button
+							type="button"
+							onClick={close}
+							className="surface-glass absolute right-6 top-6 z-10 flex h-11 w-11 items-center justify-center rounded-full text-white"
+						>
+							<X size={20} aria-hidden="true" />
+							<span className="sr-only">Close certificate viewer</span>
+						</button>
+					</div>,
+					document.body,
+				)}
 		</section>
 	);
 };

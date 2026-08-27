@@ -98,7 +98,7 @@ const ReelGallery = ({
 	return (
 		<div
 			ref={rootRef}
-			className="reel-mask-y absolute inset-0 z-0 overflow-hidden"
+			className="reel-mask-y absolute inset-x-0 inset-y-[6%] z-0 overflow-hidden"
 		>
 			{/* Names are exposed once here; the reels are decorative */}
 			<ul className="sr-only">

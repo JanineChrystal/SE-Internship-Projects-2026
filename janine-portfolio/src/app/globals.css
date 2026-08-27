@@ -381,6 +381,19 @@
 }
 
 /* ============================================================
+   INTRO REVEAL
+   Perspective on the block so each line rotates in depth
+   ============================================================ */
+.intro-copy {
+	perspective: 900px;
+}
+
+.intro-word {
+	transform-style: preserve-3d;
+	will-change: transform, opacity;
+}
+
+/* ============================================================
    LETTER SWAP
    Each character is a two-faced edge rolling on the X axis.
    Requires line-height 1 so translateZ(0.5em) is half the height.

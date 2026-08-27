@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Hero from "./components/sections/hero";
+import IntroReveal from "./components/sections/intro-reveal";
 import ProjectTeaser from "./components/sections/project-teaser";
 
 export const metadata: Metadata = {
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
 const HomePage = () => {
 	return (
 		<div className="w-full">
+			<IntroReveal />
 			<Hero />
 			<ProjectTeaser />
 		</div>

@@ -32,23 +32,33 @@ const Hero = () => {
 				const right = root.querySelector(".hero-right");
 				const portrait = root.querySelector(".hero-portrait");
 
-				// Entrance plays on load, not on scroll
-				// The hero is the first thing on the page, so a scroll-driven
-				// entrance would already be finished before anyone can see it
+				// Explicit start state, then tween to natural position
+				// Using set + to rather than from means neither timeline has
+				// to guess a start value while the other is mid-flight
+				gsap.set(left, { xPercent: -35, opacity: 0 });
+				gsap.set(right, { xPercent: 35, opacity: 0 });
+				gsap.set(portrait, { scale: 1.22, opacity: 0 });
+
 				const entrance = gsap.timeline({
+					paused: true,
 					defaults: { ease: "power3.out", duration: 1 },
 				});
 
 				entrance
-					.from(left, { xPercent: -35, opacity: 0 }, 0)
-					.from(right, { xPercent: 35, opacity: 0 }, 0)
-					.from(portrait, { scale: 1.22, opacity: 0, duration: 1.2 }, 0);
+					.to(left, { xPercent: 0, opacity: 1 }, 0)
+					.to(right, { xPercent: 0, opacity: 1 }, 0)
+					.to(portrait, { scale: 1, opacity: 1, duration: 1.2 }, 0);
 
-				// Exit is the reverse of the entrance, scrubbed across the
-				// hero scrolling out of view
-				// fromTo with explicit endpoints keeps it fully reversible -
-				// a plain .to() records whatever value it happens to find when
-				// first activated, which can be mid-entrance
+				const entranceTrigger = ScrollTrigger.create({
+					trigger: root,
+					start: "top 80%",
+					onEnter: () => entrance.play(),
+					onLeaveBack: () => entrance.reverse(),
+				});
+
+				// Exit is the reverse of the entrance, scrubbed while the hero
+				// scrolls out of view. immediateRender false keeps it from
+				// overwriting the entrance before it is needed
 				const exit = gsap.timeline({
 					defaults: { ease: "none", immediateRender: false },
 					scrollTrigger: {
@@ -80,6 +90,7 @@ const Hero = () => {
 					);
 
 				return () => {
+					entranceTrigger.kill();
 					entrance.kill();
 					exit.scrollTrigger?.kill();
 				};
@@ -101,9 +112,9 @@ const Hero = () => {
 			<div className="w-full grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)_minmax(0,1fr)] gap-10 md:gap-6 items-center">
 				{/* Left - identity */}
 				<div className="hero-left flex flex-col text-center md:text-left z-10">
-					<span className="eyebrow mb-3">Portfolio</span>
-					<h1 className="text-h1 font-black uppercase leading-none text-ink-strong">
-						<span className="block text-[0.45em] tracking-widest text-ink-muted">
+					<span className="eyebrow mb-4 text-sm">Portfolio</span>
+					<h1 className="font-black uppercase leading-[0.95] text-ink-strong text-[clamp(2.75rem,5.5vw,5rem)]">
+						<span className="block text-[0.4em] tracking-[0.2em] text-ink-muted mb-1">
 							I am
 						</span>
 						<LetterSwap text={HERO_NAME} className="text-gradient-accent" />

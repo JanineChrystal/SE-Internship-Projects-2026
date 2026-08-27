@@ -381,6 +381,43 @@
 }
 
 /* ============================================================
+   LETTER SWAP
+   Each character is a two-faced edge rolling on the X axis.
+   Requires line-height 1 so translateZ(0.5em) is half the height.
+   ============================================================ */
+.letter-swap {
+	display: inline-flex;
+	perspective: 700px;
+	line-height: 1;
+}
+
+.letter-swap-char {
+	position: relative;
+	display: inline-block;
+	transform-style: preserve-3d;
+	line-height: 1;
+	will-change: transform;
+	transition: transform 0.42s cubic-bezier(0.65, 0, 0.35, 1);
+	transition-delay: calc(var(--i, 0) * 40ms);
+}
+
+.letter-swap:hover .letter-swap-char {
+	transform: rotateX(-90deg);
+}
+
+.letter-swap-face {
+	display: block;
+	backface-visibility: hidden;
+	transform: translateZ(0.5em);
+}
+
+.letter-swap-face--back {
+	position: absolute;
+	inset: 0;
+	transform: rotateX(90deg) translateZ(0.5em);
+}
+
+/* ============================================================
    TYPOGRAPHY HELPERS
    ============================================================ */
 .eyebrow {

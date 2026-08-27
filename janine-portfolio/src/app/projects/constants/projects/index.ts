@@ -14,4 +14,11 @@ export const getProjectBySlug = (slug: string): Project | undefined =>
 export const getProjectIndexBySlug = (slug: string): number =>
 	PROJECTS.findIndex((project) => project.slug === slug);
 
+// Featured subset - falls back to the first entries so the teaser
+// is never empty if nobody has flagged anything
+export const getFeaturedProjects = (limit = 3): Project[] => {
+	const flagged = PROJECTS.filter((project) => project.featured);
+	return (flagged.length > 0 ? flagged : PROJECTS).slice(0, limit);
+};
+
 export default PROJECTS;

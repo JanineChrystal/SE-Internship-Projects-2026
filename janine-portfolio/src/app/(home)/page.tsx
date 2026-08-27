@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
-import About from "./components/sections/about";
 import Hero from "./components/sections/hero";
-import Stage from "./components/stage/stage";
-import { StageProvider } from "./contexts/stageContext";
+import ProjectTeaser from "./components/sections/project-teaser";
 
 export const metadata: Metadata = {
 	title: "Janine Chrystal | Portfolio",
@@ -17,13 +15,9 @@ export const metadata: Metadata = {
 
 const HomePage = () => {
 	return (
-		<div className="w-full block">
-			<StageProvider>
-				<Stage>
-					<Hero />
-					<About />
-				</Stage>
-			</StageProvider>
+		<div className="w-full">
+			<Hero />
+			<ProjectTeaser />
 		</div>
 	);
 };

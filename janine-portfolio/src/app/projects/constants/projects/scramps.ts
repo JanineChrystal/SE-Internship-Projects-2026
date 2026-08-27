@@ -2,6 +2,7 @@ import type { Project } from "@/src/types/project";
 
 export const scrampsProject: Project = {
 	slug: "scramps",
+	featured: true,
 	title:
 		"PUP SCRAMPS: Smart Control Resource Acquisition, Monitoring, and Procurements System",
 	date: "June 2025 - January 2026",

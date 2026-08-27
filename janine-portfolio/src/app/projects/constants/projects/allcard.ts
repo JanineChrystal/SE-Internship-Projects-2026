@@ -2,6 +2,7 @@ import type { Project } from "@/src/types/project";
 
 export const allcardProject: Project = {
 	slug: "allcard",
+	featured: true,
 	title: "Admin Console Web Application System",
 	date: "February 2026 - May 2026",
 	role: "Frontend Developer",

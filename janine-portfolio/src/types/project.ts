@@ -24,6 +24,8 @@ export interface ProjectTechnology {
 export interface Project {
 	slug: string;
 	title: string;
+	// Featured projects surface in the home page teaser
+	featured?: boolean;
 	date: string;
 	role: string;
 	description: string;

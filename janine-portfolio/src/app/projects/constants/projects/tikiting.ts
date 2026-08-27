@@ -2,6 +2,7 @@ import type { Project } from "@/src/types/project";
 
 export const tikitingProject: Project = {
 	slug: "tikiting",
+	featured: true,
 	title:
 		"Tikiting Rail : Transforming Train Ticket Card Management Into A Database Application",
 	date: "June 2025 - January 2026",

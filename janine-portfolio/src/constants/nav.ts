@@ -6,6 +6,7 @@ import {
 	type LucideIcon,
 	Mail,
 	Medal,
+	Milestone,
 	Sparkles,
 	UserRound,
 } from "lucide-react";
@@ -33,6 +34,7 @@ export const SECTION_LINKS: SectionLink[] = [
 	{ label: "Intro", target: "#intro", icon: Sparkles },
 	{ label: "Hero", target: "#hero", icon: UserRound, offsetVh: 0.55 },
 	{ label: "About", target: "#about", icon: Info },
+	{ label: "Journey", target: "#journey", icon: Milestone },
 	{ label: "Stack", target: "#stack", icon: Layers },
 	{ label: "Activities", target: "#activities", icon: Medal },
 	{ label: "Projects", target: "#projects", icon: FolderKanban },

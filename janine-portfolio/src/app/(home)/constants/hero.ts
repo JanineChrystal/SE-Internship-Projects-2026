@@ -8,7 +8,7 @@ export const HERO_ROLES: string[] = [
 	"Software Engineer",
 	"Frontend Developer",
 	"System Architect",
-	"Data Enjoyer",
+	"Data Analyst",
 	"Innovator",
 	"Problem Solver",
 	"Builder",

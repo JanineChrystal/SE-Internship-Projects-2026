@@ -39,7 +39,7 @@ export const allcardProject: Project = {
 			extendedDescription: `My primary role in this project was as a Frontend Developer,
 			where I implemented responsive, modular interfaces using React, MUI, and TypeScript.
 			Beyond frontend responsibilities, I also contributed to database design, creating normalized schemas
-			in PostgreSQL to support efficient data flow and integrity. Additionally, I assisted in backend debugging
+			in PostgreSQL to support efficient data flow and integrity. Additionally, I assisted by supporting backend debugging
 			and integration, ensuring seamless communication between the frontend and APIs. This dual contribution positioned
 			me as a full‑stack engineer, bridging user experience with robust data architecture.`,
 		},

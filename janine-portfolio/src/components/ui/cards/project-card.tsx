@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Tag from "@/src/components/ui/tags/tag";
 import Card from "../cards/card";
 import type { BaseCardItem } from ".";
 
@@ -49,13 +50,7 @@ const ProjectCard = ({
 				{tags && tags.length > 0 && (
 					<div className="flex flex-wrap gap-2 pt-4 mt-auto">
 						{tags.map((tag) => (
-							<span
-								key={tag}
-								// Tied tags to  active element color (Water/Fire/Earth/Air) for a custom theme pop
-								className="text-xs font-medium bg-(--active-element)/10 text-(--active-element) border border-(--active-element)/20 px-2.5 py-1 shadow-sm rounded-full"
-							>
-								{tag}
-							</span>
+							<Tag key={tag}>{tag}</Tag>
 						))}
 					</div>
 				)}

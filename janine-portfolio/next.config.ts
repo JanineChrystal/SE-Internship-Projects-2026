@@ -1,20 +1,16 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-	/* For faster compile time */
+	// Faster local compile times
 	experimental: {
 		turbopackFileSystemCacheForDev: true,
 	},
 
-	/*To automatically redirect the user to home page as a default */
-	async redirects() {
-		return [
-			{
-				source: "/", // Captures when a user arrives at the base root URL
-				destination: "/home", // Automatically reroutes the user's path to /home
-				permanent: true, // Triggers a 308 permanent status code for aggressive browser caching
-			},
-		];
+	images: {
+		// AVIF first, WebP fallback - the browser picks via Accept
+		formats: ["image/avif", "image/webp"],
+		// Cache derivatives for a year; sources are content-stable
+		minimumCacheTTL: 31536000,
 	},
 
 	devIndicators: false,

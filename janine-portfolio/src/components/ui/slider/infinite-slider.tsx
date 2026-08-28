@@ -17,13 +17,13 @@ const InfiniteSlider = ({ items, direction = "left" }: InfiniteSliderProps) => {
 					{items.map((skill) => (
 						<div
 							key={`first-${skill.id}`}
-							className="relative w-48 h-48 shrink-0 bg-white-1/2 rounded-xl shadow-sm flex items-center justify-center p-4"
+							className="relative w-48 h-48 shrink-0 bg-background/50 rounded-xl shadow-sm flex items-center justify-center p-4"
 						>
 							<Image
 								src={skill.imageSrc}
 								alt={skill.altText}
 								fill
-								sizes="96px"
+								sizes="192px"
 								className="object-contain p-2"
 							/>
 						</div>
@@ -34,13 +34,13 @@ const InfiniteSlider = ({ items, direction = "left" }: InfiniteSliderProps) => {
 					{items.map((skill) => (
 						<div
 							key={`second-${skill.id}`}
-							className="relative w-48 h-48 shrink-0 bg-white-1/2 rounded-xl shadow-sm flex items-center justify-center p-4"
+							className="relative w-48 h-48 shrink-0 bg-background/50 rounded-xl shadow-sm flex items-center justify-center p-4"
 						>
 							<Image
 								src={skill.imageSrc}
 								alt={skill.altText}
 								fill
-								sizes="96px"
+								sizes="192px"
 								className="object-contain p-2"
 							/>
 						</div>

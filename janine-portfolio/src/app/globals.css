@@ -1,191 +1,614 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
 
+/* ============================================================
+   ELEMENT PALETTES
+   Two shades carry the identity: deep and mid.
+   Tint and ink are derived so text stays legible in both modes.
+   ============================================================ */
 :root {
-	--background: oklch(1 0 0);
-	--foreground: oklch(0.145 0 0);
-	--active-element: var(--color-element-water);
-	--border: oklch(0.922 0 0);
-	--input: oklch(0.922 0 0);
-	--ring: oklch(0.708 0 0);
-	--radius: 0.625rem;
+	/* Navy Mirage */
+	--el-water-deep: #141e30;
+	--el-water-mid: #35577d;
+	--el-water-tint: #eaeff6;
+	--el-water-ink-light: #294f7a;
+	--el-water-ink-dark: #81abda;
+	--el-water-on: #ffffff;
 
-	/* Custom variables for Light Mode backgrounds and text */
-	--bg-fade-start: #ffffff;
-	--bg-fade-end: #ffffff;
-	--heading-color: #000000;
-	--text-color: rgba(0, 0, 0, 0.85);
+	/* Crimson Velvet */
+	--el-fire-deep: #2c0f12;
+	--el-fire-mid: #6b1e23;
+	--el-fire-tint: #f7e9ea;
+	--el-fire-ink-light: #7f242a;
+	--el-fire-ink-dark: #db8085;
+	--el-fire-on: #ffffff;
+
+	/* Emerald Depth */
+	--el-earth-deep: #0f2027;
+	--el-earth-mid: #28623a;
+	--el-earth-tint: #e9f6ed;
+	--el-earth-ink-light: #297a42;
+	--el-earth-ink-dark: #81da9c;
+	--el-earth-on: #ffffff;
+
+	/* Amber Dusk */
+	--el-air-deep: #2e2410;
+	--el-air-mid: #a8761f;
+	--el-air-tint: #f7f2e9;
+	--el-air-ink-light: #8a6119;
+	--el-air-ink-dark: #e6bd75;
+	--el-air-on: #2e2410;
+
+	/* Walnut Noir */
+	--el-wood-deep: #2e1f1b;
+	--el-wood-mid: #5e4b43;
+	--el-wood-tint: #f2efed;
+	--el-wood-ink-light: #7a4129;
+	--el-wood-ink-dark: #da9b81;
+	--el-wood-on: #ffffff;
 }
 
-@theme inline {
-	/* Raw Avatar element colors */
-	--color-brand-yellow: #fff458;
-	--color-element-water: #3b82f6;
-	--color-element-fire: #ef4444;
-	--color-element-earth: #22c55e;
-	--color-element-air: #f59e0b;
-}
-
-/* Dynamic structure for Dark Mode */
-.dark {
-	--background: oklch(0.145 0 0);
-	--foreground: oklch(0.98 0 0);
-
-	/* Custom variables for Dark Mode backgrounds and text */
-	--bg-fade-start: #0f172a; /* Slate 900 */
-	--bg-fade-end: #020617; /* Slate 950 */
-	--heading-color: #ffffff;
-	--text-color: rgba(255, 255, 255, 0.85);
-}
-
-/* Dynamically swap the active element color based on the HTML attribute */
-[data-element="fire"] {
-	--active-element: var(--color-element-fire);
-}
-[data-element="earth"] {
-	--active-element: var(--color-element-earth);
-}
-[data-element="air"] {
-	--active-element: var(--color-element-air);
-}
+/* ============================================================
+   ACTIVE ELEMENT
+   The panel writes data-element on <html>; water is the default.
+   ============================================================ */
+:root,
 [data-element="water"] {
-	--active-element: var(--color-element-water);
-}
-/* Optional fallback to your original brand yellow if you want a 5th option */
-[data-element="yellow"] {
-	--active-element: var(--color-brand-yellow);
-}
-
-/* Map the body to use dynamic variables instead of hardcoded hex codes */
-body {
-	background: linear-gradient(
-		180deg,
-		var(--bg-fade-start) 0%,
-		var(--active-element) 60%,
-		var(--bg-fade-end) 100%
-	);
-	background-attachment: fixed;
-	color: var(--text-color);
-	font-family: Arial, Helvetica, sans-serif;
-	transition:
-		background 0.3s ease,
-		color 0.3s ease;
+	--el-deep: var(--el-water-deep);
+	--el-mid: var(--el-water-mid);
+	--el-tint: var(--el-water-tint);
+	--el-ink-light: var(--el-water-ink-light);
+	--el-ink-dark: var(--el-water-ink-dark);
+	--el-on: var(--el-water-on);
 }
 
-/*** CUSTOM STYLES ***/
-
-/* Replaced brand-yellow with active-element to react to the panel */
-.nav-glow-indicator {
-	background-color: var(--active-element);
+[data-element="fire"] {
+	--el-deep: var(--el-fire-deep);
+	--el-mid: var(--el-fire-mid);
+	--el-tint: var(--el-fire-tint);
+	--el-ink-light: var(--el-fire-ink-light);
+	--el-ink-dark: var(--el-fire-ink-dark);
+	--el-on: var(--el-fire-on);
 }
 
-.btn-gradient-brand {
-	background: linear-gradient(
-		90deg,
-		var(--active-element) 0%,
-		var(--bg-fade-start) 55%,
-		var(--active-element) 100%
-	);
+[data-element="earth"] {
+	--el-deep: var(--el-earth-deep);
+	--el-mid: var(--el-earth-mid);
+	--el-tint: var(--el-earth-tint);
+	--el-ink-light: var(--el-earth-ink-light);
+	--el-ink-dark: var(--el-earth-ink-dark);
+	--el-on: var(--el-earth-on);
 }
 
-.dark .btn-gradient-brand {
-	background: linear-gradient(
-		90deg,
-		var(--bg-fade-start) 0%,
-		var(--active-element) 50%,
-		var(--bg-fade-start) 100%
-	);
+[data-element="air"] {
+	--el-deep: var(--el-air-deep);
+	--el-mid: var(--el-air-mid);
+	--el-tint: var(--el-air-tint);
+	--el-ink-light: var(--el-air-ink-light);
+	--el-ink-dark: var(--el-air-ink-dark);
+	--el-on: var(--el-air-on);
 }
 
-.layout-hero-grid {
-	grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 1fr);
+[data-element="wood"] {
+	--el-deep: var(--el-wood-deep);
+	--el-mid: var(--el-wood-mid);
+	--el-tint: var(--el-wood-tint);
+	--el-ink-light: var(--el-wood-ink-light);
+	--el-ink-dark: var(--el-wood-ink-dark);
+	--el-on: var(--el-wood-on);
 }
 
-.layout-hero-portrait {
-	min-height: 500px;
+/* ============================================================
+   SEMANTIC TOKENS - LIGHT MODE
+   Surfaces take the element tint, so the whole page reacts
+   to the panel and not just the background.
+   ============================================================ */
+:root {
+	--surface-0: var(--el-tint);
+	--surface-1: color-mix(in oklab, var(--el-tint) 45%, #ffffff);
+	--surface-2: #ffffff;
+
+	--ink-strong: #16181c;
+	--ink-body: #33373f;
+	--ink-muted: #5c626b;
+
+	--accent: var(--el-mid);
+	--accent-ink: var(--el-ink-light);
+
+	--rule: color-mix(in oklab, var(--el-mid) 20%, transparent);
+	--rule-soft: color-mix(in oklab, var(--el-mid) 10%, transparent);
+
+	/* Glass - translucent pane over the themed ground */
+	--glass-fill: color-mix(in oklab, #ffffff 62%, transparent);
+	--glass-edge: color-mix(in oklab, #ffffff 85%, transparent);
+	--glass-sheen: color-mix(in oklab, #ffffff 70%, transparent);
+	--glass-cast: 0 10px 30px -12px
+		color-mix(in oklab, var(--el-deep) 32%, transparent);
+
+	/* Neumorphism - light source sits top-left */
+	--neu-light: color-mix(in oklab, var(--surface-2) 55%, transparent);
+	--neu-shadow: color-mix(in oklab, var(--el-deep) 26%, transparent);
+	/* Halo behind text on busy backdrops - light ground, light halo */
+	--text-pop: var(--surface-2);
+
+	--radius: 0.75rem;
+	color-scheme: light;
 }
 
-.layout-portrait-wrapper {
-	aspect-ratio: 4 / 5;
-	min-height: 500px;
+/* ============================================================
+   SEMANTIC TOKENS - DARK MODE
+   The ground becomes the element deep shade, matching the
+   reference palettes directly.
+   ============================================================ */
+.dark {
+	--surface-0: var(--el-deep);
+	--surface-1: color-mix(in oklab, var(--el-deep) 88%, #ffffff);
+	--surface-2: color-mix(in oklab, var(--el-deep) 78%, #ffffff);
+
+	--ink-strong: #f5f7fa;
+	--ink-body: #dde2e9;
+	--ink-muted: #98a1ad;
+
+	--accent: var(--el-mid);
+	--accent-ink: var(--el-ink-dark);
+
+	--rule: color-mix(in oklab, #ffffff 14%, transparent);
+	--rule-soft: color-mix(in oklab, #ffffff 7%, transparent);
+
+	--glass-fill: color-mix(in oklab, #ffffff 10%, transparent);
+	--glass-edge: color-mix(in oklab, #ffffff 22%, transparent);
+	--glass-sheen: color-mix(in oklab, #ffffff 16%, transparent);
+	--glass-cast: 0 10px 30px -12px rgb(0 0 0 / 0.55);
+
+	--neu-light: color-mix(in oklab, var(--el-mid) 26%, transparent);
+	--neu-shadow: rgb(0 0 0 / 0.55);
+	--text-pop: var(--el-deep);
+
+	color-scheme: dark;
 }
 
-/* Active-element to react to the panel */
-.bg-portrait-fade {
-	background: linear-gradient(
-		to top,
-		var(--active-element) 0%,
-		transparent 100%
-	);
+/* ============================================================
+   COMPATIBILITY ALIASES
+   Existing components still read the shadcn token names and
+   --active-element. Mapped here so nothing breaks mid-rebuild.
+   ============================================================ */
+:root,
+.dark {
+	--active-element: var(--accent);
+	--background: var(--surface-0);
+	--foreground: var(--ink-body);
+	--card: var(--surface-1);
+	--card-foreground: var(--ink-body);
+	--popover: var(--surface-1);
+	--popover-foreground: var(--ink-body);
+	--primary: var(--accent);
+	--primary-foreground: var(--surface-2);
+	--secondary: var(--surface-1);
+	--secondary-foreground: var(--ink-body);
+	--muted: var(--surface-1);
+	--muted-foreground: var(--ink-muted);
+	--accent-foreground: var(--ink-strong);
+	--border: var(--rule);
+	--input: var(--rule);
+	--ring: var(--accent);
+	--destructive: #b0392c;
 }
 
-.portrait-silhouette-glow {
-	filter: drop-shadow(0px 0px 25px var(--active-element));
+.dark {
+	--destructive: #e8796b;
 }
 
-.text-gradient-fade {
-	background: linear-gradient(
-		to right,
-		var(--heading-color) 0%,
-		var(--active-element) 100%
-	);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	background-clip: text;
-	color: transparent;
-}
-
-.text-brand-yellow {
-	color: var(--active-element);
-}
-
-/* Typographies */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	font-weight: 900;
-	text-transform: uppercase;
-	letter-spacing: -0.025em;
-	line-height: 1.1;
-	color: var(--heading-color);
-	transition: color 0.1s ease;
-}
-
-p {
-	line-height: 1.625;
-	color: var(--text-color);
-	transition: color 0.1s ease;
-}
-
-@media (min-width: 768px) {
-	.layout-hero-portrait {
-		min-height: 600px;
-	}
-}
-
+/* ============================================================
+   TAILWIND THEME MAPPING
+   ============================================================ */
 @theme inline {
-	--color-ring: var(--ring);
-	--color-input: var(--input);
+	--font-sans: var(--font-geist);
+	--font-display: var(--font-archivo);
+	--font-mono: var(--font-geist-mono);
+
+	--color-surface: var(--surface-0);
+	--color-surface-raised: var(--surface-1);
+	--color-surface-top: var(--surface-2);
+
+	--color-ink: var(--ink-body);
+	--color-ink-strong: var(--ink-strong);
+	--color-ink-muted: var(--ink-muted);
+
+	--color-accent: var(--accent);
+	--color-accent-ink: var(--accent-ink);
+	--color-accent-on: var(--el-on);
+
+	--color-el-deep: var(--el-deep);
+	--color-el-mid: var(--el-mid);
+	--color-el-tint: var(--el-tint);
+
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-card: var(--card);
+	--color-card-foreground: var(--card-foreground);
+	--color-popover: var(--popover);
+	--color-popover-foreground: var(--popover-foreground);
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-secondary: var(--secondary);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-destructive: var(--destructive);
 	--color-border: var(--border);
+	--color-input: var(--input);
+	--color-ring: var(--ring);
+
 	--radius-sm: calc(var(--radius) * 0.6);
 	--radius-md: calc(var(--radius) * 0.8);
 	--radius-lg: var(--radius);
-	--radius-xl: calc(var(--radius) * 1.4);
-	--radius-2xl: calc(var(--radius) * 1.8);
+	--radius-xl: calc(var(--radius) * 1.6);
+	--radius-2xl: calc(var(--radius) * 2.2);
+
+	--text-display: clamp(3rem, 9vw, 7rem);
+	--text-h1: clamp(2.25rem, 5.5vw, 4rem);
+	--text-h2: clamp(1.75rem, 3.6vw, 2.75rem);
+	--text-h3: clamp(1.25rem, 2vw, 1.6rem);
+	--text-lead: clamp(1.05rem, 1.5vw, 1.3rem);
 }
 
+/* ============================================================
+   BASE
+   ============================================================ */
 @layer base {
 	* {
-		@apply border-border outline-ring/50;
+		@apply border-border;
+	}
+
+	body {
+		background: var(--surface-0);
+		color: var(--ink-body);
+		font-family: var(--font-sans);
+		line-height: 1.6;
+		-webkit-font-smoothing: antialiased;
+		transition:
+			background-color 0.4s ease,
+			color 0.4s ease;
+	}
+
+	/* Themed ground - fixed layer, safe inside a transformed wrapper */
+	body::before {
+		content: "";
+		position: fixed;
+		inset: 0;
+		z-index: -1;
+		pointer-events: none;
+		background:
+			radial-gradient(
+				120% 90% at 50% 0%,
+				color-mix(in oklab, var(--el-mid) 26%, transparent) 0%,
+				transparent 62%
+			),
+			linear-gradient(
+				180deg,
+				var(--surface-0) 0%,
+				color-mix(in oklab, var(--el-mid) 14%, var(--surface-0)) 55%,
+				var(--surface-0) 100%
+			);
+		transition: background 0.4s ease;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: var(--font-display);
+		color: var(--ink-strong);
+		letter-spacing: -0.025em;
+		line-height: 1.05;
+		text-wrap: balance;
+	}
+
+	p {
+		color: var(--ink-body);
+	}
+
+	::selection {
+		background: color-mix(in oklab, var(--accent) 35%, transparent);
+		color: var(--ink-strong);
+	}
+
+	:focus-visible {
+		outline: 2px solid var(--accent-ink);
+		outline-offset: 2px;
+		border-radius: var(--radius-sm);
 	}
 }
 
+/* Custom classes live in the components layer so Tailwind
+   utilities can override them - unlayered CSS beats layered CSS,
+   which made .surface-glass position:relative win over .fixed */
+@layer components {
+	.no-scrollbar {
+		scrollbar-width: none;
+	}
+
+	.no-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
+
+	/* ============================================================
+	   SURFACE EFFECTS
+	   ============================================================ */
+
+	/* Glass - for buttons, panels and floating controls
+	   isolation + negative z-index keeps the sheen above the
+	   background but behind the content */
+	.surface-glass {
+		position: relative;
+		isolation: isolate;
+		background: var(--glass-fill);
+		border: 1px solid var(--glass-edge);
+		box-shadow:
+			inset 0 1px 0 var(--glass-sheen),
+			var(--glass-cast);
+		backdrop-filter: blur(14px) saturate(150%);
+		-webkit-backdrop-filter: blur(14px) saturate(150%);
+	}
+
+	/* Diagonal sheen across the upper-left corner */
+	.surface-glass::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		border-radius: inherit;
+		pointer-events: none;
+		background: linear-gradient(
+			135deg,
+			var(--glass-sheen) 0%,
+			transparent 42%,
+			transparent 100%
+		);
+		opacity: 0.7;
+	}
+
+	/* Solid fallback where backdrop-filter is unsupported */
+	@supports not (
+			(backdrop-filter: blur(1px)) or
+			(-webkit-backdrop-filter: blur(1px))
+		) {
+		.surface-glass {
+			background: var(--surface-2);
+		}
+	}
+
+	/* Neumorphism - for image frames and inert panels
+	   Requires a flat ground, so it paints its own surface */
+	.surface-neu {
+		background: var(--surface-0);
+		border: 1px solid var(--rule-soft);
+		box-shadow:
+			6px 6px 16px var(--neu-shadow),
+			-6px -6px 16px var(--neu-light);
+	}
+
+	.surface-neu-inset {
+		background: var(--surface-0);
+		box-shadow:
+			inset 5px 5px 12px var(--neu-shadow),
+			inset -5px -5px 12px var(--neu-light);
+	}
+
+	/* Element glow - outer glow keyed to the active palette */
+	.glow-element {
+		filter: drop-shadow(
+			0 0 24px color-mix(in oklab, var(--accent) 55%, transparent)
+		);
+	}
+
+	/* ============================================================
+	   INTRO REVEAL
+	   Perspective on the block so each line rotates in depth
+	   ============================================================ */
+	.intro-copy {
+		perspective: 900px;
+	}
+
+	.intro-word {
+		transform-style: preserve-3d;
+		will-change: transform, opacity;
+	}
+
+	/* Fades a decorative layer out at its edges
+	   One axis per element on purpose: two mask layers on a single
+	   element need mask-composite, and the -webkit alias fights the
+	   standard property, so the fade silently stops working */
+	.reel-mask-y {
+		-webkit-mask-image: linear-gradient(
+			to bottom,
+			transparent 0%,
+			black 36%,
+			black 74%,
+			transparent 100%
+		);
+		mask-image: linear-gradient(
+			to bottom,
+			transparent 0%,
+			black 36%,
+			black 74%,
+			transparent 100%
+		);
+	}
+
+	.reel-mask-x {
+		-webkit-mask-image: linear-gradient(
+			to right,
+			transparent 0%,
+			black 12%,
+			black 88%,
+			transparent 100%
+		);
+		mask-image: linear-gradient(
+			to right,
+			transparent 0%,
+			black 12%,
+			black 88%,
+			transparent 100%
+		);
+	}
+
+	/* Lifts text off a busy backdrop without a solid panel behind it */
+	.text-shadow-pop {
+		text-shadow:
+			0 2px 26px color-mix(in oklab, var(--text-pop) 92%, transparent),
+			0 2px 8px color-mix(in oklab, var(--text-pop) 85%, transparent),
+			0 0 2px color-mix(in oklab, var(--text-pop) 70%, transparent);
+	}
+
+	/* ============================================================
+	   LETTER SWAP
+	   Each character is a two-faced edge rolling on the X axis.
+	   Requires line-height 1 so translateZ(0.5em) is half the height.
+	   ============================================================ */
+	.letter-swap {
+		display: inline-flex;
+		line-height: 1;
+	}
+
+	.letter-swap-char {
+		display: inline-block;
+		line-height: 1;
+		/* Perspective per character - a shared perspective on the whole
+		   word projects outer letters away from its centre and spreads
+		   them apart */
+		perspective: 1000px;
+	}
+
+	.letter-swap-inner {
+		position: relative;
+		display: block;
+		transform-style: preserve-3d;
+		will-change: transform;
+		transition: transform 0.42s cubic-bezier(0.65, 0, 0.35, 1);
+		transition-delay: calc(var(--i, 0) * 40ms);
+	}
+
+	.letter-swap-face {
+		display: block;
+		backface-visibility: hidden;
+		transform: translateZ(0.5em);
+	}
+
+	.letter-swap-face--back {
+		position: absolute;
+		inset: 0;
+		transform: rotateX(90deg) translateZ(0.5em);
+	}
+
+	.letter-swap:hover .letter-swap-inner {
+		transform: rotateX(-90deg);
+	}
+
+	.letter-swap-face {
+		display: block;
+		backface-visibility: hidden;
+		transform: translateZ(0.5em);
+	}
+
+	.letter-swap-face--back {
+		position: absolute;
+		inset: 0;
+		transform: rotateX(90deg) translateZ(0.5em);
+	}
+
+	/* ============================================================
+	   TYPOGRAPHY HELPERS
+	   ============================================================ */
+	.eyebrow {
+		font-family: var(--font-mono);
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		color: var(--ink-muted);
+	}
+
+	.text-gradient-accent {
+		background: linear-gradient(
+			100deg,
+			var(--ink-strong) 0%,
+			var(--accent-ink) 100%
+		);
+		-webkit-background-clip: text;
+		background-clip: text;
+		color: transparent;
+	}
+
+	/* ============================================================
+	   LEGACY CLASSES - retired as sections are rebuilt
+	   ============================================================ */
+	.nav-glow-indicator {
+		background-color: var(--accent);
+	}
+
+	.btn-gradient-brand {
+		background: linear-gradient(
+			90deg,
+			var(--accent) 0%,
+			color-mix(in oklab, var(--accent) 35%, var(--surface-2)) 55%,
+			var(--accent) 100%
+		);
+	}
+
+	.bg-portrait-fade {
+		background: linear-gradient(to top, var(--accent) 0%, transparent 100%);
+	}
+
+	.portrait-silhouette-glow {
+		filter: drop-shadow(
+			0 0 25px color-mix(in oklab, var(--accent) 60%, transparent)
+		);
+	}
+
+	.text-gradient-fade {
+		background: linear-gradient(
+			to right,
+			var(--ink-strong) 0%,
+			var(--accent-ink) 100%
+		);
+		-webkit-background-clip: text;
+		background-clip: text;
+		color: transparent;
+	}
+
+	.text-brand-yellow {
+		color: var(--accent-ink);
+	}
+
+	.layout-hero-grid {
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 1fr);
+	}
+
+	.layout-hero-portrait {
+		min-height: 500px;
+	}
+
+	.layout-portrait-wrapper {
+		aspect-ratio: 4 / 5;
+		min-height: 500px;
+	}
+
+	@media (min-width: 768px) {
+		.layout-hero-portrait {
+			min-height: 600px;
+		}
+	}
+}
+
+/* ============================================================
+   MARQUEE
+   ============================================================ */
 @keyframes infinite-scroll-left {
 	from {
 		transform: translateX(0);
@@ -214,4 +637,37 @@ p {
 
 .hover-pause:hover {
 	animation-play-state: paused;
+}
+
+/* ============================================================
+   AUTO CYCLE PROGRESS
+   ============================================================ */
+@keyframes cycle-progress {
+	from {
+		transform: scaleX(0);
+	}
+	to {
+		transform: scaleX(1);
+	}
+}
+
+.cycle-progress {
+	transform-origin: left;
+	animation: cycle-progress linear forwards;
+}
+
+/* ============================================================
+   MOTION PREFERENCES
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		/* biome-ignore lint/complexity/noImportantStyles: must beat author animations */
+		animation-duration: 0.01ms !important;
+		/* biome-ignore lint/complexity/noImportantStyles: must beat author animations */
+		animation-iteration-count: 1 !important;
+		/* biome-ignore lint/complexity/noImportantStyles: must beat author transitions */
+		transition-duration: 0.01ms !important;
+	}
 }

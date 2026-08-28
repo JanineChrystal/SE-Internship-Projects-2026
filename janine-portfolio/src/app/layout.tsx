@@ -1,12 +1,27 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Geist } from "next/font/google";
+import { Archivo, Geist, Geist_Mono } from "next/font/google";
 import { cn } from "@/lib/utils";
 import Footer from "../components/layout/footer";
 import Navbar from "../components/layout/nav";
 import PanelAssistant from "../components/layout/panel-assistant";
+import SmoothScroll from "../components/layout/smooth-scroll";
 
-const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
+// Body face - mapped to Tailwind's --font-sans in globals.css
+const geist = Geist({ subsets: ["latin"], variable: "--font-geist" });
+
+// Display face - headings and the hero wordmark
+const archivo = Archivo({
+	subsets: ["latin"],
+	variable: "--font-archivo",
+	weight: ["600", "700", "800", "900"],
+});
+
+// Utility face - labels, dates and technical tags
+const geistMono = Geist_Mono({
+	subsets: ["latin"],
+	variable: "--font-geist-mono",
+});
 
 export const metadata: Metadata = {
 	title: "Chrystl",
@@ -19,12 +34,25 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="en" className={cn("font-sans", geist.variable)}>
-			<body className="relative min-h-screen flex flex-col m-0 p-0">
-				<Navbar />
-				<main className="w-full grow">{children}</main>
+		<html
+			lang="en"
+			className={cn(
+				"font-sans",
+				geist.variable,
+				archivo.variable,
+				geistMono.variable,
+			)}
+		>
+			<body className="relative m-0 p-0">
+				{/* The panel is fixed, so it stays outside the smooth wrapper
+				    or it would be transformed with the scrolling content */}
 				<PanelAssistant />
-				<Footer />
+
+				<SmoothScroll>
+					<Navbar />
+					<main className="w-full grow">{children}</main>
+					<Footer />
+				</SmoothScroll>
 			</body>
 		</html>
 	);

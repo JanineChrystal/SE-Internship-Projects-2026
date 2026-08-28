@@ -1,10 +1,6 @@
 import Image from "next/image";
+import type { ProjectImage } from "@/src/types/project";
 import SectionTitle from "../../../../components/ui/typography/section-title";
-
-interface ProjectImage {
-	imageUrl: string;
-	altText: string;
-}
 
 interface ProjectOverviewProps {
 	text: string;
@@ -22,7 +18,7 @@ const ProjectOverview = ({ text, images }: ProjectOverviewProps) => {
 			{/* // Bento Box Grid Layout */}
 			<div className="grid grid-cols-1 lg:grid-cols-3 gap-6 min-h-100">
 				<div className="rounded-3xl p-8 flex lg:col-span-1 shadow-2xl transition-transform duration-200 hover:-translate-y-1">
-					<p className="text-foreground-800 font-semibold leading-relaxed text-justify">
+					<p className="text-foreground/80 font-semibold leading-relaxed text-justify">
 						{text}
 					</p>
 				</div>
@@ -35,6 +31,7 @@ const ProjectOverview = ({ text, images }: ProjectOverviewProps) => {
 									src={images[0].imageUrl}
 									alt={images[0].altText}
 									fill
+									sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
 									className="object-cover w-full h-full absolute inset-0"
 								/>
 							) : (
@@ -47,6 +44,7 @@ const ProjectOverview = ({ text, images }: ProjectOverviewProps) => {
 									src={images[1].imageUrl}
 									alt={images[1].altText}
 									fill
+									sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
 									className="object-cover w-full h-full absolute inset-0"
 								/>
 							) : (
@@ -60,6 +58,7 @@ const ProjectOverview = ({ text, images }: ProjectOverviewProps) => {
 								src={images[2].imageUrl}
 								alt={images[2].altText}
 								fill
+								sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
 								className="object-cover w-full h-full absolute inset-0"
 							/>
 						) : (

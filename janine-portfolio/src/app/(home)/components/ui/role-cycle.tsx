@@ -1,0 +1,95 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import { cn } from "@/lib/utils";
+
+interface RoleCycleProps {
+	roles: string[];
+	className?: string;
+}
+
+const TYPE_MS = 115;
+const DELETE_MS = 55;
+const HOLD_MS = 3500;
+
+// Type cycle - types a role, holds, deletes, moves to the next
+// The visible text is decorative; the full list is exposed once to
+// assistive tech so the heading has a stable accessible name
+const RoleCycle = ({ roles, className }: RoleCycleProps) => {
+	const [typed, setTyped] = useState(roles[0] ?? "");
+	const [isStatic, setIsStatic] = useState(true);
+	const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+	useEffect(() => {
+		if (roles.length === 0) {
+			return;
+		}
+
+		// Reduced motion keeps the first role on screen, unmoving
+		if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+			return;
+		}
+
+		setIsStatic(false);
+
+		let roleIndex = 0;
+		let charIndex = roles[0].length;
+		let deleting = true;
+
+		const step = () => {
+			const current = roles[roleIndex];
+			let delay: number;
+
+			if (deleting) {
+				charIndex -= 1;
+				setTyped(current.slice(0, Math.max(charIndex, 0)));
+				delay = DELETE_MS;
+
+				if (charIndex <= 0) {
+					deleting = false;
+					roleIndex = (roleIndex + 1) % roles.length;
+				}
+			} else {
+				charIndex += 1;
+				setTyped(current.slice(0, charIndex));
+
+				if (charIndex >= current.length) {
+					// Word just completed - hold it before deleting
+					deleting = true;
+					delay = HOLD_MS;
+				} else {
+					delay = TYPE_MS;
+				}
+			}
+
+			timer.current = setTimeout(step, delay);
+		};
+
+		timer.current = setTimeout(step, HOLD_MS);
+
+		return () => {
+			if (timer.current) {
+				clearTimeout(timer.current);
+			}
+		};
+	}, [roles]);
+
+	return (
+		<span className={cn("inline-flex items-baseline", className)}>
+			<span className="sr-only">{roles.join(", ")}</span>
+
+			<span aria-hidden="true" className="whitespace-pre">
+				{typed}
+			</span>
+
+			{!isStatic && (
+				<span
+					aria-hidden="true"
+					className="ml-1 inline-block w-[0.08em] self-stretch bg-accent-ink animate-pulse"
+				/>
+			)}
+		</span>
+	);
+};
+
+export default RoleCycle;

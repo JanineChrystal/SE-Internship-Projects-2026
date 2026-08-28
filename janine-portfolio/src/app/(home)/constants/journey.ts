@@ -107,6 +107,16 @@ export const JOURNEY_MILESTONES: JourneyMilestone[] = [
 	},
 ];
 
+// Milestone ids, derived once - a fresh array each render would
+// restart the auto cycle countdown on every render
+export const JOURNEY_IDS: string[] = JOURNEY_MILESTONES.map(
+	(milestone) => milestone.id,
+);
+
+// Auto cycle - how long each milestone holds before advancing
+// Stops for good once the visitor picks a milestone themselves
+export const JOURNEY_CYCLE_INTERVAL_MS = 5000;
+
 export const JOURNEY_PREV_LABEL = "Previous milestone";
 
 export const JOURNEY_NEXT_LABEL = "Next milestone";

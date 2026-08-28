@@ -3,12 +3,15 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import { Tabs } from "radix-ui";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import SectionTitle from "@/src/components/ui/typography/section-title";
+import { useAutoCycle } from "@/src/hooks/use-auto-cycle";
 import {
+	JOURNEY_CYCLE_INTERVAL_MS,
 	JOURNEY_DESCRIPTION,
 	JOURNEY_EYEBROW,
+	JOURNEY_IDS,
 	JOURNEY_MILESTONES,
 	JOURNEY_NEXT_LABEL,
 	JOURNEY_PREV_LABEL,
@@ -23,29 +26,51 @@ const stepButtonClasses =
 // the axis below it
 const Journey = () => {
 	const [activeIndex, setActiveIndex] = useState(0);
+	const [userTookControl, setUserTookControl] = useState(false);
+	const rootRef = useRef<HTMLElement>(null);
 
 	const active = JOURNEY_MILESTONES[activeIndex];
 
-	const step = (delta: number) => {
-		const next = activeIndex + delta;
-
-		if (next >= 0 && next < JOURNEY_MILESTONES.length) {
-			setActiveIndex(next);
-		}
-	};
-
-	const selectById = (id: string) => {
-		const index = JOURNEY_MILESTONES.findIndex(
-			(milestone) => milestone.id === id,
-		);
+	const goToId = (id: string) => {
+		const index = JOURNEY_IDS.indexOf(id);
 
 		if (index !== -1) {
 			setActiveIndex(index);
 		}
 	};
 
+	// Auto advance until the visitor picks a point themselves
+	// Cycling runs at every width here, unlike the projects rail: the
+	// same card and axis are on screen at all sizes
+	const { isCycling, isPaused } = useAutoCycle({
+		items: JOURNEY_IDS,
+		current: active.id,
+		onAdvance: goToId,
+		intervalMs: JOURNEY_CYCLE_INTERVAL_MS,
+		stopped: userTookControl,
+		containerRef: rootRef,
+		minWidthPx: 0,
+	});
+
+	const step = (delta: number) => {
+		const next = activeIndex + delta;
+
+		if (next >= 0 && next < JOURNEY_MILESTONES.length) {
+			setActiveIndex(next);
+			setUserTookControl(true);
+		}
+	};
+
+	// Radix only fires this for real interaction, so auto advancing
+	// writes through goToId and never trips the latch
+	const selectById = (id: string) => {
+		goToId(id);
+		setUserTookControl(true);
+	};
+
 	return (
 		<section
+			ref={rootRef}
 			id="journey"
 			className="relative flex min-h-screen w-full items-center px-6 py-20 md:px-16 lg:px-24"
 		>
@@ -122,6 +147,9 @@ const Journey = () => {
 						<JourneyTimeline
 							milestones={JOURNEY_MILESTONES}
 							activeIndex={activeIndex}
+							isCycling={isCycling}
+							isPaused={isPaused}
+							intervalMs={JOURNEY_CYCLE_INTERVAL_MS}
 						/>
 					</div>
 				</Tabs.Root>

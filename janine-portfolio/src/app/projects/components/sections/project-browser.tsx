@@ -24,6 +24,9 @@ import {
 	EMPTY_RESULTS_BODY,
 	EMPTY_RESULTS_TITLE,
 	FILTER_VISIBILITY_THRESHOLD,
+	RAIL_GAP_REM,
+	RAIL_ITEM_HEIGHT_REM,
+	VISIBLE_RAIL_ITEMS,
 } from "../../constants/browser";
 import ProjectFilterBar from "../ui/project-filter-bar";
 import ProjectSummary from "../ui/project-summary";
@@ -81,6 +84,13 @@ const ProjectBrowser = ({ projects }: ProjectBrowserProps) => {
 		minWidthPx: AUTO_CYCLE_MIN_WIDTH_PX,
 	});
 
+	// Height of exactly VISIBLE_RAIL_ITEMS rows, gaps included
+	// Both columns are pinned to it so the section never resizes as the
+	// rail scrolls or the selected project changes
+	const browserHeightRem =
+		VISIBLE_RAIL_ITEMS * RAIL_ITEM_HEIGHT_REM +
+		(VISIBLE_RAIL_ITEMS - 1) * RAIL_GAP_REM;
+
 	const showFilters = projects.length > FILTER_VISIBILITY_THRESHOLD;
 
 	const updateFilters = (next: Partial<ProjectFilters>) => {
@@ -114,25 +124,28 @@ const ProjectBrowser = ({ projects }: ProjectBrowserProps) => {
 						value={tabSlug}
 						onValueChange={handleUserSelect}
 						orientation="vertical"
+						style={{ height: `${browserHeightRem}rem` }}
 						className="hidden gap-8 lg:grid lg:grid-cols-[minmax(0,22rem)_1fr]"
 					>
-						{/* Capped height with internal scroll - the section stays
-						    one viewport tall however many projects are added */}
+						{/* Scrolls within the fixed height once there are more
+						    than VISIBLE_RAIL_ITEMS - the scrollbar is hidden, so
+						    the rail keeps its width */}
 						<Tabs.List
 							aria-label="Projects"
-							className="no-scrollbar flex max-h-[60vh] flex-col gap-2 overflow-y-auto border-r border-border pr-4"
+							className="no-scrollbar flex h-full flex-col gap-2 overflow-y-auto border-r border-border pr-4"
 						>
 							{visible.map((project) => (
 								<Tabs.Trigger
 									key={project.slug}
 									value={project.slug}
+									style={{ height: `${RAIL_ITEM_HEIGHT_REM}rem` }}
 									className={cn(
-										"group flex flex-col items-start gap-1 rounded-xl px-4 py-3 text-left transition-colors outline-none",
+										"group flex shrink-0 flex-col items-start justify-center gap-1 rounded-xl px-4 py-3 text-left transition-colors outline-none",
 										"hover:bg-accent/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-ink",
 										"data-[state=active]:bg-accent/15",
 									)}
 								>
-									<span className="font-display font-bold leading-snug text-ink-strong group-data-[state=active]:text-accent-ink">
+									<span className="line-clamp-2 font-display font-bold leading-snug text-ink-strong group-data-[state=active]:text-accent-ink">
 										{project.title}
 									</span>
 									<span className="font-mono text-xs text-ink-muted">
@@ -169,7 +182,7 @@ const ProjectBrowser = ({ projects }: ProjectBrowserProps) => {
 								key={project.slug}
 								value={project.slug}
 								forceMount
-								className="outline-none data-[state=active]:animate-in data-[state=active]:fade-in data-[state=active]:slide-in-from-bottom-2 data-[state=inactive]:hidden"
+								className="no-scrollbar h-full overflow-y-auto outline-none data-[state=active]:animate-in data-[state=active]:fade-in data-[state=active]:slide-in-from-bottom-2 data-[state=inactive]:hidden"
 							>
 								<ProjectSummary project={project} />
 							</Tabs.Content>

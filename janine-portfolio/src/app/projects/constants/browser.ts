@@ -42,3 +42,15 @@ export const AUTO_CYCLE_INTERVAL_MS = 5000;
 
 // Cycling only applies where the rail is the visible presentation
 export const AUTO_CYCLE_MIN_WIDTH_PX = 1024;
+
+// Rail sizing - how many projects are visible before it scrolls
+// Fixing the count keeps the browser one constant height however many
+// projects exist, rather than growing with the data
+export const VISIBLE_RAIL_ITEMS = 3;
+
+// Each rail item is a fixed height so "three visible" is exact - the
+// titles vary in length, and auto height would make the count drift
+export const RAIL_ITEM_HEIGHT_REM = 7;
+
+// Must match the gap utility on the rail list
+export const RAIL_GAP_REM = 0.5;

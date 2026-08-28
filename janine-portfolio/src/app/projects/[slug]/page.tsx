@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import FeatureHighlights from "@/src/app/projects/components/sections/features";
 import ProjectOverview from "@/src/app/projects/components/sections/overview";
@@ -6,7 +7,16 @@ import PROJECTS, {
 	getProjectBySlug,
 	getProjectIndexBySlug,
 } from "@/src/app/projects/constants/projects";
+import Breadcrumb from "@/src/components/ui/navigation/breadcrumb";
 import SectionTitle from "@/src/components/ui/typography/section-title";
+import {
+	DETAIL_BACK_LABEL,
+	DETAIL_END_LABEL,
+	DETAIL_HOME_LABEL,
+	DETAIL_NEXT_LABEL,
+	DETAIL_PREV_LABEL,
+	DETAIL_PROJECTS_LABEL,
+} from "../constants/detail";
 
 interface ProjectPageProps {
 	params: Promise<{ slug: string }>;
@@ -42,11 +52,28 @@ const IndividualProjectPage = async ({ params }: ProjectPageProps) => {
 	return (
 		<main
 			id="project-details"
-			className="w-full max-w-7xl mx-auto px-8 py-32 flex flex-col items-center"
+			className="mx-auto flex w-full max-w-7xl flex-col px-6 pb-24 pt-28 md:px-16 lg:px-24"
 		>
-			<SectionTitle title={project.title} align="center" />
+			<Breadcrumb
+				className="mb-6"
+				items={[
+					{ label: DETAIL_HOME_LABEL, href: "/" },
+					{ label: DETAIL_PROJECTS_LABEL, href: "/projects" },
+					{ label: project.title },
+				]}
+			/>
 
-			<div className="w-full flex flex-col gap-24">
+			{/* Same heading shape as the home sections and the index:
+			    eyebrow, title, supporting line, left aligned */}
+			<SectionTitle
+				as="h1"
+				eyebrow={`${project.role} · ${project.date}`}
+				title={project.title}
+				description={project.description}
+				align="left"
+			/>
+
+			<div className="flex w-full flex-col gap-24">
 				<ProjectOverview
 					text={project.overviewText}
 					images={project.overviewImages}
@@ -57,32 +84,33 @@ const IndividualProjectPage = async ({ params }: ProjectPageProps) => {
 				<TechStack technologies={project.technologies} />
 			</div>
 
-			{/* Navigation footer for projects */}
-			<div className="w-full flex justify-between items-center mt-20 pt-10 border-t border-foreground/10">
-				{/* Previous / Back to Projects */}
+			{/* Sibling navigation */}
+			<div className="mt-20 flex w-full items-center justify-between gap-4 border-t border-border pt-10">
 				{prevProject ? (
-					<a
+					<Link
 						href={`/projects/${prevProject.slug}`}
-						className="text-lg font-bold hover:underline"
+						className="font-bold text-ink-strong transition-colors hover:text-accent-ink"
 					>
-						← Previous
-					</a>
+						← {DETAIL_PREV_LABEL}
+					</Link>
 				) : (
-					<a href="/projects" className="text-lg font-bold hover:underline">
-						← Back to Projects
-					</a>
+					<Link
+						href="/projects"
+						className="font-bold text-ink-strong transition-colors hover:text-accent-ink"
+					>
+						← {DETAIL_BACK_LABEL}
+					</Link>
 				)}
 
-				{/* Next Project */}
 				{nextProject ? (
-					<a
+					<Link
 						href={`/projects/${nextProject.slug}`}
-						className="text-lg font-bold hover:underline"
+						className="font-bold text-ink-strong transition-colors hover:text-accent-ink"
 					>
-						Next →
-					</a>
+						{DETAIL_NEXT_LABEL} →
+					</Link>
 				) : (
-					<span className="text-lg text-foreground/30 italic">End of List</span>
+					<span className="text-ink-muted">{DETAIL_END_LABEL}</span>
 				)}
 			</div>
 		</main>

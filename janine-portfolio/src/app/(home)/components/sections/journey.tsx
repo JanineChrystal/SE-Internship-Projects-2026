@@ -28,6 +28,7 @@ const Journey = () => {
 	const [activeIndex, setActiveIndex] = useState(0);
 	const [userTookControl, setUserTookControl] = useState(false);
 	const rootRef = useRef<HTMLElement>(null);
+	const axisRef = useRef<HTMLDivElement>(null);
 
 	const active = JOURNEY_MILESTONES[activeIndex];
 
@@ -49,6 +50,9 @@ const Journey = () => {
 		intervalMs: JOURNEY_CYCLE_INTERVAL_MS,
 		stopped: userTookControl,
 		containerRef: rootRef,
+		// Only the axis holds the countdown - the card fills most of the
+		// screen, so pausing on it would stop cycling more or less always
+		pauseRef: axisRef,
 		minWidthPx: 0,
 	});
 
@@ -143,7 +147,7 @@ const Journey = () => {
 
 					{/* The axis overflows on narrow screens rather than
 					    crushing seven labels together */}
-					<div className="no-scrollbar overflow-x-auto pb-1">
+					<div ref={axisRef} className="no-scrollbar overflow-x-auto pb-1">
 						<JourneyTimeline
 							milestones={JOURNEY_MILESTONES}
 							activeIndex={activeIndex}

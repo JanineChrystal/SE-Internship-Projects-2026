@@ -18,6 +18,10 @@ interface UseAutoCycleOptions {
 	stopped: boolean;
 	// Cycling only runs while this element is on screen
 	containerRef: RefObject<HTMLElement | null>;
+	// Smaller region that pauses on hover and focus - defaults to the
+	// container. A full height section is a poor pause target: the
+	// pointer sits over it constantly, so cycling would never run
+	pauseRef?: RefObject<HTMLElement | null>;
 	// Below this width the rail is not the visible presentation, so
 	// cycling would silently drive the accordion instead
 	minWidthPx: number;
@@ -41,6 +45,7 @@ export function useAutoCycle({
 	intervalMs,
 	stopped,
 	containerRef,
+	pauseRef,
 	minWidthPx,
 }: UseAutoCycleOptions): AutoCycleState {
 	const [envAllows, setEnvAllows] = useState(false);
@@ -97,9 +102,9 @@ export function useAutoCycle({
 		return () => document.removeEventListener("visibilitychange", sync);
 	}, []);
 
-	// Hover and keyboard focus both mean the visitor is reading
+	// Hover and keyboard focus both mean the visitor is about to act
 	useEffect(() => {
-		const node = containerRef.current;
+		const node = (pauseRef ?? containerRef).current;
 
 		if (!node) {
 			return;
@@ -119,7 +124,7 @@ export function useAutoCycle({
 			node.removeEventListener("focusin", hold);
 			node.removeEventListener("focusout", release);
 		};
-	}, [containerRef]);
+	}, [containerRef, pauseRef]);
 
 	const isCycling = !stopped && envAllows && items.length > 1;
 	const isPaused = !onScreen || !docVisible || interacting;

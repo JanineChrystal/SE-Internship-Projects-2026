@@ -14,7 +14,7 @@ const About = () => {
 				{/* Left Column: Portrait Wrapper */}
 				<div className="relative w-full h-125 layout-portrait-wrapper mb-15">
 					<Image
-						src="/profile.png"
+						src="/profile.webp"
 						alt="Janine Chrystal Professional Portrait"
 						fill
 						sizes="(max-width: 768px) 100vw, 50vw"

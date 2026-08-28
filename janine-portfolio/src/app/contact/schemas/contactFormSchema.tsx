@@ -11,13 +11,15 @@ export const contactFormSchema = z
 
 		subject: z
 			.string()
+			.trim()
 			.min(2, "Subject must be at least 2 characters.")
-			.max(30, "Subject must be at most 30 characters."),
+			.max(120, "Subject must be at most 120 characters."),
 
 		body: z
 			.string()
+			.trim()
 			.min(10, "Message body must be at least 10 characters.")
-			.max(300, "Message body must be at most 200 characters."),
+			.max(2000, "Message body must be at most 2000 characters."),
 	})
 	.superRefine((data, ctx) => {
 		// Custom logic to require email if "email" is selected

@@ -57,7 +57,7 @@ const ActsEvents = () => {
 						{Carousel_Data.map((slide) => (
 							<CarouselItem key={slide.id}>
 								<div className="p-2 h-full">
-									<div className="relative flex flex-col h-full items-center justify-center bg-white-1/2 rounded-2xl shadow-sm overflow-hidden p-6 md:p-8">
+									<div className="relative flex flex-col h-full items-center justify-center bg-background/50 rounded-2xl shadow-sm overflow-hidden p-6 md:p-8">
 										<div className="relative w-full h-64 md:h-80 mb-6">
 											<Image
 												src={slide.imageSrc}

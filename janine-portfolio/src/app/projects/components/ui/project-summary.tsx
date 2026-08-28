@@ -1,5 +1,4 @@
 import { ArrowRight } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import Tag from "@/src/components/ui/tags/tag";
 import type { Project } from "@/src/types/project";
@@ -7,29 +6,19 @@ import { VIEW_CASE_STUDY_LABEL } from "../../constants/browser";
 
 interface ProjectSummaryProps {
 	project: Project;
-	// The desktop panel leads with the screenshot; the accordion is
-	// already under a heading, so it skips the duplicate title
+	// The accordion already names the project in its trigger, so it
+	// skips the duplicate title
 	showTitle?: boolean;
 }
 
 // Project summary - the shared body behind both presentations
+// Text only, so the browser fits one viewport - the screenshots live
+// on the case study page, which is what the link leads to
 // Written once so the rail panel and the mobile accordion can never
 // drift apart in content
 const ProjectSummary = ({ project, showTitle = true }: ProjectSummaryProps) => {
 	return (
 		<div className="flex flex-col gap-5">
-			<div className="surface-neu relative aspect-video w-full overflow-hidden rounded-2xl p-3">
-				<div className="relative h-full w-full overflow-hidden rounded-xl">
-					<Image
-						src={project.imageSrc}
-						alt={project.altText}
-						fill
-						sizes="(max-width: 1024px) 100vw, 60vw"
-						className="object-contain"
-					/>
-				</div>
-			</div>
-
 			<div className="flex flex-col gap-3">
 				{showTitle && (
 					<h2 className="text-h3 font-extrabold leading-tight text-ink-strong">

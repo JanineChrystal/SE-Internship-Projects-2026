@@ -14,7 +14,7 @@ const ProjectsPage = () => {
 	return (
 		<section
 			id="projects"
-			className="mx-auto flex w-full max-w-7xl flex-col px-6 pb-24 pt-32 md:px-16 lg:px-24"
+			className="mx-auto flex min-h-screen w-full max-w-7xl flex-col justify-center px-6 pb-16 pt-28 md:px-16 lg:px-24"
 		>
 			<SectionTitle
 				as="h1"

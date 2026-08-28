@@ -87,9 +87,11 @@ const ProjectBrowser = ({ projects }: ProjectBrowserProps) => {
 						orientation="vertical"
 						className="hidden gap-8 lg:grid lg:grid-cols-[minmax(0,22rem)_1fr]"
 					>
+						{/* Capped height with internal scroll - the section stays
+						    one viewport tall however many projects are added */}
 						<Tabs.List
 							aria-label="Projects"
-							className="flex flex-col gap-2 border-r border-border pr-4"
+							className="no-scrollbar flex max-h-[60vh] flex-col gap-2 overflow-y-auto border-r border-border pr-4"
 						>
 							{visible.map((project) => (
 								<Tabs.Trigger

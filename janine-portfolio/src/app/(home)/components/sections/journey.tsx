@@ -102,7 +102,7 @@ const Journey = () => {
 								value={milestone.id}
 								className="outline-none data-[state=active]:animate-in data-[state=active]:fade-in data-[state=active]:slide-in-from-bottom-3"
 							>
-								<div className="surface-glass grid gap-6 rounded-3xl p-6 md:p-10 lg:min-h-[19rem] lg:grid-cols-[1.5fr_1fr] lg:gap-10">
+								<div className="surface-glass grid gap-6 rounded-3xl p-6 md:p-10 lg:min-h-[19rem] lg:grid-cols-[1fr_18rem] lg:items-center lg:gap-10">
 									<div className="flex flex-col justify-between gap-6">
 										<span className="eyebrow text-accent-ink">
 											{milestone.period}
@@ -118,26 +118,29 @@ const Journey = () => {
 										</div>
 									</div>
 
-									{/* Photo where one exists, otherwise the milestone
-									    icon - the early school years have no usable
-									    picture, and an icon beats a stock placeholder */}
-									<div className="surface-neu relative flex min-h-[10rem] items-center justify-center overflow-hidden rounded-2xl p-4">
+									{/* Square frame - the logos are square, so a landscape
+									    box would fit them to its short side and leave wide
+									    empty margins either way
+									    Photo where one exists, otherwise the milestone icon:
+									    the early school years have no usable picture, and an
+									    icon beats a stock placeholder */}
+									<div className="surface-neu relative mx-auto aspect-square w-full max-w-[18rem] overflow-hidden rounded-2xl">
 										{milestone.imageSrc ? (
-											<div className="relative h-full min-h-[9rem] w-full">
-												<Image
-													src={milestone.imageSrc}
-													alt={milestone.altText ?? milestone.title}
-													fill
-													sizes="(max-width: 1024px) 90vw, 24rem"
-													className="object-contain"
+											<Image
+												src={milestone.imageSrc}
+												alt={milestone.altText ?? milestone.title}
+												fill
+												sizes="18rem"
+												className="object-contain p-2"
+											/>
+										) : (
+											<div className="flex h-full w-full items-center justify-center">
+												<Icon
+													aria-hidden="true"
+													className="size-20 text-accent md:size-24"
+													strokeWidth={1.25}
 												/>
 											</div>
-										) : (
-											<Icon
-												aria-hidden="true"
-												className="size-16 text-accent md:size-20"
-												strokeWidth={1.25}
-											/>
 										)}
 									</div>
 								</div>

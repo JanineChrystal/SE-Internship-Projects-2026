@@ -1,7 +1,7 @@
 "use client";
 
 import { Tabs } from "radix-ui";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import {
 	collectFacets,
 	EMPTY_FILTERS,
@@ -16,8 +16,11 @@ import {
 	AccordionItem,
 	AccordionTrigger,
 } from "@/src/components/ui/accordion/accordion";
+import { useAutoCycle } from "@/src/hooks/use-auto-cycle";
 import type { Project } from "@/src/types/project";
 import {
+	AUTO_CYCLE_INTERVAL_MS,
+	AUTO_CYCLE_MIN_WIDTH_PX,
 	EMPTY_RESULTS_BODY,
 	EMPTY_RESULTS_TITLE,
 	FILTER_VISIBILITY_THRESHOLD,
@@ -38,6 +41,8 @@ const ProjectBrowser = ({ projects }: ProjectBrowserProps) => {
 	const [selectedSlug, setSelectedSlug] = useState<string>(
 		projects[0]?.slug ?? "",
 	);
+	const [userTookControl, setUserTookControl] = useState(false);
+	const railRef = useRef<HTMLDivElement>(null);
 
 	const facets = useMemo(() => collectFacets(projects), [projects]);
 
@@ -52,6 +57,29 @@ const ProjectBrowser = ({ projects }: ProjectBrowserProps) => {
 	const tabSlug = visible.some((project) => project.slug === selectedSlug)
 		? selectedSlug
 		: (visible[0]?.slug ?? "");
+
+	const cycleSlugs = useMemo(
+		() => visible.map((project) => project.slug),
+		[visible],
+	);
+
+	// Radix only calls onValueChange for real interaction, so a change
+	// arriving there is the visitor taking over - auto advancing writes
+	// to state directly and never trips this
+	const handleUserSelect = (slug: string) => {
+		setSelectedSlug(slug);
+		setUserTookControl(true);
+	};
+
+	const { isCycling, isPaused } = useAutoCycle({
+		items: cycleSlugs,
+		current: tabSlug,
+		onAdvance: setSelectedSlug,
+		intervalMs: AUTO_CYCLE_INTERVAL_MS,
+		stopped: userTookControl,
+		containerRef: railRef,
+		minWidthPx: AUTO_CYCLE_MIN_WIDTH_PX,
+	});
 
 	const showFilters = projects.length > FILTER_VISIBILITY_THRESHOLD;
 
@@ -82,8 +110,9 @@ const ProjectBrowser = ({ projects }: ProjectBrowserProps) => {
 				<>
 					{/* Desktop - vertical rail beside the summary */}
 					<Tabs.Root
+						ref={railRef}
 						value={tabSlug}
-						onValueChange={setSelectedSlug}
+						onValueChange={handleUserSelect}
 						orientation="vertical"
 						className="hidden gap-8 lg:grid lg:grid-cols-[minmax(0,22rem)_1fr]"
 					>
@@ -109,6 +138,24 @@ const ProjectBrowser = ({ projects }: ProjectBrowserProps) => {
 									<span className="font-mono text-xs text-ink-muted">
 										{project.date}
 									</span>
+
+									{/* Countdown to the next advance - remounts with each
+									    selection so the animation restarts, and freezes
+									    rather than vanishing while paused */}
+									{isCycling && project.slug === tabSlug && (
+										<span
+											aria-hidden="true"
+											className="mt-1 h-0.5 w-full overflow-hidden rounded-full bg-accent/20"
+										>
+											<span
+												className="cycle-progress block h-full w-full bg-accent"
+												style={{
+													animationDuration: `${AUTO_CYCLE_INTERVAL_MS}ms`,
+													animationPlayState: isPaused ? "paused" : "running",
+												}}
+											/>
+										</span>
+									)}
 								</Tabs.Trigger>
 							))}
 						</Tabs.List>
@@ -122,7 +169,7 @@ const ProjectBrowser = ({ projects }: ProjectBrowserProps) => {
 								key={project.slug}
 								value={project.slug}
 								forceMount
-								className="outline-none data-[state=inactive]:hidden"
+								className="outline-none data-[state=active]:animate-in data-[state=active]:fade-in data-[state=active]:slide-in-from-bottom-2 data-[state=inactive]:hidden"
 							>
 								<ProjectSummary project={project} />
 							</Tabs.Content>
@@ -137,7 +184,7 @@ const ProjectBrowser = ({ projects }: ProjectBrowserProps) => {
 						type="single"
 						collapsible
 						value={selectedSlug}
-						onValueChange={setSelectedSlug}
+						onValueChange={handleUserSelect}
 						className="lg:hidden"
 					>
 						{visible.map((project) => (

@@ -35,3 +35,10 @@ export const VIEW_DETAILS_LABEL = "View full project details";
 // Search and filters only earn their space once the list is long
 // enough to be hard to scan - below this the rail is the whole story
 export const FILTER_VISIBILITY_THRESHOLD = 5;
+
+// Auto cycle - how long each project holds before the rail advances
+// Cycling stops for good once the visitor picks a project themselves
+export const AUTO_CYCLE_INTERVAL_MS = 5000;
+
+// Cycling only applies where the rail is the visible presentation
+export const AUTO_CYCLE_MIN_WIDTH_PX = 1024;

@@ -4,7 +4,7 @@ export const BROWSER_EYEBROW = "Selected work";
 export const BROWSER_TITLE = "Projects";
 
 export const BROWSER_DESCRIPTION =
-	"Systems and applications I have built and contributed to. Pick one to read the summary, then open the full case study.";
+	"Systems and applications I have built and contributed to. Pick one to read the summary, then open the full project details.";
 
 export const SEARCH_PLACEHOLDER = "Search projects, roles or technologies";
 
@@ -30,7 +30,7 @@ export const EMPTY_RESULTS_TITLE = "No projects match those filters";
 export const EMPTY_RESULTS_BODY =
 	"Try a different technology or clear the filters to see everything.";
 
-export const VIEW_CASE_STUDY_LABEL = "View case study";
+export const VIEW_DETAILS_LABEL = "View full project details";
 
 // Search and filters only earn their space once the list is long
 // enough to be hard to scan - below this the rail is the whole story

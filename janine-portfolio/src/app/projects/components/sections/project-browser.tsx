@@ -114,7 +114,7 @@ const ProjectBrowser = ({ projects }: ProjectBrowserProps) => {
 						</Tabs.List>
 
 						{/* forceMount keeps every summary in the markup, so the
-						    link to each case study is crawlable even though only
+						    link to each project is crawlable even though only
 						    the selected one is shown - Radix still applies hidden
 						    to the inactive panels */}
 						{visible.map((project) => (

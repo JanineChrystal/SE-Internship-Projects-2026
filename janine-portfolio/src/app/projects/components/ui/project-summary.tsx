@@ -2,7 +2,7 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Tag from "@/src/components/ui/tags/tag";
 import type { Project } from "@/src/types/project";
-import { VIEW_CASE_STUDY_LABEL } from "../../constants/browser";
+import { VIEW_DETAILS_LABEL } from "../../constants/browser";
 
 interface ProjectSummaryProps {
 	project: Project;
@@ -13,7 +13,7 @@ interface ProjectSummaryProps {
 
 // Project summary - the shared body behind both presentations
 // Text only, so the browser fits one viewport - the screenshots live
-// on the case study page, which is what the link leads to
+// on the project details page, which is what the link leads to
 // Written once so the rail panel and the mobile accordion can never
 // drift apart in content
 const ProjectSummary = ({ project, showTitle = true }: ProjectSummaryProps) => {
@@ -53,7 +53,7 @@ const ProjectSummary = ({ project, showTitle = true }: ProjectSummaryProps) => {
 				href={`/projects/${project.slug}`}
 				className="surface-glass inline-flex w-fit items-center gap-2 rounded-full px-5 py-2.5 font-bold text-ink-strong transition-transform hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-ink"
 			>
-				{VIEW_CASE_STUDY_LABEL}
+				{VIEW_DETAILS_LABEL}
 				<ArrowRight aria-hidden="true" className="size-4" />
 			</Link>
 		</div>

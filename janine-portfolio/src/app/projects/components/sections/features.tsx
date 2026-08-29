@@ -16,9 +16,9 @@ interface FeatureHighlightsProps {
 }
 
 // Feature highlights - one collapsible row per feature
-// Closed by default apart from the first, so the section reads as a
-// scannable list of what the project does and opens only what is asked
-// for, rather than stacking every screenshot down the page
+// All closed by default, so the section reads as a scannable list of
+// what the project does and opens only what is asked for, rather than
+// stacking every screenshot down the page
 const FeatureHighlights = ({ features }: FeatureHighlightsProps) => {
 	return (
 		<section className="flex w-full flex-col">
@@ -32,7 +32,6 @@ const FeatureHighlights = ({ features }: FeatureHighlightsProps) => {
 				{features.map((feature, index) => (
 					<Collapsible
 						key={feature.title}
-						defaultOpen={index === 0}
 						className="surface-glass group rounded-3xl px-6 py-2 md:px-8"
 					>
 						<CollapsibleTrigger className="flex w-full items-center justify-between gap-4 py-5 text-left outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-ink">
@@ -53,18 +52,25 @@ const FeatureHighlights = ({ features }: FeatureHighlightsProps) => {
 						</CollapsibleTrigger>
 
 						<CollapsibleContent>
-							<div className="grid gap-6 pb-6 md:grid-cols-2 md:items-center">
-								<p className="leading-relaxed text-ink">
+							<div className="flex flex-col gap-6 pb-6">
+								<p className="max-w-3xl leading-relaxed text-ink">
 									{feature.description}
 								</p>
 
-								<div className="surface-neu relative aspect-video overflow-hidden rounded-2xl">
+								{/* Sized by the file rather than a fixed frame: the
+								    captures vary from wide dashboards to tall pages,
+								    and a set aspect would crop the long ones
+								    width and height are a ratio hint that reserves
+								    space before load; h-auto hands the final height
+								    back to the image itself */}
+								<div className="surface-neu overflow-hidden rounded-2xl">
 									<Image
 										src={feature.imageUrl}
 										alt={feature.altText}
-										fill
-										sizes="(max-width: 768px) 100vw, 50vw"
-										className="object-cover"
+										width={1600}
+										height={900}
+										sizes="(max-width: 768px) 100vw, 60rem"
+										className="h-auto w-full"
 									/>
 								</div>
 							</div>

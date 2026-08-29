@@ -57,7 +57,7 @@ const ProjectNarrative = ({ lines }: ProjectNarrativeProps) => {
 		<section
 			ref={rootRef}
 			id="narrative"
-			className="relative flex w-full items-center py-12"
+			className="relative flex min-h-screen w-full items-center py-20"
 		>
 			<div className="mx-auto flex max-w-4xl flex-col gap-6">
 				<span className="eyebrow narrative-line">{NARRATIVE_EYEBROW}</span>

@@ -1,8 +1,10 @@
 // Intro reveal copy - one array entry per line
-// Placeholder until the final line is written; edit here only
+// Rendered uppercase, so keep lines short: the type scales with the
+// viewport and anything past roughly eighteen characters shrinks
 export const INTRO_LINES: string[] = [
-	"Ideas are easy.",
-	"Shipping is not.",
+	"Design it.",
+	"Build it.",
+	"Ship it.",
 	"Meet Janine.",
 ];
 

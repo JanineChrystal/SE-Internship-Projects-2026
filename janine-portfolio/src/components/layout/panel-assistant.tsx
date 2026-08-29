@@ -10,11 +10,18 @@ import {
 	X,
 } from "lucide-react";
 import Link from "next/link";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { scrollToBottom, scrollToSection, scrollToTop } from "@/lib/scroll";
 import { cn } from "@/lib/utils";
-import { ROUTE_LINKS, SECTION_LINKS } from "@/src/constants/nav";
+import {
+	ROUTE_LINKS,
+	SECTION_LINKS,
+	SECTION_TARGETS,
+} from "@/src/constants/nav";
 import { THEME_ELEMENTS } from "@/src/constants/themeElements";
+import { useActiveSection } from "@/src/hooks/use-active-section";
+import { useEscapeKey } from "@/src/hooks/use-escape-key";
+import { useThemeSync } from "@/src/hooks/use-theme-sync";
 import { themeElementAtom, themeModeAtom } from "@/src/store/themeAtom";
 
 const PANEL_ID = "site-panel";
@@ -26,35 +33,14 @@ const PanelAssistant = () => {
 	const [mode, setMode] = useAtom(themeModeAtom);
 	const [element, setElement] = useAtom(themeElementAtom);
 	const [isOpen, setIsOpen] = useState(false);
+	const activeSection = useActiveSection(SECTION_TARGETS);
 
-	// Sync the DOM HTML element classes and attributes with Jotai state
-	useEffect(() => {
-		const html = document.documentElement;
+	const closePanel = useCallback(() => setIsOpen(false), []);
 
-		if (mode === "dark") {
-			html.classList.add("dark");
-		} else {
-			html.classList.remove("dark");
-		}
-
-		html.setAttribute("data-element", element);
-	}, [mode, element]);
+	useThemeSync(mode, element);
 
 	// Escape closes the touch panel
-	useEffect(() => {
-		if (!isOpen) {
-			return;
-		}
-
-		const onKeyDown = (event: KeyboardEvent) => {
-			if (event.key === "Escape") {
-				setIsOpen(false);
-			}
-		};
-
-		window.addEventListener("keydown", onKeyDown);
-		return () => window.removeEventListener("keydown", onKeyDown);
-	}, [isOpen]);
+	useEscapeKey(isOpen, closePanel);
 
 	// Jumping to a section closes the panel, so it does not sit over
 	// the content the visitor just asked to see
@@ -78,7 +64,7 @@ const PanelAssistant = () => {
 				aria-expanded={isOpen}
 				aria-controls={PANEL_ID}
 				aria-label={isOpen ? "Close site panel" : "Open site panel"}
-				className="surface-glass fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full text-ink-strong transition-transform hover:scale-105 active:scale-95 lg:hidden"
+				className="surface-glass fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full text-ink-strong transition-transform hover:scale-105 active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-ink lg:hidden"
 			>
 				{isOpen ? <X size={22} /> : <SlidersHorizontal size={22} />}
 			</button>
@@ -112,13 +98,22 @@ const PanelAssistant = () => {
 					>
 						{SECTION_LINKS.map((link) => {
 							const Icon = link.icon;
+							const isActive = activeSection === link.target;
+
 							return (
 								<button
 									key={link.target}
 									type="button"
 									title={link.label}
+									// Location, not page - these are anchors within one page
+									aria-current={isActive ? "location" : undefined}
 									onClick={() => goToSection(link.target, link.offsetVh)}
-									className="rounded-full p-2.5 text-ink-strong transition-colors hover:bg-accent/15 hover:text-accent-ink"
+									className={cn(
+										"rounded-full p-2.5 transition-colors hover:bg-accent/15 hover:text-accent-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-ink",
+										isActive
+											? "bg-accent/20 text-accent-ink"
+											: "text-ink-strong",
+									)}
 								>
 									<Icon size={20} aria-hidden="true" />
 									<span className="sr-only">{link.label}</span>
@@ -134,7 +129,7 @@ const PanelAssistant = () => {
 									href={link.path}
 									title={link.label}
 									onClick={() => setIsOpen(false)}
-									className="rounded-full p-2.5 text-ink-strong transition-colors hover:bg-accent/15 hover:text-accent-ink"
+									className="rounded-full p-2.5 text-ink-strong transition-colors hover:bg-accent/15 hover:text-accent-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-ink"
 								>
 									<Icon size={20} aria-hidden="true" />
 									<span className="sr-only">{link.label}</span>
@@ -151,7 +146,7 @@ const PanelAssistant = () => {
 							type="button"
 							onClick={() => scrollToTop()}
 							aria-label="Scroll to top"
-							className="rounded-full p-2 text-ink-strong transition-colors hover:bg-accent/15"
+							className="rounded-full p-2 text-ink-strong transition-colors hover:bg-accent/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-ink"
 						>
 							<ArrowUp size={22} strokeWidth={2.5} />
 						</button>
@@ -159,7 +154,7 @@ const PanelAssistant = () => {
 							type="button"
 							onClick={() => scrollToBottom()}
 							aria-label="Scroll to bottom"
-							className="rounded-full p-2 text-ink-strong transition-colors hover:bg-accent/15"
+							className="rounded-full p-2 text-ink-strong transition-colors hover:bg-accent/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-ink"
 						>
 							<ArrowDown size={22} strokeWidth={2.5} />
 						</button>
@@ -171,7 +166,7 @@ const PanelAssistant = () => {
 						onClick={toggleMode}
 						aria-pressed={isDark}
 						aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-						className="relative flex h-7 w-12 shrink-0 items-center rounded-full border border-accent/30 bg-el-deep/70 px-1 transition-colors"
+						className="relative flex h-7 w-12 shrink-0 items-center rounded-full border border-accent/30 bg-el-deep/70 px-1 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-ink"
 					>
 						<span
 							className={cn(

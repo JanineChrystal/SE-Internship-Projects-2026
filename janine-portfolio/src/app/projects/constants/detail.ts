@@ -23,3 +23,11 @@ export const DETAIL_NEXT_LABEL = "Next project";
 export const DETAIL_BACK_LABEL = "Back to projects";
 
 export const DETAIL_END_LABEL = "End of list";
+
+export const LIVE_LINK_LABEL = "Visit live site";
+
+export const REPO_LINK_LABEL = "View source";
+
+export const NARRATIVE_EYEBROW = "My role";
+
+export const NARRATIVE_TITLE = "What I contributed";

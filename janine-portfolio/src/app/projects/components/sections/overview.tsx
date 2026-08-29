@@ -1,14 +1,33 @@
+import { Code, ExternalLink } from "lucide-react";
 import Image from "next/image";
+import Button from "@/src/components/ui/buttons/button";
 import type { ProjectImage } from "@/src/types/project";
 import SectionTitle from "../../../../components/ui/typography/section-title";
-import { OVERVIEW_EYEBROW, OVERVIEW_TITLE } from "../../constants/detail";
+import {
+	LIVE_LINK_LABEL,
+	OVERVIEW_EYEBROW,
+	OVERVIEW_TITLE,
+	REPO_LINK_LABEL,
+} from "../../constants/detail";
 
 interface ProjectOverviewProps {
 	text: string;
 	images: ProjectImage[];
+	liveUrl?: string;
+	repoUrl?: string;
 }
 
-const ProjectOverview = ({ text, images }: ProjectOverviewProps) => {
+// Project overview - summary above a pair of screenshots
+// Every project shows exactly two landscape captures, so the block is
+// the same shape on every case study and nothing is cropped to fit
+const ProjectOverview = ({
+	text,
+	images,
+	liveUrl,
+	repoUrl,
+}: ProjectOverviewProps) => {
+	const hasLinks = Boolean(liveUrl || repoUrl);
+
 	return (
 		<section id="overview" className="flex w-full flex-col justify-center">
 			<SectionTitle
@@ -17,56 +36,51 @@ const ProjectOverview = ({ text, images }: ProjectOverviewProps) => {
 				align="left"
 			/>
 
-			{/* // Bento Box Grid Layout */}
-			<div className="grid grid-cols-1 lg:grid-cols-3 gap-6 min-h-100">
-				<div className="rounded-3xl p-8 flex lg:col-span-1 shadow-2xl transition-transform duration-200 hover:-translate-y-1">
-					<p className="text-ink font-semibold leading-relaxed text-justify">
-						{text}
-					</p>
+			<div className="flex flex-col gap-6">
+				<div className="surface-glass flex flex-col gap-6 rounded-3xl p-8">
+					{/* Measure capped for readability - justified text across the
+					    full width opens rivers between the words */}
+					<p className="max-w-3xl leading-relaxed text-ink">{text}</p>
+
+					{/* asChild so the anchor carries the button styling rather
+					    than nesting a link inside a button */}
+					{hasLinks && (
+						<div className="flex flex-wrap gap-3">
+							{liveUrl && (
+								<Button asChild variant="solid" size="md">
+									<a href={liveUrl} target="_blank" rel="noopener noreferrer">
+										<ExternalLink aria-hidden="true" className="size-4" />
+										{LIVE_LINK_LABEL}
+									</a>
+								</Button>
+							)}
+							{repoUrl && (
+								<Button asChild variant="outline" size="md">
+									<a href={repoUrl} target="_blank" rel="noopener noreferrer">
+										<Code aria-hidden="true" className="size-4" />
+										{REPO_LINK_LABEL}
+									</a>
+								</Button>
+							)}
+						</div>
+					)}
 				</div>
 
-				<div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:col-span-2">
-					<div className="flex flex-col gap-6">
-						<div className="bg-surface-raised rounded-3xl flex-1 flex items-center justify-center text-sm text-ink-muted shadow-2xl min-h-45 overflow-hidden relative transition-transform duration-200 hover:-translate-y-1">
-							{images[0] ? (
-								<Image
-									src={images[0].imageUrl}
-									alt={images[0].altText}
-									fill
-									sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-									className="object-cover w-full h-full absolute inset-0"
-								/>
-							) : (
-								"No Image"
-							)}
-						</div>
-						<div className="bg-surface-raised rounded-3xl flex-1 flex items-center justify-center text-sm text-ink-muted shadow-2xl min-h-45 overflow-hidden relative transition-transform duration-200 hover:-translate-y-1">
-							{images[1] ? (
-								<Image
-									src={images[1].imageUrl}
-									alt={images[1].altText}
-									fill
-									sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-									className="object-cover w-full h-full absolute inset-0"
-								/>
-							) : (
-								"No Image"
-							)}
-						</div>
-					</div>
-					<div className="bg-surface-raised rounded-3xl h-full flex items-center justify-center text-sm text-ink-muted shadow-2xl min-h-75 overflow-hidden relative transition-transform duration-200 hover:-translate-y-1">
-						{images[2] ? (
+				<div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+					{images.map((image) => (
+						<div
+							key={image.imageUrl}
+							className="surface-neu relative aspect-video overflow-hidden rounded-3xl transition-transform duration-200 hover:-translate-y-1"
+						>
 							<Image
-								src={images[2].imageUrl}
-								alt={images[2].altText}
+								src={image.imageUrl}
+								alt={image.altText}
 								fill
-								sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-								className="object-cover w-full h-full absolute inset-0"
+								sizes="(max-width: 768px) 100vw, 50vw"
+								className="object-cover"
 							/>
-						) : (
-							"No Image"
-						)}
-					</div>
+						</div>
+					))}
 				</div>
 			</div>
 		</section>

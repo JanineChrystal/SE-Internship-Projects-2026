@@ -1,0 +1,194 @@
+import type { Project } from "@/src/types/project";
+
+export const takdaProject: Project = {
+	slug: "takda-ph",
+	title: "Takda PH: Team Project Management with Bilingual Moderation",
+	liveUrl: "https://nextjs-internship-capstone-iota.vercel.app",
+	repoUrl: "https://github.com/JanineChrystal/nextjs-internship-capstone",
+	date: "June 2026 - August 2026",
+	role: "Full Stack Developer",
+	description: `A team project management tool built around Kanban boards, with the parts that usually get skipped actually
+		built: bilingual comment moderation that catches Tagalog and Visayan as well as English, email notifications people can
+		switch off per category, and an archive that lets you undo a delete. Named for the Filipino takda, an assigned task.`,
+	imageSrc: "/projects/takda-1.png",
+	altText: "Takda PH landing page with the product preview",
+	tags: [
+		"Next.js",
+		"TypeScript",
+		"PostgreSQL",
+		"Drizzle ORM",
+		"Clerk",
+		"Full Stack",
+	],
+	overviewText: `Takda PH is a team project management tool built around Kanban boards, developed as my internship capstone at
+		Stratpoint Technologies. A project opens on a board and switches to grid, calendar, charts or settings without leaving the
+		page, every view reading the same store. It runs on Next.js 16 with Server Actions, Drizzle ORM over Neon Postgres and
+		Clerk authentication, with every query and permission check resolved in a single data access layer.`,
+	overviewImages: [
+		{
+			imageUrl: "/projects/takda-7.png",
+			altText:
+				"Kanban board with To Do, In Progress, Completed and Done columns",
+		},
+		{
+			imageUrl: "/projects/takda-10.png",
+			altText:
+				"Project charts showing status, priority and board column breakdowns",
+		},
+	],
+	narrative: [
+		"The backend is six layers, each depending only on the one before: db, validations, types, dtos, dal, then actions.",
+		"Authorisation is resolved where the row is read rather than by a route matcher. A path matcher can diverge from how the framework actually routes a request, but an action that wanted to skip a permission check would have to write its own query, and there are none outside the data access layer.",
+		"Bilingual moderation was the hard part, and every detail of it was a bug first: two detectors run in parallel because the profanity service's main endpoint misses its own leetspeak variants, matches are bounded on the left so Tagalog suffixes still catch without flagging innocent usernames, and detection fails open so an outage never silences a team.",
+	],
+	features: [
+		{
+			title: "Kanban Board and Five Views",
+			description:
+				"A project opens on a Kanban board and switches to Grid, Calendar, Charts or Settings without leaving the page. Tasks drag between columns, and one column per project can be marked the completion column - completing a task moves it there, and un-completing sends it back where it came from rather than dumping it in the first column.",
+			images: [
+				{
+					imageUrl: "/projects/takda-7.png",
+					altText: "Kanban board with a task card in the completion column",
+				},
+			],
+		},
+		{
+			title: "Bilingual Comment Moderation",
+			description:
+				"Comments are checked against two detectors before they are stored, not after: an in-process English word list, and a Filipino and Visayan service backed by a local list. Anything flagged surfaces in a per-project queue with its reason and timestamp.",
+			images: [
+				{
+					imageUrl: "/projects/takda-12.png",
+					altText:
+						"Comment moderation queue showing comments flagged as Filipino profanity",
+				},
+			],
+		},
+		{
+			title: "Project Analytics",
+			description:
+				"Status, priority and board-column breakdowns for every project, each chart backed by a table view showing the same data as text rather than colour alone.",
+			images: [
+				{
+					imageUrl: "/projects/takda-10.png",
+					altText:
+						"Status donut, priority bar chart and bucket chart for a project",
+				},
+			],
+		},
+		{
+			title: "Calendar and Deadlines",
+			description:
+				"Month, week and day views of task deadlines with an upcoming deadlines rail beside them, plus a global calendar spanning every project a member belongs to.",
+			images: [
+				{
+					imageUrl: "/projects/takda-9.png",
+					altText:
+						"Project calendar in month view with an upcoming deadlines panel",
+				},
+			],
+		},
+		{
+			title: "Notifications You Can Switch Off",
+			description:
+				"An in-app inbox alongside seven email categories: project and workspace invites, comment mentions, comment violations, task and project completions, and overdue projects. Each preference is resolved once in the data layer, so no sender can bypass it.",
+			images: [
+				{
+					imageUrl: "/projects/takda-5.png",
+					altText:
+						"Notifications inbox with member added and invite sent entries",
+				},
+			],
+		},
+		{
+			title: "Archive and Trash",
+			description:
+				"Deleting is reversible. Projects and tasks go to Archive, kept indefinitely, or Trash, purged after thirty days, and both can be restored. Deleting a project asks you to type its name first.",
+			images: [
+				{
+					imageUrl: "/projects/takda-17.png",
+					altText:
+						"Archive page with Archive and Trash tabs and an empty state",
+				},
+			],
+		},
+	],
+	technologies: [
+		{
+			id: 1,
+			imageUrl: "/techStack/nextjs.png",
+			altText: "Next.js logo",
+		},
+		{
+			id: 2,
+			imageUrl: "/techStack/React.webp",
+			altText: "React logo",
+		},
+		{
+			id: 3,
+			imageUrl: "/techStack/Typescript.webp",
+			altText: "TypeScript logo",
+		},
+		{
+			id: 4,
+			imageUrl: "/techStack/tailwind.webp",
+			altText: "Tailwind CSS logo",
+		},
+		{
+			id: 5,
+			imageUrl: "/techStack/shadcn.png",
+			altText: "shadcn/ui logo",
+		},
+		{
+			id: 6,
+			imageUrl: "/techStack/drizzle.webp",
+			altText: "Drizzle ORM logo",
+		},
+		{
+			id: 7,
+			imageUrl: "/techStack/postgresql.webp",
+			altText: "PostgreSQL logo",
+		},
+		{
+			id: 8,
+			imageUrl: "/techStack/neon.png",
+			altText: "Neon logo",
+		},
+		{
+			id: 9,
+			imageUrl: "/techStack/Zod.webp",
+			altText: "Zod logo",
+		},
+		{
+			id: 10,
+			imageUrl: "/techStack/framer-motion.png",
+			altText: "Framer Motion logo",
+		},
+		{
+			id: 11,
+			imageUrl: "/techStack/Git.png",
+			altText: "Git logo",
+		},
+		{
+			id: 12,
+			imageUrl: "/techStack/Github.webp",
+			altText: "Github logo",
+		},
+		{
+			id: 13,
+			imageUrl: "/techStack/clerk.png",
+			altText: "Clerk logo",
+		},
+		{
+			id: 14,
+			imageUrl: "/techStack/vitest.png",
+			altText: "Vitest logo",
+		},
+		{
+			id: 15,
+			imageUrl: "/techStack/playwright.png",
+			altText: "Playwright logo",
+		},
+	],
+};

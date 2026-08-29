@@ -1,6 +1,8 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import FeatureHighlights from "@/src/app/projects/components/sections/features";
+import ProjectNarrative from "@/src/app/projects/components/sections/narrative";
 import ProjectOverview from "@/src/app/projects/components/sections/overview";
 import TechStack from "@/src/app/projects/components/sections/techStack";
 import PROJECTS, {
@@ -29,6 +31,34 @@ export function generateStaticParams() {
 
 // Closed slug set - any unlisted slug returns a real 404 response
 export const dynamicParams = false;
+
+// Per-project metadata - title, description and share image all come
+// from the same project record the page renders
+export async function generateMetadata({
+	params,
+}: ProjectPageProps): Promise<Metadata> {
+	const { slug } = await params;
+	const project = getProjectBySlug(slug);
+
+	if (!project) {
+		return { title: "Project not found" };
+	}
+
+	const url = `/projects/${project.slug}`;
+
+	return {
+		title: project.title,
+		description: project.description,
+		alternates: { canonical: url },
+		openGraph: {
+			title: project.title,
+			description: project.description,
+			url,
+			type: "article",
+			images: [{ url: project.imageSrc, alt: project.altText }],
+		},
+	};
+}
 
 const IndividualProjectPage = async ({ params }: ProjectPageProps) => {
 	// Await the dynamic routing parameters
@@ -77,7 +107,11 @@ const IndividualProjectPage = async ({ params }: ProjectPageProps) => {
 				<ProjectOverview
 					text={project.overviewText}
 					images={project.overviewImages}
+					liveUrl={project.liveUrl}
+					repoUrl={project.repoUrl}
 				/>
+
+				<ProjectNarrative lines={project.narrative} />
 
 				<FeatureHighlights features={project.features} />
 

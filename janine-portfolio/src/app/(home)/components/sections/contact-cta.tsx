@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { setScrollPaused } from "@/lib/scroll";
-import { ContactForm } from "@/src/app/contact/components/contactForm";
+import { ContactForm } from "@/src/components/forms/contact-form";
 import Button from "@/src/components/ui/buttons/button";
 import {
 	Drawer,

@@ -117,8 +117,8 @@ export const takdaProject: Project = {
 	technologies: [
 		{
 			id: 1,
-			imageUrl: "/techStack/Typescript.webp",
-			altText: "TypeScript logo",
+			imageUrl: "/techStack/nextjs.png",
+			altText: "Next.js logo",
 		},
 		{
 			id: 2,
@@ -127,23 +127,68 @@ export const takdaProject: Project = {
 		},
 		{
 			id: 3,
-			imageUrl: "/techStack/Zod.webp",
-			altText: "Zod logo",
+			imageUrl: "/techStack/Typescript.webp",
+			altText: "TypeScript logo",
 		},
 		{
 			id: 4,
+			imageUrl: "/techStack/tailwind.webp",
+			altText: "Tailwind CSS logo",
+		},
+		{
+			id: 5,
 			imageUrl: "/techStack/shadcn.png",
 			altText: "shadcn/ui logo",
 		},
 		{
-			id: 5,
+			id: 6,
+			imageUrl: "/techStack/drizzle.webp",
+			altText: "Drizzle ORM logo",
+		},
+		{
+			id: 7,
+			imageUrl: "/techStack/postgresql.webp",
+			altText: "PostgreSQL logo",
+		},
+		{
+			id: 8,
+			imageUrl: "/techStack/neon.png",
+			altText: "Neon logo",
+		},
+		{
+			id: 9,
+			imageUrl: "/techStack/Zod.webp",
+			altText: "Zod logo",
+		},
+		{
+			id: 10,
+			imageUrl: "/techStack/framer-motion.png",
+			altText: "Framer Motion logo",
+		},
+		{
+			id: 11,
 			imageUrl: "/techStack/Git.png",
 			altText: "Git logo",
 		},
 		{
-			id: 6,
+			id: 12,
 			imageUrl: "/techStack/Github.webp",
 			altText: "Github logo",
+		},
+		{
+			id: 13,
+			imageUrl: "/techStack/clerk.png",
+			altText: "Clerk logo",
+		},
+		{
+			id: 14,
+			imageUrl: "/techStack/vitest.png",
+			altText: "Vitest logo",
+		},
+		{
+			id: 15,
+			imageUrl: "/techStack/playwright.png",
+			altText: "Playwright logo",
 		},
 	],
 };

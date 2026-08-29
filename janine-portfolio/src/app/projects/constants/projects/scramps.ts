@@ -32,6 +32,7 @@ export const scrampsProject: Project = {
 		"I started as the frontend developer, building responsive interfaces that kept navigation and accessibility intact across devices.",
 		"As it progressed I moved into full-stack work: backend debugging, system optimisation, and the ML.NET regression models that forecast budget and request volume.",
 		"I also built the analytics dashboards and the budget management module, which is where those forecasts feed back into the library's day-to-day procurement decisions.",
+		"The vendor scoring is the piece I am most pleased with: it reads historical purchase data and ranks the three best suppliers for a request by subject, weighting average price against on-time delivery so a recommendation can be explained rather than just trusted.",
 	],
 	features: [
 		{

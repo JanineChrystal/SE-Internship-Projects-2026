@@ -34,6 +34,11 @@ export const blogsiteProject: Project = {
 			altText: "Individual post page with byline, read time and breadcrumbs",
 		},
 	],
+	narrative: [
+		"I built this during my internship at Stratpoint Technologies, starting on the public site and taking it through to a complete full-stack application.",
+		"I designed the schema in Drizzle ORM, wrote the Server Actions behind every mutation, and kept read-side data access separate from write-side actions so the query layer stays independent of the mutation layer.",
+		"Validation is deliberately asymmetric: a draft needs only a title, while publishing runs the full Zod schema. Saving an unfinished thought should not be punished, so the two are separate server paths rather than one form with a flag.",
+	],
 	features: [
 		{
 			title: "Post Management",
@@ -41,11 +46,6 @@ export const blogsiteProject: Project = {
 				"A searchable, sortable console listing every post by title, category, publish date and status, with inline edit and soft-delete actions and paged loading.",
 			imageUrl: "/projects/blogsite-4.png",
 			altText: "Admin post management table with status badges",
-			extendedDescription: `I built this project during my internship at Stratpoint Technologies, starting on the public
-			site and then taking it through to a complete full-stack application. I designed the schema in Drizzle ORM, wrote the
-			Server Actions behind every mutation, and separated read-side data access from write-side actions so the query layer
-			stays independent of the mutation layer. Route-level middleware gates the whole dashboard, so no admin screen is
-			reachable without a valid session.`,
 		},
 		{
 			title: "Draft, Publish and Schedule",
@@ -53,9 +53,6 @@ export const blogsiteProject: Project = {
 				"A composer covering the full post lifecycle. A draft can be saved with nothing but a title, while publishing enforces a complete post, and scheduling defers it to a future date.",
 			imageUrl: "/projects/blogsite-6.png",
 			altText: "Compose post modal with draft and publish actions",
-			extendedDescription: `Validation is deliberately asymmetric here. Saving a draft should never punish an unfinished
-			thought, so the draft path requires only a title, while the publish path runs the full Zod schema. Getting that split
-			right meant treating the two actions as separate server-side paths rather than one form with a flag.`,
 		},
 		{
 			title: "Rich Post Editing",
@@ -63,7 +60,6 @@ export const blogsiteProject: Project = {
 				"Editing covers the title, URL slug, category, featured image upload with live preview, comma-separated tags and an optional primary affiliate link.",
 			imageUrl: "/projects/blogsite-5.png",
 			altText: "Edit post modal with featured image preview and slug field",
-			extendedDescription: ``,
 		},
 		{
 			title: "Threaded Comments",
@@ -71,7 +67,6 @@ export const blogsiteProject: Project = {
 				"Readers join the discussion under a display name and reply to one another in nested threads, with comment counts on each post and paged loading for longer conversations.",
 			imageUrl: "/projects/blogsite-7.png",
 			altText: "Public discussion thread with a nested reply",
-			extendedDescription: ``,
 		},
 		{
 			title: "Reader Reactions",
@@ -79,7 +74,6 @@ export const blogsiteProject: Project = {
 				"Beyond comments, each post carries a lightweight reaction bar - Deep, Hot Take, Grounded and Cool - giving readers a one-tap response with running counts.",
 			imageUrl: "/projects/blogsite-8.png",
 			altText: "Reaction bar with Deep, Hot Take, Grounded and Cool counts",
-			extendedDescription: ``,
 		},
 	],
 	technologies: [

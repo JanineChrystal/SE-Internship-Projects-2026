@@ -10,7 +10,6 @@ export interface ProjectFeature {
 	description: string;
 	imageUrl: string;
 	altText: string;
-	extendedDescription: string;
 }
 
 // Project technology - a logo shown in the technologies slider
@@ -38,6 +37,8 @@ export interface Project {
 	tags: string[];
 	overviewText: string;
 	overviewImages: ProjectImage[];
+	// Role and approach, one paragraph per line, revealed on scroll
+	narrative: string[];
 	features: ProjectFeature[];
 	technologies: ProjectTechnology[];
 }

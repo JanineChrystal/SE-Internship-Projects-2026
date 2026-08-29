@@ -28,6 +28,11 @@ export const scrampsProject: Project = {
 			altText: "Scramps UI",
 		},
 	],
+	narrative: [
+		"I started as the frontend developer, building responsive interfaces that kept navigation and accessibility intact across devices.",
+		"As it progressed I moved into full-stack work: backend debugging, system optimisation, and the ML.NET regression models that forecast budget and request volume.",
+		"I also built the analytics dashboards and the budget management module, which is where those forecasts feed back into the library's day-to-day procurement decisions.",
+	],
 	features: [
 		{
 			title: "Request Management",
@@ -35,41 +40,30 @@ export const scrampsProject: Project = {
 				"Handles resource requests from departments, enabling tracking, approval, and forecasting of future demands.",
 			imageUrl: "/projects/scrampsRM.webp",
 			altText: "Request Management UI",
-			extendedDescription: `My primary role in this project was as a Frontend Developer,
-			where I designed and implemented responsive user interfaces that ensured seamless navigation and
-			accessibility across devices. As the development progressed, I transitioned into a Full‑Stack Developer,
-			contributing to backend debugging and system optimization. I developed machine learning models for budget and
-			request forecasting, engineered dashboard analytics for real‑time insights, and built the budget management module
-			that integrated predictive data into operational workflows.`,
 		},
 		{
 			title: "Budget Management",
 			description: `Automates budget allocation and monitoring, integrating forecasting models to predict spending trends.`,
 			imageUrl: "/projects/scrampsBM.webp",
 			altText: "Budget Management UI",
-			extendedDescription: `This project reflects my ability to combine user‑centric design with data‑driven engineering
-			bridging frontend usability, backend logic, and intelligent automation to deliver a scalable enterprise‑grade solution.`,
 		},
 		{
 			title: "Vendor Management",
 			description: `Maintains vendor profiles and transaction histories, supporting smart AI vendor evaluation and procurement decisions.`,
 			imageUrl: "/projects/scrampsVM.webp",
 			altText: "Vendor Management UI",
-			extendedDescription: ``,
 		},
 		{
 			title: "Analytics Dashboards",
 			description: `Provides interactive visualizations for requests, budgets, vendors, and user engagement, enabling data‑driven insights.`,
 			imageUrl: "/projects/scramps4.webp",
 			altText: "Analytics Dashboard UI",
-			extendedDescription: ``,
 		},
 		{
 			title: "Machine Learning Forecasting",
 			description: `Implements ML.NET regression models to forecast resource requests and budget utilization for proactive planning.`,
 			imageUrl: "/projects/scrampsForecast.webp",
 			altText: "Budget Forecast",
-			extendedDescription: ``,
 		},
 	],
 	technologies: [

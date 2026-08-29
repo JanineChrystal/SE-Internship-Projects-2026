@@ -28,6 +28,11 @@ export const tikitingProject: Project = {
 			altText: "Tikiting UI",
 		},
 	],
+	narrative: [
+		"I was the database designer, responsible for architecting the relational structure the system runs on.",
+		"That meant mapping entity relationships, defining table schemas, and normalising them to remove redundancy and protect data integrity.",
+		"I designed it around the CRUD paths the application actually uses, so the schema follows the real ticketing workflow rather than an abstract model of it.",
+	],
 	features: [
 		{
 			title: "Ticket Card Issuance",
@@ -35,20 +40,12 @@ export const tikitingProject: Project = {
 				"Automates the generation and activation of train ticket cards linked to passenger profiles, reducing manual processing time.",
 			imageUrl: "/projects/tikitingF1.webp",
 			altText: "Ticket Card Issuance UI",
-			extendedDescription: `As the Database Designer, I was responsible for architecting the system's relational
-			database structure. My role involved designing entity relationships, defining table schemas, and applying
-			normalization techniques to eliminate redundancy and maintain data integrity. I ensured that the database supported
-			efficient CRUD operations and aligned with the system's functional requirements, laying the foundation for reliable
-			data management and future scalability.`,
 		},
 		{
 			title: "Transaction Management",
 			description: `Tracks ticket purchases, reloads, and usage history in real time, providing transparency and auditability.`,
 			imageUrl: "/projects/tikitingF3.webp",
 			altText: "Transaction Management UI",
-			extendedDescription: `This project demonstrates my ability to translate real‑world operational workflows into optimized
-			database models and integrate them into a functional application ecosystem, a key competency in software engineering
-			and system development.`,
 		},
 	],
 	technologies: [

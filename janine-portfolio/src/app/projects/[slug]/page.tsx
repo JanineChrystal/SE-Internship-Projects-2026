@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import FeatureHighlights from "@/src/app/projects/components/sections/features";
+import ProjectNarrative from "@/src/app/projects/components/sections/narrative";
 import ProjectOverview from "@/src/app/projects/components/sections/overview";
 import TechStack from "@/src/app/projects/components/sections/techStack";
 import PROJECTS, {
@@ -80,6 +81,8 @@ const IndividualProjectPage = async ({ params }: ProjectPageProps) => {
 					liveUrl={project.liveUrl}
 					repoUrl={project.repoUrl}
 				/>
+
+				<ProjectNarrative lines={project.narrative} />
 
 				<FeatureHighlights features={project.features} />
 

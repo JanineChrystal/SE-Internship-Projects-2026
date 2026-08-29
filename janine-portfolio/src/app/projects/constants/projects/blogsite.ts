@@ -18,17 +18,11 @@ export const blogsiteProject: Project = {
 		"PostgreSQL",
 		"Full Stack",
 	],
-	overviewText: `Chrystl.Blogs is a full-stack blogging platform developed during my internship at Stratpoint Technologies and
-		later extended into a complete full-stack build. It is split into two surfaces: a public site where readers browse posts by
-		category, read individual articles and join threaded discussions, and a gated admin console where posts and comments are
-		managed. The system is built on the Next.js App Router with Server Actions for every mutation, Drizzle ORM over a Postgres
-		database, and Zod for validation. Content is never destroyed - posts, comments and categories all use soft deletion, so
-		removed rows are excluded from queries rather than dropped from the database.`,
+	overviewText: `Chrystl.Blogs is a full-stack blogging platform I built during my internship at Stratpoint Technologies and
+		later took through to a complete full-stack build. A public site handles browsing, reading and threaded discussion, while a
+		gated admin console manages posts and comments. It runs on the Next.js App Router with Server Actions, Drizzle ORM over
+		Postgres, and Zod validation, and nothing is ever hard-deleted.`,
 	overviewImages: [
-		{
-			imageUrl: "/projects/blogsite-1.png",
-			altText: "Chrystl.Blogs hero with the featured post and category tag",
-		},
 		{
 			imageUrl: "/projects/blogsite-2.png",
 			altText: "Home page showing the What's New grid and category rows",

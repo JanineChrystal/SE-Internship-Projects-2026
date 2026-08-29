@@ -2,15 +2,15 @@
 
 import { useActionState, useState } from "react";
 import { useFormStatus } from "react-dom";
-import Button from "../../../components/ui/buttons/button";
-import { Input } from "../../../components/ui/forms/input";
-import { Label } from "../../../components/ui/forms/label";
+import { submitContactForm } from "@/src/actions/submit-contact-form";
+import Button from "@/src/components/ui/buttons/button";
+import { Input } from "@/src/components/ui/forms/input";
+import { Label } from "@/src/components/ui/forms/label";
 import {
 	RadioGroup,
 	RadioGroupItem,
-} from "../../../components/ui/forms/radio-group";
-import { Textarea } from "../../../components/ui/forms/textarea";
-import { submitContactForm } from "../actions/submitContactForm";
+} from "@/src/components/ui/forms/radio-group";
+import { Textarea } from "@/src/components/ui/forms/textarea";
 
 const initialState = {
 	success: false,

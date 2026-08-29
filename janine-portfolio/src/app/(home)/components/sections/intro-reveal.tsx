@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "@/lib/gsap";
 import { INTRO_LINES } from "../../constants/intro";
+import PixelMagnet from "../ui/pixel-magnet";
 
 // 3D text reveal - lines roll up in depth on load
 // Deliberately not scroll-driven: position sticky does not work
@@ -53,7 +54,11 @@ const IntroReveal = () => {
 			aria-label="Introduction"
 			className="relative w-full min-h-screen flex flex-col items-center justify-center px-6 text-center"
 		>
-			<p className="intro-copy font-display font-black uppercase text-ink-strong leading-[1.05] text-[clamp(2rem,7vw,5.5rem)]">
+			<PixelMagnet />
+
+			{/* Above the canvas, which is inert to the pointer so the grid
+			    still reacts while the copy stays selectable */}
+			<p className="intro-copy relative z-10 font-display font-black uppercase text-ink-strong leading-[1.05] text-[clamp(2rem,7vw,5.5rem)]">
 				{INTRO_LINES.map((line) => (
 					<span key={line} className="block intro-word">
 						{line}

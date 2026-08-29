@@ -1,16 +1,18 @@
 "use client";
 
 import useEmblaCarousel from "embla-carousel-react";
-import { X } from "lucide-react";
 import Image from "next/image";
-import { useCallback, useEffect, useState } from "react";
-import { createPortal } from "react-dom";
+import { useCallback, useState } from "react";
 import { setScrollPaused } from "@/lib/scroll";
-import {
-	Carousel_Data,
-	type SlideData,
-} from "@/src/app/about/constants/actsEvents";
 import SectionTitle from "@/src/components/ui/typography/section-title";
+import { Carousel_Data, type SlideData } from "@/src/constants/activities";
+import { useEscapeKey } from "@/src/hooks/use-escape-key";
+import {
+	ACTIVITIES_DESCRIPTION,
+	ACTIVITIES_EYEBROW,
+	ACTIVITIES_TITLE,
+} from "../../constants/activities";
+import CertificateViewer from "../ui/certificate-viewer";
 
 // Activities and events - certificates on a drag-scrolled rail
 // Embla handles the drag physics, so none of that is hand-written
@@ -33,20 +35,7 @@ const Activities = () => {
 		setScrollPaused(true);
 	};
 
-	useEffect(() => {
-		if (!active) {
-			return;
-		}
-
-		const onKeyDown = (event: KeyboardEvent) => {
-			if (event.key === "Escape") {
-				close();
-			}
-		};
-
-		window.addEventListener("keydown", onKeyDown);
-		return () => window.removeEventListener("keydown", onKeyDown);
-	}, [active, close]);
+	useEscapeKey(active !== null, close);
 
 	return (
 		<section
@@ -56,9 +45,9 @@ const Activities = () => {
 			<div className="w-full">
 				<div className="px-6 md:px-16 lg:px-24">
 					<SectionTitle
-						eyebrow="Beyond the code"
-						title="Activities and events"
-						description="Seminars, workshops and certifications. Drag to browse, click to enlarge."
+						eyebrow={ACTIVITIES_EYEBROW}
+						title={ACTIVITIES_TITLE}
+						description={ACTIVITIES_DESCRIPTION}
 						align="left"
 					/>
 				</div>
@@ -100,55 +89,7 @@ const Activities = () => {
 			    ancestor becomes the containing block for fixed children - so
 			    rendered in place this would anchor to the section, not the
 			    viewport */}
-			{active &&
-				createPortal(
-					<div
-						role="dialog"
-						aria-modal="true"
-						aria-label={active.title}
-						className="fixed inset-0 z-100 flex flex-col items-center justify-center gap-6 overflow-hidden bg-el-deep/95 p-6 md:p-10"
-					>
-						{/* Backdrop dismiss, same as Escape */}
-						<button
-							type="button"
-							onClick={close}
-							className="absolute inset-0 cursor-zoom-out"
-						>
-							<span className="sr-only">Close certificate viewer</span>
-						</button>
-
-						<div className="relative z-10 h-[62vh] w-full max-w-5xl md:h-[68vh]">
-							<Image
-								src={active.imageSrc}
-								alt={active.altText}
-								fill
-								sizes="100vw"
-								className="object-contain"
-							/>
-						</div>
-
-						{/* The scrim is dark in both themes, so this text is
-					    deliberately fixed rather than theme-aware */}
-						<div className="relative z-10 max-w-2xl shrink-0 text-center">
-							<p className="font-mono text-xs font-bold uppercase tracking-[0.14em] text-white/60">
-								{active.date}
-							</p>
-							<p className="mt-2 font-display text-base font-bold leading-snug text-white md:text-lg">
-								{active.title}
-							</p>
-						</div>
-
-						<button
-							type="button"
-							onClick={close}
-							className="surface-glass absolute right-6 top-6 z-10 flex h-11 w-11 items-center justify-center rounded-full text-white"
-						>
-							<X size={20} aria-hidden="true" />
-							<span className="sr-only">Close certificate viewer</span>
-						</button>
-					</div>,
-					document.body,
-				)}
+			{active && <CertificateViewer slide={active} onClose={close} />}
 		</section>
 	);
 };

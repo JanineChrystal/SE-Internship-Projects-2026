@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { gsap } from "@/lib/gsap";
+import { useRef } from "react";
+import { useLineReveal } from "@/src/hooks/use-line-reveal";
 import {
 	SELF_INTRO_EYEBROW,
 	SELF_INTRO_HEADING,
@@ -9,50 +9,12 @@ import {
 } from "../../constants/about";
 
 // Self-introduction - lines reveal as the section enters
-// Not pinned: the hero and the teaser already hold the page still,
-// and pinning every section would turn the page into a slideshow
+// Not pinned: the hero and the teaser already hold the page still, and
+// pinning every section would turn the page into a slideshow
 const SelfIntro = () => {
 	const rootRef = useRef<HTMLElement>(null);
 
-	useEffect(() => {
-		const root = rootRef.current;
-		if (!root) {
-			return;
-		}
-
-		const ctx = gsap.context(() => {
-			const mm = gsap.matchMedia();
-
-			mm.add("(prefers-reduced-motion: no-preference)", () => {
-				const lines = root.querySelectorAll<HTMLElement>(".self-intro-line");
-
-				const reveal = gsap.from(lines, {
-					y: 28,
-					opacity: 0,
-					duration: 0.7,
-					ease: "power3.out",
-					stagger: 0.14,
-					scrollTrigger: {
-						trigger: root,
-						start: "top 75%",
-						// Restart on the way back up too - otherwise arriving
-						// from below shows the section already settled
-						toggleActions: "restart none restart reverse",
-					},
-				});
-
-				return () => {
-					reveal.scrollTrigger?.kill();
-					reveal.kill();
-				};
-			});
-
-			return () => mm.revert();
-		}, rootRef);
-
-		return () => ctx.revert();
-	}, []);
-
+	useLineReveal(rootRef, ".self-intro-line");
 	return (
 		<section
 			ref={rootRef}

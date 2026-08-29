@@ -1,5 +1,5 @@
 import Image from "next/image";
-import type { techData } from "@/src/app/about/constants/techStack";
+import type { techData } from "@/src/constants/tech-stack";
 
 interface InfiniteSliderProps {
 	items: techData[];

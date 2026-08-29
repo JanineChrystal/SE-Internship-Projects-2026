@@ -27,53 +27,81 @@ export const scrampsProject: Project = {
 			imageUrl: "/projects/scramps2.webp",
 			altText: "Scramps UI",
 		},
-		{
-			imageUrl: "/projects/scrampsPub.webp",
-			altText: "Scramps Public page UI",
-		},
+	],
+	narrative: [
+		"I started as the frontend developer, building responsive interfaces that kept navigation and accessibility intact across devices.",
+		"As it progressed I moved into full-stack work: backend debugging, system optimisation, and the ML.NET regression models that forecast budget and request volume.",
+		"I also built the analytics dashboards and the budget management module, which is where those forecasts feed back into the library's day-to-day procurement decisions.",
+		"The vendor scoring is the piece I am most pleased with: it reads historical purchase data and ranks the three best suppliers for a request by subject, weighting average price against on-time delivery so a recommendation can be explained rather than just trusted.",
 	],
 	features: [
 		{
 			title: "Request Management",
 			description:
 				"Handles resource requests from departments, enabling tracking, approval, and forecasting of future demands.",
-			imageUrl: "/projects/scrampsRM.webp",
-			altText: "Request Management UI",
-			extendedDescription: `My primary role in this project was as a Frontend Developer,
-			where I designed and implemented responsive user interfaces that ensured seamless navigation and
-			accessibility across devices. As the development progressed, I transitioned into a Full‑Stack Developer,
-			contributing to backend debugging and system optimization. I developed machine learning models for budget and
-			request forecasting, engineered dashboard analytics for real‑time insights, and built the budget management module
-			that integrated predictive data into operational workflows.`,
+			images: [
+				{
+					imageUrl: "/projects/scrampsRM.webp",
+					altText: "Request Management UI",
+				},
+			],
 		},
 		{
 			title: "Budget Management",
 			description: `Automates budget allocation and monitoring, integrating forecasting models to predict spending trends.`,
-			imageUrl: "/projects/scrampsBM.webp",
-			altText: "Budget Management UI",
-			extendedDescription: `This project reflects my ability to combine user‑centric design with data‑driven engineering
-			bridging frontend usability, backend logic, and intelligent automation to deliver a scalable enterprise‑grade solution.`,
+			images: [
+				{
+					imageUrl: "/projects/scrampsBM.webp",
+					altText: "Budget Management UI",
+				},
+			],
 		},
 		{
 			title: "Vendor Management",
 			description: `Maintains vendor profiles and transaction histories, supporting smart AI vendor evaluation and procurement decisions.`,
-			imageUrl: "/projects/scrampsVM.webp",
-			altText: "Vendor Management UI",
-			extendedDescription: ``,
+			images: [
+				{
+					imageUrl: "/projects/scrampsVM.webp",
+					altText: "Vendor Management UI",
+				},
+			],
+		},
+		{
+			title: "Vendor AI Analytics",
+			description:
+				"Recommends the top three vendors for a book request based on its subject, scoring each against historical performance and pricing - average price, on-time delivery rate, and weighted performance and pricing points - then summarising why each one placed before it is added to the request.",
+			images: [
+				{
+					imageUrl: "/projects/scrampsVAI1.png",
+					altText:
+						"Request form running the AI vendor analysis over performance and pricing data",
+				},
+				{
+					imageUrl: "/projects/scrampsVAI2.png",
+					altText:
+						"AI vendor recommendations ranking three publishers with scores and a written analysis",
+				},
+			],
 		},
 		{
 			title: "Analytics Dashboards",
 			description: `Provides interactive visualizations for requests, budgets, vendors, and user engagement, enabling data‑driven insights.`,
-			imageUrl: "/projects/scramps4.webp",
-			altText: "Analytics Dashboard UI",
-			extendedDescription: ``,
+			images: [
+				{
+					imageUrl: "/projects/scramps4.webp",
+					altText: "Analytics Dashboard UI",
+				},
+			],
 		},
 		{
 			title: "Machine Learning Forecasting",
 			description: `Implements ML.NET regression models to forecast resource requests and budget utilization for proactive planning.`,
-			imageUrl: "/projects/scrampsForecast.webp",
-			altText: "Budget Forecast",
-			extendedDescription: ``,
+			images: [
+				{
+					imageUrl: "/projects/scrampsForecast.webp",
+					altText: "Budget Forecast",
+				},
+			],
 		},
 	],
 	technologies: [

@@ -47,3 +47,9 @@ export const ROUTE_LINKS: RouteLink[] = [
 ];
 
 export const WORDMARK = "Chrystl.";
+
+// Anchor selectors, derived once
+// A fresh array per render would restart the observer every time
+export const SECTION_TARGETS: string[] = SECTION_LINKS.map(
+	(link) => link.target,
+);

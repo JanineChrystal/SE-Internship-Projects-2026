@@ -2,15 +2,19 @@
 
 import { useActionState, useState } from "react";
 import { useFormStatus } from "react-dom";
-import Button from "../../../components/ui/buttons/button";
-import { Input } from "../../../components/ui/forms/input";
-import { Label } from "../../../components/ui/forms/label";
+import { submitContactForm } from "@/src/actions/submit-contact-form";
+import Button from "@/src/components/ui/buttons/button";
+import { Input } from "@/src/components/ui/forms/input";
+import { Label } from "@/src/components/ui/forms/label";
 import {
 	RadioGroup,
 	RadioGroupItem,
-} from "../../../components/ui/forms/radio-group";
-import { Textarea } from "../../../components/ui/forms/textarea";
-import { submitContactForm } from "../actions/submitContactForm";
+} from "@/src/components/ui/forms/radio-group";
+import { Textarea } from "@/src/components/ui/forms/textarea";
+import {
+	CONTACT_FORM_LABELS,
+	CONTACT_FORM_PLACEHOLDERS,
+} from "@/src/constants/contact-form";
 
 const initialState = {
 	success: false,
@@ -69,7 +73,7 @@ export function ContactForm() {
 					className="absolute left-[-9999px] top-auto w-px h-px overflow-hidden"
 					aria-hidden="true"
 				>
-					<Label htmlFor="company">Company</Label>
+					<Label htmlFor="company">{CONTACT_FORM_LABELS.company}</Label>
 					<Input
 						id="company"
 						name="company"
@@ -131,7 +135,7 @@ export function ContactForm() {
 				{/* Conditional Rendering block for the inputs */}
 				{contactMethod === "email" ? (
 					<div className="space-y-2">
-						<Label htmlFor="email">Email</Label>
+						<Label htmlFor="email">{CONTACT_FORM_LABELS.email}</Label>
 						<Input
 							id="email"
 							name="email"
@@ -144,7 +148,7 @@ export function ContactForm() {
 					</div>
 				) : (
 					<div className="space-y-2">
-						<Label htmlFor="phone">Contact Number</Label>
+						<Label htmlFor="phone">{CONTACT_FORM_LABELS.phone}</Label>
 						<Input
 							id="phone"
 							name="phone"
@@ -159,11 +163,11 @@ export function ContactForm() {
 
 				{/* Subject Field */}
 				<div className="space-y-2">
-					<Label htmlFor="subject">Subject</Label>
+					<Label htmlFor="subject">{CONTACT_FORM_LABELS.subject}</Label>
 					<Input
 						id="subject"
 						name="subject"
-						placeholder="Company - Job Offer"
+						placeholder={CONTACT_FORM_PLACEHOLDERS.subject}
 						className={`bg-background ${state.errors?.subject ? "border-red-500 border-2" : "border-background/20"}`}
 					/>
 					{state.errors?.subject && (
@@ -173,11 +177,11 @@ export function ContactForm() {
 
 				{/* Body Textarea */}
 				<div className="space-y-2">
-					<Label htmlFor="body">Body</Label>
+					<Label htmlFor="body">{CONTACT_FORM_LABELS.body}</Label>
 					<Textarea
 						id="body"
 						name="body"
-						placeholder="Hello,"
+						placeholder={CONTACT_FORM_PLACEHOLDERS.body}
 						rows={6}
 						className={`bg-background resize-none ${state.errors?.body ? "border-red-500 border-2" : "border-background/20"}`}
 					/>

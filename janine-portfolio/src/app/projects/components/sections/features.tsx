@@ -1,4 +1,12 @@
+"use client";
+
+import { Plus } from "lucide-react";
 import Image from "next/image";
+import {
+	Collapsible,
+	CollapsibleContent,
+	CollapsibleTrigger,
+} from "@/src/components/ui/collapsible/collapsible";
 import type { ProjectFeature } from "@/src/types/project";
 import SectionTitle from "../../../../components/ui/typography/section-title";
 import { FEATURES_EYEBROW, FEATURES_TITLE } from "../../constants/detail";
@@ -7,6 +15,10 @@ interface FeatureHighlightsProps {
 	features: ProjectFeature[];
 }
 
+// Feature highlights - one collapsible row per feature
+// All closed by default, so the section reads as a scannable list of
+// what the project does and opens only what is asked for, rather than
+// stacking every screenshot down the page
 const FeatureHighlights = ({ features }: FeatureHighlightsProps) => {
 	return (
 		<section className="flex w-full flex-col">
@@ -16,48 +28,61 @@ const FeatureHighlights = ({ features }: FeatureHighlightsProps) => {
 				align="left"
 			/>
 
-			<div className="flex flex-col gap-12">
-				{features.map((feature, index) => {
-					const isEven = index % 2 === 0;
+			<div className="flex flex-col gap-3">
+				{features.map((feature, index) => (
+					<Collapsible
+						key={feature.title}
+						className="surface-glass group rounded-3xl px-6 py-2 md:px-8"
+					>
+						<CollapsibleTrigger className="flex w-full items-center justify-between gap-4 py-5 text-left outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-ink">
+							<span className="flex items-center gap-4">
+								<span className="font-mono text-xs text-ink-muted">
+									{String(index + 1).padStart(2, "0")}
+								</span>
+								<span className="font-display text-lg font-bold text-ink-strong transition-colors group-hover:text-accent-ink md:text-xl">
+									{feature.title}
+								</span>
+							</span>
 
-					return (
-						<div
-							key={feature.title}
-							className={`flex flex-col md:flex-row gap-8 min-h-75 ${!isEven ? "md:flex-row-reverse" : ""}`}
-						>
-							{/* Column 1: Feature Image Box */}
-							<div className="bg-surface-raised rounded-3xl flex-1 shadow-2xl flex items-center justify-center min-h-62 overflow-hidden relative transition-transform duration-200 hover:-translate-y-1">
-								<Image
-									src={feature.imageUrl}
-									alt={feature.altText}
-									fill
-									sizes="(max-width: 768px) 100vw, 50vw"
-									className="object-cover"
-								/>
-							</div>
+							{/* Rotates into a minus when open */}
+							<Plus
+								aria-hidden="true"
+								className="size-5 shrink-0 text-accent-ink transition-transform duration-300 group-data-[state=open]:rotate-45"
+							/>
+						</CollapsibleTrigger>
 
-							{/* Column 2: Contains BOTH descriptions stacked vertically */}
-							<div className="flex-1 flex flex-col gap-6">
-								{/* Short Description Box */}
-								<div className="bg-surface-raised rounded-3xl shadow-2xl p-8 flex-1 flex flex-col justify-center transition-transform duration-200 hover:-translate-y-1">
-									<h3 className="text-xl font-bold text-ink-strong mb-4">
-										{feature.title}
-									</h3>
-									<p className="text-ink">{feature.description}</p>
-								</div>
+						<CollapsibleContent>
+							<div className="flex flex-col gap-6 pb-6">
+								<p className="max-w-3xl leading-relaxed text-ink">
+									{feature.description}
+								</p>
 
-								{/* Extended Description Box (Now sits neatly below the short one in the same column) */}
-								{feature.extendedDescription && (
-									<div className="bg-surface-raised rounded-3xl shadow-2xl p-8 flex-1 flex flex-col justify-center transition-transform duration-200 hover:-translate-y-1">
-										<p className="text-sm text-ink-muted italic">
-											{feature.extendedDescription}
-										</p>
+								{/* Stacked in order, each sized by the file rather
+								    than a fixed frame: the captures vary from wide
+								    dashboards to tall pages, and a set aspect would
+								    crop the long ones
+								    width and height are a ratio hint that reserves
+								    space before load; h-auto hands the final height
+								    back to the image itself */}
+								{feature.images.map((image) => (
+									<div
+										key={image.imageUrl}
+										className="surface-neu overflow-hidden rounded-2xl"
+									>
+										<Image
+											src={image.imageUrl}
+											alt={image.altText}
+											width={1600}
+											height={900}
+											sizes="(max-width: 768px) 100vw, 60rem"
+											className="h-auto w-full"
+										/>
 									</div>
-								)}
+								))}
 							</div>
-						</div>
-					);
-				})}
+						</CollapsibleContent>
+					</Collapsible>
+				))}
 			</div>
 		</section>
 	);

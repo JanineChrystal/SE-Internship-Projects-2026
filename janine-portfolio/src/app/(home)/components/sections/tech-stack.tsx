@@ -2,8 +2,8 @@
 
 import { useEffect, useRef } from "react";
 import { gsap } from "@/lib/gsap";
-import { techStack } from "@/src/app/about/constants/techStack";
 import SectionTitle from "@/src/components/ui/typography/section-title";
+import { techStack } from "@/src/constants/tech-stack";
 import ReelGallery from "../ui/reel-gallery";
 
 // Technology stack - the reels sit behind and the title reads over

@@ -24,34 +24,34 @@ export const allcardProject: Project = {
 			imageUrl: "/projects/ac4.webp",
 			altText: "POC UI",
 		},
-		{
-			imageUrl: "/projects/ac1.webp",
-			altText: "POC UI",
-		},
+	],
+	narrative: [
+		"I worked primarily as a frontend developer, building responsive, modular interfaces for the admin console in React, MUI and TypeScript.",
+		"I also designed normalised PostgreSQL schemas and supported backend debugging and REST API integration, so the work reached across the interface and the data beneath it.",
+		"Working both ends meant the UI and the data model were designed against each other rather than in isolation, and the proof of concept held to PCI DSS and OWASP standards throughout.",
 	],
 	features: [
 		{
 			title: "Analytics Dashboards",
 			description:
 				"Offers visual insights into attendance, card usage, and people data for informed decision‑making.",
-			imageUrl: "/projects/ac3.webp",
-			altText: "Analytics Dashboard UI",
-			extendedDescription: `My primary role in this project was as a Frontend Developer,
-			where I implemented responsive, modular interfaces using React, MUI, and TypeScript.
-			Beyond frontend responsibilities, I also contributed to database design, creating normalized schemas
-			in PostgreSQL to support efficient data flow and integrity. Additionally, I assisted by supporting backend debugging
-			and integration, ensuring seamless communication between the frontend and APIs. This dual contribution positioned
-			me as a full‑stack engineer, bridging user experience with robust data architecture.`,
+			images: [
+				{
+					imageUrl: "/projects/ac3.webp",
+					altText: "Analytics Dashboard UI",
+				},
+			],
 		},
 		{
 			title: "Automated Attendance Management / DTR Record",
 			description: `Tracks employee attendance with real‑time updates and analytics dashboards connected to card management module.
 			Automates daily time recording with integrated reporting for HR and payroll.`,
-			imageUrl: "/projects/ac2.webp",
-			altText: "Attendance Management UI",
-			extendedDescription: `This project demonstrates my ability to deliver enterprise‑grade solutions by combining
-			frontend innovation, backend problem‑solving, and database expertise ensuring the system is scalable, maintainable,
-			and aligned with modern engineering practices.`,
+			images: [
+				{
+					imageUrl: "/projects/ac2.webp",
+					altText: "Attendance Management UI",
+				},
+			],
 		},
 	],
 	technologies: [

@@ -24,11 +24,6 @@ export const allcardProject: Project = {
 			imageUrl: "/projects/ac4.webp",
 			altText: "POC UI",
 		},
-		{
-			imageUrl: "/projects/ac1.webp",
-			aspect: "square",
-			altText: "POC UI",
-		},
 	],
 	features: [
 		{

@@ -27,11 +27,6 @@ export const tikitingProject: Project = {
 			imageUrl: "/projects/tikiting5.webp",
 			altText: "Tikiting UI",
 		},
-		{
-			imageUrl: "/projects/tikitingF3.webp",
-			aspect: "tall",
-			altText: "Tikiting UI",
-		},
 	],
 	features: [
 		{

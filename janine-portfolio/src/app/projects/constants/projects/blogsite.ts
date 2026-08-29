@@ -3,6 +3,7 @@ import type { Project } from "@/src/types/project";
 export const blogsiteProject: Project = {
 	slug: "chrystl-blogs",
 	title: "Chrystl.Blogs: Full-Stack Blogging Platform and Admin Console",
+	liveUrl: "https://chrystl-blogs.vercel.app/",
 	date: "June 2026 - August 2026",
 	role: "Full Stack Developer",
 	description: `A full-stack blogging platform built with Next.js, pairing a public reading site with a secure administrative

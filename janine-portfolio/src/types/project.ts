@@ -24,6 +24,10 @@ export interface ProjectTechnology {
 export interface Project {
 	slug: string;
 	title: string;
+	// Outbound links - each renders only when present, so a project
+	// without a deployment or a public repo simply omits it
+	liveUrl?: string;
+	repoUrl?: string;
 	// Featured projects surface in the home page teaser
 	featured?: boolean;
 	date: string;

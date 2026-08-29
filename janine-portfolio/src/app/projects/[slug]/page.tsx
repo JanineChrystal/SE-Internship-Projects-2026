@@ -77,6 +77,8 @@ const IndividualProjectPage = async ({ params }: ProjectPageProps) => {
 				<ProjectOverview
 					text={project.overviewText}
 					images={project.overviewImages}
+					liveUrl={project.liveUrl}
+					repoUrl={project.repoUrl}
 				/>
 
 				<FeatureHighlights features={project.features} />

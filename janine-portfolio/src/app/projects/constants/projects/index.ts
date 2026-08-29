@@ -2,6 +2,7 @@ import type { Project } from "@/src/types/project";
 import { allcardProject } from "./allcard";
 import { blogsiteProject } from "./blogsite";
 import { scrampsProject } from "./scramps";
+import { takdaProject } from "./takda";
 import { tikitingProject } from "./tikiting";
 
 // Display order - drives the projects grid and the prev/next detail navigation
@@ -10,6 +11,7 @@ const PROJECTS: Project[] = [
 	scrampsProject,
 	tikitingProject,
 	blogsiteProject,
+	takdaProject,
 ];
 
 // Slug lookup - returns undefined so callers decide how to handle a miss

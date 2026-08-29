@@ -1,17 +1,35 @@
+import { Code, ExternalLink } from "lucide-react";
 import Image from "next/image";
 import type { ProjectImage } from "@/src/types/project";
 import SectionTitle from "../../../../components/ui/typography/section-title";
-import { OVERVIEW_EYEBROW, OVERVIEW_TITLE } from "../../constants/detail";
+import {
+	LIVE_LINK_LABEL,
+	OVERVIEW_EYEBROW,
+	OVERVIEW_TITLE,
+	REPO_LINK_LABEL,
+} from "../../constants/detail";
 
 interface ProjectOverviewProps {
 	text: string;
 	images: ProjectImage[];
+	liveUrl?: string;
+	repoUrl?: string;
 }
+
+const linkClasses =
+	"inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-bold text-ink-strong transition-colors hover:border-accent/50 hover:text-accent-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-ink";
 
 // Project overview - summary above a pair of screenshots
 // Every project shows exactly two landscape captures, so the block is
 // the same shape on every case study and nothing is cropped to fit
-const ProjectOverview = ({ text, images }: ProjectOverviewProps) => {
+const ProjectOverview = ({
+	text,
+	images,
+	liveUrl,
+	repoUrl,
+}: ProjectOverviewProps) => {
+	const hasLinks = Boolean(liveUrl || repoUrl);
+
 	return (
 		<section id="overview" className="flex w-full flex-col justify-center">
 			<SectionTitle
@@ -21,10 +39,37 @@ const ProjectOverview = ({ text, images }: ProjectOverviewProps) => {
 			/>
 
 			<div className="flex flex-col gap-6">
-				<div className="surface-glass rounded-3xl p-8">
+				<div className="surface-glass flex flex-col gap-6 rounded-3xl p-8">
 					{/* Measure capped for readability - justified text across the
 					    full width opens rivers between the words */}
 					<p className="max-w-3xl leading-relaxed text-ink">{text}</p>
+
+					{hasLinks && (
+						<div className="flex flex-wrap gap-3">
+							{liveUrl && (
+								<a
+									href={liveUrl}
+									target="_blank"
+									rel="noopener noreferrer"
+									className={linkClasses}
+								>
+									<ExternalLink aria-hidden="true" className="size-4" />
+									{LIVE_LINK_LABEL}
+								</a>
+							)}
+							{repoUrl && (
+								<a
+									href={repoUrl}
+									target="_blank"
+									rel="noopener noreferrer"
+									className={linkClasses}
+								>
+									<Code aria-hidden="true" className="size-4" />
+									{REPO_LINK_LABEL}
+								</a>
+							)}
+						</div>
+					)}
 				</div>
 
 				<div className="grid grid-cols-1 gap-6 md:grid-cols-2">

@@ -38,40 +38,69 @@ export const scrampsProject: Project = {
 			title: "Request Management",
 			description:
 				"Handles resource requests from departments, enabling tracking, approval, and forecasting of future demands.",
-			imageUrl: "/projects/scrampsRM.webp",
-			altText: "Request Management UI",
+			images: [
+				{
+					imageUrl: "/projects/scrampsRM.webp",
+					altText: "Request Management UI",
+				},
+			],
 		},
 		{
 			title: "Budget Management",
 			description: `Automates budget allocation and monitoring, integrating forecasting models to predict spending trends.`,
-			imageUrl: "/projects/scrampsBM.webp",
-			altText: "Budget Management UI",
+			images: [
+				{
+					imageUrl: "/projects/scrampsBM.webp",
+					altText: "Budget Management UI",
+				},
+			],
 		},
 		{
 			title: "Vendor Management",
 			description: `Maintains vendor profiles and transaction histories, supporting smart AI vendor evaluation and procurement decisions.`,
-			imageUrl: "/projects/scrampsVM.webp",
-			altText: "Vendor Management UI",
+			images: [
+				{
+					imageUrl: "/projects/scrampsVM.webp",
+					altText: "Vendor Management UI",
+				},
+			],
 		},
 		{
 			title: "Vendor AI Analytics",
 			description:
 				"Recommends the top three vendors for a book request based on its subject, scoring each against historical performance and pricing - average price, on-time delivery rate, and weighted performance and pricing points - then summarising why each one placed before it is added to the request.",
-			imageUrl: "/projects/scrampsVAI2.png",
-			altText:
-				"AI vendor recommendations ranking three publishers with scores and a written analysis",
+			images: [
+				{
+					imageUrl: "/projects/scrampsVAI1.png",
+					altText:
+						"Request form running the AI vendor analysis over performance and pricing data",
+				},
+				{
+					imageUrl: "/projects/scrampsVAI2.png",
+					altText:
+						"AI vendor recommendations ranking three publishers with scores and a written analysis",
+				},
+			],
 		},
 		{
 			title: "Analytics Dashboards",
 			description: `Provides interactive visualizations for requests, budgets, vendors, and user engagement, enabling data‑driven insights.`,
-			imageUrl: "/projects/scramps4.webp",
-			altText: "Analytics Dashboard UI",
+			images: [
+				{
+					imageUrl: "/projects/scramps4.webp",
+					altText: "Analytics Dashboard UI",
+				},
+			],
 		},
 		{
 			title: "Machine Learning Forecasting",
 			description: `Implements ML.NET regression models to forecast resource requests and budget utilization for proactive planning.`,
-			imageUrl: "/projects/scrampsForecast.webp",
-			altText: "Budget Forecast",
+			images: [
+				{
+					imageUrl: "/projects/scrampsForecast.webp",
+					altText: "Budget Forecast",
+				},
+			],
 		},
 	],
 	technologies: [

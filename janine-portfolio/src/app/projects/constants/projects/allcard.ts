@@ -35,15 +35,23 @@ export const allcardProject: Project = {
 			title: "Analytics Dashboards",
 			description:
 				"Offers visual insights into attendance, card usage, and people data for informed decision‑making.",
-			imageUrl: "/projects/ac3.webp",
-			altText: "Analytics Dashboard UI",
+			images: [
+				{
+					imageUrl: "/projects/ac3.webp",
+					altText: "Analytics Dashboard UI",
+				},
+			],
 		},
 		{
 			title: "Automated Attendance Management / DTR Record",
 			description: `Tracks employee attendance with real‑time updates and analytics dashboards connected to card management module.
 			Automates daily time recording with integrated reporting for HR and payroll.`,
-			imageUrl: "/projects/ac2.webp",
-			altText: "Attendance Management UI",
+			images: [
+				{
+					imageUrl: "/projects/ac2.webp",
+					altText: "Attendance Management UI",
+				},
+			],
 		},
 	],
 	technologies: [

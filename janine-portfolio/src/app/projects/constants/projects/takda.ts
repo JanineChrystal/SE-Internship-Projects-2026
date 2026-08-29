@@ -46,46 +46,72 @@ export const takdaProject: Project = {
 			title: "Kanban Board and Five Views",
 			description:
 				"A project opens on a Kanban board and switches to Grid, Calendar, Charts or Settings without leaving the page. Tasks drag between columns, and one column per project can be marked the completion column - completing a task moves it there, and un-completing sends it back where it came from rather than dumping it in the first column.",
-			imageUrl: "/projects/takda-7.png",
-			altText: "Kanban board with a task card in the completion column",
+			images: [
+				{
+					imageUrl: "/projects/takda-7.png",
+					altText: "Kanban board with a task card in the completion column",
+				},
+			],
 		},
 		{
 			title: "Bilingual Comment Moderation",
 			description:
 				"Comments are checked against two detectors before they are stored, not after: an in-process English word list, and a Filipino and Visayan service backed by a local list. Anything flagged surfaces in a per-project queue with its reason and timestamp.",
-			imageUrl: "/projects/takda-12.png",
-			altText:
-				"Comment moderation queue showing comments flagged as Filipino profanity",
+			images: [
+				{
+					imageUrl: "/projects/takda-12.png",
+					altText:
+						"Comment moderation queue showing comments flagged as Filipino profanity",
+				},
+			],
 		},
 		{
 			title: "Project Analytics",
 			description:
 				"Status, priority and board-column breakdowns for every project, each chart backed by a table view showing the same data as text rather than colour alone.",
-			imageUrl: "/projects/takda-10.png",
-			altText:
-				"Status donut, priority bar chart and bucket chart for a project",
+			images: [
+				{
+					imageUrl: "/projects/takda-10.png",
+					altText:
+						"Status donut, priority bar chart and bucket chart for a project",
+				},
+			],
 		},
 		{
 			title: "Calendar and Deadlines",
 			description:
 				"Month, week and day views of task deadlines with an upcoming deadlines rail beside them, plus a global calendar spanning every project a member belongs to.",
-			imageUrl: "/projects/takda-9.png",
-			altText:
-				"Project calendar in month view with an upcoming deadlines panel",
+			images: [
+				{
+					imageUrl: "/projects/takda-9.png",
+					altText:
+						"Project calendar in month view with an upcoming deadlines panel",
+				},
+			],
 		},
 		{
 			title: "Notifications You Can Switch Off",
 			description:
 				"An in-app inbox alongside seven email categories: project and workspace invites, comment mentions, comment violations, task and project completions, and overdue projects. Each preference is resolved once in the data layer, so no sender can bypass it.",
-			imageUrl: "/projects/takda-5.png",
-			altText: "Notifications inbox with member added and invite sent entries",
+			images: [
+				{
+					imageUrl: "/projects/takda-5.png",
+					altText:
+						"Notifications inbox with member added and invite sent entries",
+				},
+			],
 		},
 		{
 			title: "Archive and Trash",
 			description:
 				"Deleting is reversible. Projects and tasks go to Archive, kept indefinitely, or Trash, purged after thirty days, and both can be restored. Deleting a project asks you to type its name first.",
-			imageUrl: "/projects/takda-17.png",
-			altText: "Archive page with Archive and Trash tabs and an empty state",
+			images: [
+				{
+					imageUrl: "/projects/takda-17.png",
+					altText:
+						"Archive page with Archive and Trash tabs and an empty state",
+				},
+			],
 		},
 	],
 	technologies: [

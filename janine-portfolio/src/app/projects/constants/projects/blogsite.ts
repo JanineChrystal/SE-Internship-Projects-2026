@@ -44,36 +44,56 @@ export const blogsiteProject: Project = {
 			title: "Post Management",
 			description:
 				"A searchable, sortable console listing every post by title, category, publish date and status, with inline edit and soft-delete actions and paged loading.",
-			imageUrl: "/projects/blogsite-4.png",
-			altText: "Admin post management table with status badges",
+			images: [
+				{
+					imageUrl: "/projects/blogsite-4.png",
+					altText: "Admin post management table with status badges",
+				},
+			],
 		},
 		{
 			title: "Draft, Publish and Schedule",
 			description:
 				"A composer covering the full post lifecycle. A draft can be saved with nothing but a title, while publishing enforces a complete post, and scheduling defers it to a future date.",
-			imageUrl: "/projects/blogsite-6.png",
-			altText: "Compose post modal with draft and publish actions",
+			images: [
+				{
+					imageUrl: "/projects/blogsite-6.png",
+					altText: "Compose post modal with draft and publish actions",
+				},
+			],
 		},
 		{
 			title: "Rich Post Editing",
 			description:
 				"Editing covers the title, URL slug, category, featured image upload with live preview, comma-separated tags and an optional primary affiliate link.",
-			imageUrl: "/projects/blogsite-5.png",
-			altText: "Edit post modal with featured image preview and slug field",
+			images: [
+				{
+					imageUrl: "/projects/blogsite-5.png",
+					altText: "Edit post modal with featured image preview and slug field",
+				},
+			],
 		},
 		{
 			title: "Threaded Comments",
 			description:
 				"Readers join the discussion under a display name and reply to one another in nested threads, with comment counts on each post and paged loading for longer conversations.",
-			imageUrl: "/projects/blogsite-7.png",
-			altText: "Public discussion thread with a nested reply",
+			images: [
+				{
+					imageUrl: "/projects/blogsite-7.png",
+					altText: "Public discussion thread with a nested reply",
+				},
+			],
 		},
 		{
 			title: "Reader Reactions",
 			description:
 				"Beyond comments, each post carries a lightweight reaction bar - Deep, Hot Take, Grounded and Cool - giving readers a one-tap response with running counts.",
-			imageUrl: "/projects/blogsite-8.png",
-			altText: "Reaction bar with Deep, Hot Take, Grounded and Cool counts",
+			images: [
+				{
+					imageUrl: "/projects/blogsite-8.png",
+					altText: "Reaction bar with Deep, Hot Take, Grounded and Cool counts",
+				},
+			],
 		},
 	],
 	technologies: [

@@ -5,11 +5,12 @@ export interface ProjectImage {
 }
 
 // Project feature - one highlighted module of a project
+// Screenshots are a list so a feature can show several stages of the
+// same flow, stacked in order
 export interface ProjectFeature {
 	title: string;
 	description: string;
-	imageUrl: string;
-	altText: string;
+	images: ProjectImage[];
 }
 
 // Project technology - a logo shown in the technologies slider

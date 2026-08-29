@@ -57,22 +57,28 @@ const FeatureHighlights = ({ features }: FeatureHighlightsProps) => {
 									{feature.description}
 								</p>
 
-								{/* Sized by the file rather than a fixed frame: the
-								    captures vary from wide dashboards to tall pages,
-								    and a set aspect would crop the long ones
+								{/* Stacked in order, each sized by the file rather
+								    than a fixed frame: the captures vary from wide
+								    dashboards to tall pages, and a set aspect would
+								    crop the long ones
 								    width and height are a ratio hint that reserves
 								    space before load; h-auto hands the final height
 								    back to the image itself */}
-								<div className="surface-neu overflow-hidden rounded-2xl">
-									<Image
-										src={feature.imageUrl}
-										alt={feature.altText}
-										width={1600}
-										height={900}
-										sizes="(max-width: 768px) 100vw, 60rem"
-										className="h-auto w-full"
-									/>
-								</div>
+								{feature.images.map((image) => (
+									<div
+										key={image.imageUrl}
+										className="surface-neu overflow-hidden rounded-2xl"
+									>
+										<Image
+											src={image.imageUrl}
+											alt={image.altText}
+											width={1600}
+											height={900}
+											sizes="(max-width: 768px) 100vw, 60rem"
+											className="h-auto w-full"
+										/>
+									</div>
+								))}
 							</div>
 						</CollapsibleContent>
 					</Collapsible>

@@ -38,14 +38,22 @@ export const tikitingProject: Project = {
 			title: "Ticket Card Issuance",
 			description:
 				"Automates the generation and activation of train ticket cards linked to passenger profiles, reducing manual processing time.",
-			imageUrl: "/projects/tikitingF1.webp",
-			altText: "Ticket Card Issuance UI",
+			images: [
+				{
+					imageUrl: "/projects/tikitingF1.webp",
+					altText: "Ticket Card Issuance UI",
+				},
+			],
 		},
 		{
 			title: "Transaction Management",
 			description: `Tracks ticket purchases, reloads, and usage history in real time, providing transparency and auditability.`,
-			imageUrl: "/projects/tikitingF3.webp",
-			altText: "Transaction Management UI",
+			images: [
+				{
+					imageUrl: "/projects/tikitingF3.webp",
+					altText: "Transaction Management UI",
+				},
+			],
 		},
 	],
 	technologies: [

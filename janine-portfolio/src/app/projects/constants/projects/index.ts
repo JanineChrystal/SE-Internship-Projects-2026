@@ -1,10 +1,16 @@
 import type { Project } from "@/src/types/project";
 import { allcardProject } from "./allcard";
+import { blogsiteProject } from "./blogsite";
 import { scrampsProject } from "./scramps";
 import { tikitingProject } from "./tikiting";
 
 // Display order - drives the projects grid and the prev/next detail navigation
-const PROJECTS: Project[] = [allcardProject, scrampsProject, tikitingProject];
+const PROJECTS: Project[] = [
+	allcardProject,
+	scrampsProject,
+	tikitingProject,
+	blogsiteProject,
+];
 
 // Slug lookup - returns undefined so callers decide how to handle a miss
 export const getProjectBySlug = (slug: string): Project | undefined =>

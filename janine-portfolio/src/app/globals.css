@@ -39,7 +39,7 @@
 	--el-air-tint: #f7f2e9;
 	--el-air-ink-light: #8a6119;
 	--el-air-ink-dark: #e6bd75;
-	--el-air-on: #2e2410;
+	--el-air-on: #1c1608;
 
 	/* Walnut Noir */
 	--el-wood-deep: #2e1f1b;
@@ -133,6 +133,9 @@
 	/* Halo behind text on busy backdrops - light ground, light halo */
 	--text-pop: var(--surface-2);
 
+	/* Vignette - corners settle so cards read as lifted off the ground */
+	--vignette: color-mix(in oklab, var(--el-deep) 13%, transparent);
+
 	--radius: 0.75rem;
 	color-scheme: light;
 }
@@ -145,11 +148,12 @@
 .dark {
 	--surface-0: var(--el-deep);
 	--surface-1: color-mix(in oklab, var(--el-deep) 88%, #ffffff);
-	--surface-2: color-mix(in oklab, var(--el-deep) 78%, #ffffff);
+	--surface-2: color-mix(in oklab, var(--el-deep) 86%, #ffffff);
 
 	--ink-strong: #f5f7fa;
 	--ink-body: #dde2e9;
-	--ink-muted: #98a1ad;
+	/* Lifted from #98a1ad, which fell to 4.03 against surface-2 */
+	--ink-muted: #a3acb8;
 
 	--accent: var(--el-mid);
 	--accent-ink: var(--el-ink-dark);
@@ -165,6 +169,10 @@
 	--neu-light: color-mix(in oklab, var(--el-mid) 26%, transparent);
 	--neu-shadow: rgb(0 0 0 / 0.55);
 	--text-pop: var(--el-deep);
+
+	/* Falls toward black rather than the deep shade, which is already
+	   the surface colour here and would leave no visible edge */
+	--vignette: rgb(0 0 0 / 0.42);
 
 	color-scheme: dark;
 }
@@ -282,6 +290,11 @@
 		z-index: -1;
 		pointer-events: none;
 		background:
+			radial-gradient(
+				135% 105% at 50% 45%,
+				transparent 52%,
+				var(--vignette) 100%
+			),
 			radial-gradient(
 				120% 90% at 50% 0%,
 				color-mix(in oklab, var(--el-mid) 26%, transparent) 0%,

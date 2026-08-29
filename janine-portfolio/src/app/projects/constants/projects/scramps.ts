@@ -29,6 +29,7 @@ export const scrampsProject: Project = {
 		},
 		{
 			imageUrl: "/projects/scrampsPub.webp",
+			aspect: "portrait",
 			altText: "Scramps Public page UI",
 		},
 	],

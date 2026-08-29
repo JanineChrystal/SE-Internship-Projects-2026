@@ -1,7 +1,15 @@
+// Frame shape for a screenshot - four buckets rather than free values,
+// so every capture lands on a ratio close to its own and is only ever
+// cropped by a hair
+// landscape 16:9, square 1:1, portrait 3:4, tall 9:16 for phone shots
+export type ImageAspect = "landscape" | "square" | "portrait" | "tall";
+
 // Project image - a single screenshot used in overview or feature blocks
 export interface ProjectImage {
 	imageUrl: string;
 	altText: string;
+	// Omitted means landscape, which most desktop captures are
+	aspect?: ImageAspect;
 }
 
 // Project feature - one highlighted module of a project

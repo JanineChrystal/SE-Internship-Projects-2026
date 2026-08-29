@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { gsap } from "@/lib/gsap";
+import { useRef } from "react";
+import { useLineReveal } from "@/src/hooks/use-line-reveal";
 import { NARRATIVE_EYEBROW, NARRATIVE_TITLE } from "../../constants/detail";
 
 interface ProjectNarrativeProps {
@@ -9,50 +9,12 @@ interface ProjectNarrativeProps {
 }
 
 // Project narrative - the role and approach behind the build
-// Same reveal as the home page self-introduction: lines stagger in as
-// the section enters, and replay when scrolled back to
+// Shares the home page self-introduction reveal, so the two sections
+// cannot drift apart in feel
 const ProjectNarrative = ({ lines }: ProjectNarrativeProps) => {
 	const rootRef = useRef<HTMLElement>(null);
 
-	useEffect(() => {
-		const root = rootRef.current;
-		if (!root) {
-			return;
-		}
-
-		const ctx = gsap.context(() => {
-			const mm = gsap.matchMedia();
-
-			mm.add("(prefers-reduced-motion: no-preference)", () => {
-				const items = root.querySelectorAll<HTMLElement>(".narrative-line");
-
-				const reveal = gsap.from(items, {
-					y: 28,
-					opacity: 0,
-					duration: 0.7,
-					ease: "power3.out",
-					stagger: 0.14,
-					scrollTrigger: {
-						trigger: root,
-						start: "top 75%",
-						// Restart on the way back up too - otherwise arriving
-						// from below shows the section already settled
-						toggleActions: "restart none restart reverse",
-					},
-				});
-
-				return () => {
-					reveal.scrollTrigger?.kill();
-					reveal.kill();
-				};
-			});
-
-			return () => mm.revert();
-		}, rootRef);
-
-		return () => ctx.revert();
-	}, []);
-
+	useLineReveal(rootRef, ".narrative-line");
 	return (
 		<section
 			ref={rootRef}

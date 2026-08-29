@@ -10,7 +10,7 @@ import {
 	X,
 } from "lucide-react";
 import Link from "next/link";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { scrollToBottom, scrollToSection, scrollToTop } from "@/lib/scroll";
 import { cn } from "@/lib/utils";
 import {
@@ -20,6 +20,8 @@ import {
 } from "@/src/constants/nav";
 import { THEME_ELEMENTS } from "@/src/constants/themeElements";
 import { useActiveSection } from "@/src/hooks/use-active-section";
+import { useEscapeKey } from "@/src/hooks/use-escape-key";
+import { useThemeSync } from "@/src/hooks/use-theme-sync";
 import { themeElementAtom, themeModeAtom } from "@/src/store/themeAtom";
 
 const PANEL_ID = "site-panel";
@@ -33,34 +35,12 @@ const PanelAssistant = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const activeSection = useActiveSection(SECTION_TARGETS);
 
-	// Sync the DOM HTML element classes and attributes with Jotai state
-	useEffect(() => {
-		const html = document.documentElement;
+	const closePanel = useCallback(() => setIsOpen(false), []);
 
-		if (mode === "dark") {
-			html.classList.add("dark");
-		} else {
-			html.classList.remove("dark");
-		}
-
-		html.setAttribute("data-element", element);
-	}, [mode, element]);
+	useThemeSync(mode, element);
 
 	// Escape closes the touch panel
-	useEffect(() => {
-		if (!isOpen) {
-			return;
-		}
-
-		const onKeyDown = (event: KeyboardEvent) => {
-			if (event.key === "Escape") {
-				setIsOpen(false);
-			}
-		};
-
-		window.addEventListener("keydown", onKeyDown);
-		return () => window.removeEventListener("keydown", onKeyDown);
-	}, [isOpen]);
+	useEscapeKey(isOpen, closePanel);
 
 	// Jumping to a section closes the panel, so it does not sit over
 	// the content the visitor just asked to see

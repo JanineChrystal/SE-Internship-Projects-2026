@@ -6,8 +6,8 @@ export const blogsiteProject: Project = {
 	date: "June 2026 - August 2026",
 	role: "Full Stack Developer",
 	description: `A full-stack blogging platform built with Next.js, pairing a public reading site with a secure administrative
-		dashboard. It handles a complete editorial workflow: a draft, published and scheduled post lifecycle, threaded comment
-		moderation with server-side filtering, and soft-delete across posts, comments and categories.`,
+		dashboard. It handles a complete editorial workflow: a draft, published and scheduled post lifecycle, threaded reader
+		discussions, and soft-delete across posts, comments and categories.`,
 	imageSrc: "/projects/blogsite-1.png",
 	altText: "Chrystl.Blogs home page hero with a featured post",
 	tags: [
@@ -20,7 +20,7 @@ export const blogsiteProject: Project = {
 	],
 	overviewText: `Chrystl.Blogs is a full-stack blogging platform I built during my internship at Stratpoint Technologies and
 		later took through to a complete full-stack build. A public site handles browsing, reading and threaded discussion, while a
-		gated admin console manages posts and comments. It runs on the Next.js App Router with Server Actions, Drizzle ORM over
+		gated admin console manages posts. It runs on the Next.js App Router with Server Actions, Drizzle ORM over
 		Postgres, and Zod validation, and nothing is ever hard-deleted.`,
 	overviewImages: [
 		{
@@ -64,9 +64,9 @@ export const blogsiteProject: Project = {
 			extendedDescription: ``,
 		},
 		{
-			title: "Threaded Comments and Moderation",
+			title: "Threaded Comments",
 			description:
-				"Readers comment under a display name and reply to each other in threads. Submissions run through server-side bad-word filtering, then queue for approval, rejection or deletion in the admin console.",
+				"Readers join the discussion under a display name and reply to one another in nested threads, with comment counts on each post and paged loading for longer conversations.",
 			imageUrl: "/projects/blogsite-7.png",
 			altText: "Public discussion thread with a nested reply",
 			extendedDescription: ``,

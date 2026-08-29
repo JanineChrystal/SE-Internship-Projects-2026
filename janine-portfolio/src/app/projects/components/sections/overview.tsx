@@ -1,5 +1,6 @@
 import { Code, ExternalLink } from "lucide-react";
 import Image from "next/image";
+import Button from "@/src/components/ui/buttons/button";
 import type { ProjectImage } from "@/src/types/project";
 import SectionTitle from "../../../../components/ui/typography/section-title";
 import {
@@ -15,9 +16,6 @@ interface ProjectOverviewProps {
 	liveUrl?: string;
 	repoUrl?: string;
 }
-
-const linkClasses =
-	"inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-bold text-ink-strong transition-colors hover:border-accent/50 hover:text-accent-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-ink";
 
 // Project overview - summary above a pair of screenshots
 // Every project shows exactly two landscape captures, so the block is
@@ -44,29 +42,25 @@ const ProjectOverview = ({
 					    full width opens rivers between the words */}
 					<p className="max-w-3xl leading-relaxed text-ink">{text}</p>
 
+					{/* asChild so the anchor carries the button styling rather
+					    than nesting a link inside a button */}
 					{hasLinks && (
 						<div className="flex flex-wrap gap-3">
 							{liveUrl && (
-								<a
-									href={liveUrl}
-									target="_blank"
-									rel="noopener noreferrer"
-									className={linkClasses}
-								>
-									<ExternalLink aria-hidden="true" className="size-4" />
-									{LIVE_LINK_LABEL}
-								</a>
+								<Button asChild variant="solid" size="md">
+									<a href={liveUrl} target="_blank" rel="noopener noreferrer">
+										<ExternalLink aria-hidden="true" className="size-4" />
+										{LIVE_LINK_LABEL}
+									</a>
+								</Button>
 							)}
 							{repoUrl && (
-								<a
-									href={repoUrl}
-									target="_blank"
-									rel="noopener noreferrer"
-									className={linkClasses}
-								>
-									<Code aria-hidden="true" className="size-4" />
-									{REPO_LINK_LABEL}
-								</a>
+								<Button asChild variant="outline" size="md">
+									<a href={repoUrl} target="_blank" rel="noopener noreferrer">
+										<Code aria-hidden="true" className="size-4" />
+										{REPO_LINK_LABEL}
+									</a>
+								</Button>
 							)}
 						</div>
 					)}

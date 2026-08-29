@@ -3,6 +3,8 @@ import type { Project } from "@/src/types/project";
 export const takdaProject: Project = {
 	slug: "takda-ph",
 	title: "Takda PH: Team Project Management with Bilingual Moderation",
+	liveUrl: "https://nextjs-internship-capstone-iota.vercel.app",
+	repoUrl: "https://github.com/JanineChrystal/nextjs-internship-capstone",
 	date: "June 2026 - August 2026",
 	role: "Full Stack Developer",
 	description: `A team project management tool built around Kanban boards, with the parts that usually get skipped actually

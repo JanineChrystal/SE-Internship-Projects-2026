@@ -54,6 +54,14 @@ export const scrampsProject: Project = {
 			altText: "Vendor Management UI",
 		},
 		{
+			title: "Vendor AI Analytics",
+			description:
+				"Recommends the top three vendors for a book request based on its subject, scoring each against historical performance and pricing - average price, on-time delivery rate, and weighted performance and pricing points - then summarising why each one placed before it is added to the request.",
+			imageUrl: "/projects/scrampsVAI2.png",
+			altText:
+				"AI vendor recommendations ranking three publishers with scores and a written analysis",
+		},
+		{
 			title: "Analytics Dashboards",
 			description: `Provides interactive visualizations for requests, budgets, vendors, and user engagement, enabling data‑driven insights.`,
 			imageUrl: "/projects/scramps4.webp",
